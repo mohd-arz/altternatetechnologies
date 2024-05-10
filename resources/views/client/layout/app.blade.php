@@ -54,32 +54,32 @@
                                 <div class="header-element megamenu-content d-flex justify-content-center">
                                     <div class="mainwrap">
                                         <ul class="main-menu">
-                                            <li class="menu-link parent active">
+                                            <li class="menu-link parent {{ Request::is('/') ? 'active' : '' }}">
                                                 <a href="{{route('home.view')}}" class="link-title">
                                                     <span class="sp-link-title">Home</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent">
+                                            <li class="menu-link parent {{ Request::is('products') ? 'active' : '' }}">
                                                 <a href="{{route('products.view')}}" class="link-title">
                                                     <span class="sp-link-title">Products</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent">
+                                            <li class="menu-link parent {{ Request::is('gallery') ? 'active' : '' }}">
                                                 <a href="{{route('gallery.view')}}" class="link-title">
                                                     <span class="sp-link-title">Gallery</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent">
+                                            <li class="menu-link parent {{ Request::is('about') ? 'active' : '' }}">
                                                 <a href="{{route('about.view')}}" class="link-title">
                                                     <span class="sp-link-title">About</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent">
+                                            <li class="menu-link parent {{ Request::is('why-choose-us') ? 'active' : '' }}">
                                                 <a href="{{route('whyChooseUs.view')}}" class="link-title">
                                                     <span class="sp-link-title">Why Choose Us</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent">
+                                            <li class="menu-link parent {{ Request::is('contact') ? 'active' : '' }}">
                                                 <a href="{{route('contact.view')}}" class="link-title">
                                                     <span class="sp-link-title">Contact</span>
                                                 </a>
