@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\HomeBanner;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
     public function home(){
-        return view('client.pages.home');
+        $banners = HomeBanner::orderBy('id','desc')->get();
+        return view('client.pages.home',[
+            'banners' => $banners,
+        ]);
     }
-
     public function products(){
         return view('client.pages.products');
     }

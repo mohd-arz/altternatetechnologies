@@ -15,7 +15,7 @@ class DashboardController extends Controller
                 'user'=>$user,
             ]);
         }
-        return;
+        return 'Try Again';
     }
     public function updateUser(UpdateUserRequest $request,UpdateUserAction $action){
         $response = $action->execute(collect($request->validated()));

@@ -152,11 +152,46 @@
                                     class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
                                     data-bs-toggle="slide" href="{{ route('dashboard') }}"><i
                                         class="side-menu__icon fe fe-user"></i><span
-                                        class="side-menu__label">Dashboard</span></a> </li>
-
-                            {{-- @if (checkPermission('listing-dsr'))
-                <li class="slide"> <a class="side-menu__item has-link {{ Request::is('dsr*') ? 'active' : '' }}" data-bs-toggle="slide" href="{{('index_dsr')}}"><i class="side-menu__icon fe fe-home"></i><span class="side-menu__label">DSR</span></a> </li>
-              @endif --}}
+                                        class="side-menu__label">Dashboard</span></a> 
+                                    </li>
+                                {{-- Home --}}
+                                <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
+                                            class="side-menu__icon fe fe-layers"></i><span
+                                            class="side-menu__label">Home</span><i
+                                            class="angle fe fe-chevron-right"></i>
+                                    </a>
+                                    <ul class="slide-menu">
+                                        <li class="panel sidetab-menu">
+                                            <div class="panel-body tabs-menu-body p-0 border-0">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="side9">
+                                                        <ul class="sidemenu-list">
+                                                                <li><a href="{{ route('banner.view') }}"
+                                                                        class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                        Banner</a></li>
+                                                                <li><a href="{{ ('index_daily_plan_reports') }}"
+                                                                        class="slide-item {{ Request::is('*/daily-plan-report*') ? 'active' : '' }}">Daily
+                                                                        Plan Reports</a></li>
+                                                                <li><a href="{{ ('index_monthly_plan_reports') }}"
+                                                                        class="slide-item {{ Request::is('*/monthly-plan-report*') ? 'active' : '' }}">Monthly
+                                                                        Plan Reports</a></li>
+                                                            <li><a href="{{ ('abstract.index') }}"
+                                                                    class="slide-item {{ Request::is('*/abstract-bill-report*') ? 'active' : '' }}">Abstract
+                                                                    Bill Report</a></li>
+                                                            <li><a href="{{ ('work_order_reports.index') }}"
+                                                                    class="slide-item {{ Request::is('*/work-order-reports*') ? 'active' : '' }}">Work
+                                                                    Order Reports</a></li>
+                                                            <li><a href="{{ ('sub_con_work_reports.index') }}"
+                                                                    class="slide-item {{ Request::is('*/sub-con-work-reports*') ? 'active' : '' }}">Sub
+                                                                    Contractor Work Reports</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
 
                             {{-- Reports --}}
                                 <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">
@@ -195,7 +230,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                         
+                                </li>
                                 
                             {{-- PMD --}}
                             <li class="slide {{ Request::is('pmd/*') ? 'is-expanded' : '' }}">

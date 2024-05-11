@@ -5,33 +5,26 @@
 <!--home page slider start-->
 <section class="slider">
   <div class="home-slider7 owl-carousel owl-theme owl-loaded owl-drag"> 
-  <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1903px, 0px, 0px); transition: all 0s ease 0s; width: 3806px;">
-      <div class="owl-item active" style="width: 1903px;"><div class="items">
-          <div class="img-back" style="background-image:url({{ asset('client') }}/image/slider/banner1.jpg);">
-              
-              <div class="h-s-content">
-                  <!--<img src="{{ asset('client') }}/image/waste_to_energy_tag.svg" class="mb-3" style="width:55%;">-->
-                  <h1>Advanced Residue Free Waste Treatment & Energy Recovery</h1><br>
-                  <h1 class="banner_head">Scientific Cortifiers & Biodigesters</h1>
-                  <span class="slider-slogan">Altternate Technologies Leads The Way</span><br>
-                  <a href="services.html" class="btn btn-style1"><span>Our Services</span></a>
-                  <a href="{{ asset('client') }}/image/altternate_brochure_common.pdf" target="_blank" class="btn btn-style4"><span>Download Brochure</span></a>
-              </div>
-          </div>
-      </div>
-  </div>
-      <div class="owl-item" style="width: 1903px;">
-          <div class="items">
-          <div class="img-back" style="background-image:url({{ asset('client') }}/image/slider/banner2.jpg);">
-              <div class="h-s-content">
-                  <h1>Empowering future</h1>
-                  <span class="slider-slogan">with sustainable energy development</span><br>
-                  <a href="services.html" class="btn btn-style1"><span>Our Services</span></a>
-                  <a href="{{ asset('client') }}/image/altternate_brochure_common.pdf" target="_blank" class="btn btn-style4"><span>Download Brochure</span></a>
-              </div>
-          </div>
-      </div>
-  </div>    
+  <div class="owl-stage-outer">
+    <div class="owl-stage" style="transform: translate3d(-1903px, 0px, 0px); transition: all 0s ease 0s; width: 3806px;">
+  @foreach ($banners as $banner)
+    <div class="owl-item" style="width: 1903px;">
+        <div class="items">
+            <div class="img-back" style="background-image:url({{asset('storage').'/'.$banner->banner_img}});">
+                <div class="h-s-content">
+                    <h1>{{$banner->title}}</h1>
+                    @if($banner->sub_title)
+                    <h1 class="banner_head">{{$banner->sub_title}}</h1>
+                    @endif
+                    <span class="slider-slogan">{{$banner->slogan}}</span><br>
+                    <a href="services.html" class="btn btn-style1"><span>Our Services</span></a>
+                    <a href="{{ asset('client') }}/image/altternate_brochure_common.pdf" target="_blank" class="btn btn-style4"><span>Download Brochure</span></a>
+                </div>
+            </div>
+        </div>
+    </div>   
+    @endforeach
+
 </div>
 </div>
 <div class="owl-nav">
