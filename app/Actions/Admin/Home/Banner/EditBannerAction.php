@@ -21,11 +21,11 @@ class EditBannerAction
             if($collection['banner_img'] != null){
               $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $collection->get('banner_img')));
   
-              $fileName = 'cropped_image_' . time() . '.png';
+              $fileName = 'home_banner' . time() . '.png';
               
-              Storage::disk('public')->put('notes/' . $fileName, $imageData);
+              Storage::disk('public')->put('home_banner/' . $fileName, $imageData);
               
-              $home_banner->banner_img = 'notes/' . $fileName;
+              $home_banner->banner_img = 'home_banner/' . $fileName;
             }
             $home_banner->save();
 

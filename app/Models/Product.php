@@ -6,10 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class HomeBanner extends Model
+class Product extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
     protected static function boot()
@@ -17,12 +16,10 @@ class HomeBanner extends Model
         parent::boot();
 
         // Listen for the 'deleting' event of the model
-        static::deleting(function ($homeBanner) {
-            // Extract the filename from the banner_img attribute
-            $fileName = basename($homeBanner->banner_img);
-
-            // Delete the associated image from storage
-            Storage::disk('public')->delete('home_banner/' . $fileName);
+        static::deleting(function ($product) {
+            Storage::disk('public')->delete($product->img1);
+            Storage::disk('public')->delete($product->img2);
+            Storage::disk('public')->delete($product->img3);
         });
     }
 }

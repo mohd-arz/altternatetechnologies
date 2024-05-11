@@ -195,7 +195,14 @@
                                         </li>
                                     </ul>
                                 </li>
-
+                                {{-- Products --}}
+                                <li class="slide"> <a
+                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    data-bs-toggle="slide" href="{{ route('product.view') }}"><i
+                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__label">Products</span></a> 
+                                    </li>
+                                
                             {{-- Reports --}}
                                 <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i

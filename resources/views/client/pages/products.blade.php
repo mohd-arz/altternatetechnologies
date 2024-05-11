@@ -19,111 +19,36 @@
 <section class="special-pro-7 section-b-padding">
   <div class="container">
       <div class="row mt-5 mb-4">
-         <div class="col-md-4 mt-4">
-             <div class="items">
-              <div class="h-t-pro">
-                  <div class="tred-pro">
-                      <div class="tr-pro-img">
-                          <a href="product-details.html">
-                              <img src="{{ asset('client') }}/image/product/pr3.jpg" alt="blog-image" class="img-fluid">
-                          </a>
-                      </div>
-                  </div>
-                  <div class="caption">
-                      <h3><a href="product-details.html"><b>Small-scale Scientific Cortifier</b></a></h3>
-                      <div class="pro-price">
-                          <p class="new-price">Model : ALT-15  ALT-25</p>
-                          <p class="new-price">Capacity : 15kg/d    25kg/d</p>
-                          <p class="new-price">Customized Design for Ground level & Rooftop level installation</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
+           @foreach($products as $product)
+           <div class="col-md-4 mt-4">
+            <div class="items">
+              <div class="h-t-pro" style="min-height:635px">
+                <div class="tred-pro">
+                    <div class="tr-pro-img">
+                        <a href="{{route('product-details.view',$product->id)}}">
+                            <img src="{{ asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" alt="blog-image" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+                <div class="caption">
+                    <h3><a href="product-details.html">{{$product->title}}</a></h3>
+                    <div class="pro-price">
+                        @if($product->model)
+                            <p class="new-price">Model : {{$product->model}}</p>
+                        @endif
+                        @if($product->capacity)
+                            <p class="new-price">Capacity : {{$product->capacity}}</p>
+                        @endif
+                        @if($product->description)
+                            <p class="new-price">{{strlen($product->description) > 95 ? substr($product->description, 0, 95) . '...' : $product->description}}</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
          </div>
-         <div class="col-md-4 mt-4">
-          <div class="items">
-            <div class="h-t-pro">
-              <div class="tred-pro">
-                  <div class="tr-pro-img">
-                      <a href="product-details.html">
-                          <img src="{{ asset('client') }}/image/product/pr22.jpg" alt="blog-image" class="img-fluid">
-                      </a>
-                  </div>
-              </div>
-              <div class="caption">
-                  <h3><a href="product-details.html">Medium Scale Cortifiers</a></h3>
-                  <div class="pro-price">
-                      <p class="new-price">Model : ALT-40 - ALT-60</p>
-                      <p class="new-price">Capacity : 40Kg/h - 60Kg/h</p>
-                      <p class="new-price">Rooftop Installation, Provision to attach Emission Cleansing Device</p>
-                  </div>
-              </div>
-          </div>
-       </div>
-         </div>
-         <div class="col-md-4 mt-4">
-          <div class="items">
-            <div class="h-t-pro">
-              <div class="tred-pro">
-                  <div class="tr-pro-img">
-                      <a href="product-details.html">
-                          <img src="{{ asset('client') }}/image/product/pr44.jpg" alt="blog-image" class="img-fluid">
-                      </a>
-                  </div>
-              </div>
-              <div class="caption">
-                  <h3><a href="product-details.html">Advanced Anaerobic Bioreactors For Residue-Free Biodegradable Waste Treatment</a></h3>
-                  <div class="pro-price">
-                      <!-- <p class="new-price">Model : ALT-100 FSWSS</p> -->
-                      <p class="new-price">Capacity : 50kg/h</p>
-                      <!-- <p class="new-price">Features : Dual Combustion Chamber</p> -->
-                  </div>
-              </div>
-          </div>
-       </div>
-         </div>
-         <div class="col-md-4 mt-4">
-          <div class="items">
-            <div class="h-t-pro">
-              <div class="tred-pro">
-                  <div class="tr-pro-img">
-                      <a href="product-details.html">
-                          <img src="{{ asset('client') }}/image/product/pr55.jpg" alt="blog-image" class="img-fluid">
-                      </a>
-                  </div>
-              </div>
-              <div class="caption">
-                  <h3><a href="product-details.html">Advanced Anaerobic Bioreactors For Residue-Free Biodegradable Waste Treatment</a></h3>
-                  <div class="pro-price">
-                      <!-- <p class="new-price">Model : ALT-100 FSWSS</p> -->
-                      <p class="new-price">Capacity : 100kg/h</p>
-                      <!-- <p class="new-price">Features : Dual Combustion Chamber</p> -->
-                  </div>
-              </div>
-          </div>
-       </div>
-         </div>
-         <div class="col-md-4 mt-4">
-          <div class="items">
-            <div class="h-t-pro">
-              <div class="tred-pro">
-                  <div class="tr-pro-img">
-                      <a href="product-details.html">
-                          <img src="{{ asset('client') }}/image/product/pr66.jpg" alt="blog-image" class="img-fluid">
-                      </a>
-                  </div>
-              </div>
-              <div class="caption">
-                  <h3><a href="product-details.html">Advanced Anaerobic Bioreactors For Residue-Free Biodegradable Waste Treatment</a></h3>
-                  <div class="pro-price">
-                      <!-- <p class="new-price">Model : ALT-100 FSWSS</p> -->
-                      <p class="new-price">Capacity : 500kg/h</p>
-                      <!-- <p class="new-price">Features : Dual Combustion Chamber</p> -->
-                  </div>
-              </div>
-          </div>
-       </div>
-         </div>
+           </div>
+           @endforeach
+
   </div>
 </section>
 @endsection

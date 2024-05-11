@@ -4,14 +4,16 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Products\ProductsController;
 use App\Http\Middleware\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(ClientController::class)->group(function(){
     Route::get('/','home')->name('home.view');
     Route::get('/products','products')->name('products.view');
+    Route::get('/product-details/{product}','productDetails')->name('product-details.view');
     Route::get('/gallery','gallery')->name('gallery.view');
-    Route::get('/about','about')->name('about.view');
+    Route::get('/about','about')->name('aboutUs.view');
     Route::get('/why-choose-us','whyChooseUs')->name('whyChooseUs.view');
     Route::get('/contact','contact')->name('contact.view');
     Route::get('/faq','faq')->name('faq.view');
@@ -24,7 +26,6 @@ Route::middleware([Auth::class])->group(function(){
         })->name('dashboard');
         Route::get('/profile',[DashboardController::class,'editUser'])->name('user.edit');
         Route::put('/profile',[DashboardController::class,'updateUser'])->name('user.update');
-    });
     // Home Controller -- 
     Route::prefix('home')->group(function(){
         Route::prefix('banner')->group(function(){
@@ -43,6 +44,17 @@ Route::middleware([Auth::class])->group(function(){
                 Route::post('/store','aboutStore')->name('about.store');
             });
         });
+    });
+    Route::prefix('products')->group(function(){
+        Route::controller(ProductsController::class)->group(function(){
+            Route::get('/','products')->name('product.view');
+            Route::get('/create','productCreate')->name('product.create');
+            Route::post('/store','productStore')->name('product.store');
+            Route::get('/edit/{product}','productEdit')->name('product.edit');
+            Route::put('/update/{product}','productUpdate')->name('product.update');
+            Route::delete('/delete/{product}','productDelete')->name('product.delete');
+        });
+    });
     });
 });
 
