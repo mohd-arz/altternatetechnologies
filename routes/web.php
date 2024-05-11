@@ -37,6 +37,12 @@ Route::middleware([Auth::class])->group(function(){
                 Route::delete('/delete/{banner}','bannerDelete')->name('banner.delete');
             });
         });
+        Route::prefix('about')->group(function(){
+            Route::controller(HomeController::class)->group(function(){
+                Route::get('/','about')->name('about.view');
+                Route::post('/store','aboutStore')->name('about.store');
+            });
+        });
     });
 });
 

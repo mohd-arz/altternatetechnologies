@@ -1,5 +1,5 @@
 @extends('admin.layout.app') 
-@section('title', 'Edit Home Banner') 
+@section('title', 'Home About') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection 
@@ -12,8 +12,8 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Banner</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Banner</li>
+                        {{-- <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Banner</a></li> --}}
+                        <li class="breadcrumb-item active" aria-current="page">About</li>
                     </ol>
                 </div>
             </div>
@@ -26,38 +26,33 @@
                     {{-- <div class="prism-toggle"></div> --}}
                 </div>
                 <div class="card-body">
-                    <form action="{{route('banner.update',$banner->id)}}" method="POST"
-                        id="home-banner-form" data-parsley-validate="true" enctype="multipart/form-data">
+                    <form action="{{route('about.store')}}" method="POST"
+                        id="home-about-form" data-parsley-validate="true" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
                         <div class="row">
                             <div class="col-4">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
-                                    data-parsley-required-message="Title is required" value="{{$banner->title}}"/>
+                                    data-parsley-required-message="Title is required" value="{{$about->title}}"/>
                                 <span id="title_error"></span>
                             </div>
-                            <div class="col-4">
-                              <label for="sub_title">Sub Title</label>
-                              <input type="text" name="sub_title" class="form-control" placeholder="Sub Title" value="{{$banner->sub_title}}" />
-                              <span id="sub_title_error"></span>
-                          </div>
-                            <div class="col-4">
-                              <label for="slogan">Slogan</label>
-                              <input type="text" name="slogan" class="form-control" placeholder="Slogan" required
-                                  data-parsley-required-message="Slogan is required" value="{{$banner->slogan}}"/>
-                              <span id="slogan_error"></span>
-                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="description">Description</label>
+                                <textarea name="description" class="editor">{{$about->home_description}}</textarea>
+                                <span id="description_error"></span>
+                            </div>
                         </div>
                         <div class="row">
                           <div class="col-4">
-                              <label for="title">New File <small>(Max 2MB)</small></label>
+                              <label for="title">File <small>(Max 2MB)</small> </label>
                                 <input type="file" accept="Image/*" class="form-control-file" id="img-file">
                                 <div class="result">
-                                  <i>(Old) </i><a href="{{asset('storage').'/'.$banner->banner_img}}">View</a>
-                                </div>
-                                <input type="hidden" name="banner_img" id="banner_img">
-                                <span id="banner_img_error"></span>
+                                    <i>(Old) </i><a href="{{asset('storage').'/'.$about->home_img}}">View</a>
+                                  </div>
+                                  <input type="hidden" name="banner_img" id="banner_img">
+                                  <span id="banner_img_error"></span>
                           </div>
 
                           <!-- Modal -->
@@ -66,7 +61,7 @@
                               <div class="modal-content">
                                 <div class="modal-header">
                                   <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                  <button type="button" id="close-modal" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                  <button type="button" id="close-modal"  class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
@@ -74,7 +69,7 @@
                                     <img id="cropper-img" style="display: block;max-width: 100%;">
                                 </div>
                                 <div class="modal-footer">
-                                  {{-- <button type="button" id="close-modal" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
+                                  {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
                                   <button type="button" id="save-crop" class="btn btn-primary">Save changes</button>
                                 </div>
                               </div>
@@ -85,7 +80,7 @@
                         <button type="submit" id="submitbtn" class="btn btn-primary mt-2" style="min-width:85px">
                             <span class="spinner-border spinner-border-sm" style="display: none" id="btn-loader"
                                 role="status" aria-hidden="true"></span>
-                            <span id="btn-text">Edit Banner</span>
+                            <span id="btn-text">Save</span>
                         </button>
                         <span id="message" class="alert"></span>
                     </form>
@@ -98,9 +93,30 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.9.5/tinymce.min.js"></script>
+
 <script>
     $(function() {
-      const img = document.querySelector('#cropper-img');
+        var editor_config = {
+                selector: '.editor',
+                directionality: document.dir,
+                path_absolute: "/",
+                menubar: '',
+                plugins: [
+                    "advlist autolink lists  charmap preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen",
+                    "insertdatetime save table contextmenu directionality",
+                    "paste textcolor colorpicker textpattern"
+                ],
+                toolbar: "insertfile undo redo | formatselect styleselect | bold italic strikethrough forecolor backcolor permanentpen formatpainter | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media | fullscreen code",
+                relative_urls: false,
+                language: document.documentElement.lang,
+                height: 200,
+                branding: false
+            }
+        tinymce.init(editor_config);
+
+    const img = document.querySelector('#cropper-img');
     let cropper;
 
     const fileInput = document.getElementById('img-file');
@@ -117,7 +133,7 @@
             }
 
             cropper = new Cropper(img, {
-                aspectRatio: 16 / 9,
+                aspectRatio:406/593,
                 dragMode: 'none',
                 zoomable:false,
                 // responsive:false,
@@ -135,6 +151,7 @@
       $('#cropperModal').modal('hide');
     });
 
+
     $('#save-crop').on('click',function(){
       if (cropper) {
             const croppedCanvas = cropper.getCroppedCanvas();
@@ -150,20 +167,20 @@
 
     })
 
-        // $(".add_new_body").on("input", ".rate, .quantity", function() {
-        //     let row = $(this).closest("tr");
-        //     let rate = row.find(".rate").val();
-        //     let quantity = row.find(".quantity").val();
-        //     let amount = rate * quantity;
-
-        //     row.find("#amount").val(amount);
-        // });
-
-        // $(".select2").select2();
-
-        $("#home-banner-form").submit(function(e) {
-            $("#home-banner-form").parsley().validate();
-            if (!$("#home-banner-form").parsley().isValid()) {
+        $("#home-about-form").submit(function(e) {
+            document.querySelectorAll('.editor').forEach(function(editorElement) {
+                    tinymce.init({
+                        target: editorElement,
+                    });
+                });
+                document.querySelectorAll('.editor').forEach(function(editorElement) {
+                    var editor = tinymce.get(editorElement.id);
+                    if (editor) {
+                        editor.save();
+                    }
+                });
+            $("#home-about-form").parsley().validate();
+            if (!$("#home-about-form").parsley().isValid()) {
                 return false;
             }
             e.preventDefault();
@@ -185,7 +202,7 @@
                             timeOut: 5000,
                         });
                         setTimeout(() => {
-                            window.location.href = "{{route('banner.view')}}"
+                            window.location.href = "{{route('about.view')}}"
                         }, 1000);
                     } else {
                         toastr.options.positionClass = "toast-top-right";

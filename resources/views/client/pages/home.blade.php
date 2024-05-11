@@ -111,27 +111,14 @@
   <div class="container">
       <div class="row altternate_section">
           <div class="col-md-3 col-lg-4 mb-4">
-              <img src="{{ asset('client') }}/image/services_bg3.jpg" class="home_img">
+              <img src="{{ asset('storage').'/'.$about->home_img }}" class="home_img">
           </div>
           <div class="col-md-8">
               <div class="altternate_about">
                   <!-- <p>What is</p> -->
-                  <h1>Altternate Technologies</h1>
+                  <h1>{{$about->title}}</h1>
                       <div class="div mt-3">
-                          <p>
-                              We Alternate Technologies manufacture and supply Zero Residue Solid & Liquid Waste Treatment Equipment, Waste to Energy CORTIFIERS, Advanced Bioreactors to Convert food waste in to Biofuel, Electricity and Biomanure. 
-                              There are various capacity Equipments starting from Small scale Home products up to Heavy duty plants of 10-25 metric ton per day and a lot more. 
-                              The products of our company are manufactured under the guidance of experts and professionals. 
-                              The products are made with the use of good quality raw materials.
-                          </p>
-                          <br>
-                          <p>
-                              The products are tested at every stage to ensure that it works well and fulfil the needs and requirements of our customers and clients.
-                          </p>
-                                  <br>
-                          <p>Our infrastructure has different departments that take care of the overall process of manufacturing and supplying good quality products. 
-                              We use good quality packaging to ensure that our products reach safely to the destination. 
-                              For us, the safety of the products and our customers getting the right ones matters the most.</p>
+                          {!!$about->home_description!!}
                           <a href="about.html" class="btn btn-style2">View More</a>
                       </div>
                       

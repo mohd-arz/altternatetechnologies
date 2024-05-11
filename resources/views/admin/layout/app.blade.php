@@ -170,6 +170,9 @@
                                                                 <li><a href="{{ route('banner.view') }}"
                                                                         class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
                                                                         Banner</a></li>
+                                                                <li><a href="{{ route('about.view') }}"
+                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    About</a></li>
                                                                 <li><a href="{{ ('index_daily_plan_reports') }}"
                                                                         class="slide-item {{ Request::is('*/daily-plan-report*') ? 'active' : '' }}">Daily
                                                                         Plan Reports</a></li>
