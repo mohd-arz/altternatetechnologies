@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client\ClientController;
+use App\Http\Controllers\Clients\ClientsController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Gallery\GalleryController;
 use App\Http\Controllers\Home\HomeController;
@@ -17,6 +18,8 @@ Route::controller(ClientController::class)->group(function(){
     Route::get('/about','about')->name('aboutUs.view');
     Route::get('/why-choose-us','whyChooseUs')->name('whyChooseUs.view');
     Route::get('/contact','contact')->name('contact.view');
+    Route::get('/clients','clients')->name('clients.view');
+    Route::get('/clients-by-type','clientsByType')->name('clientsByType');
     Route::get('/faq','faq')->name('faq.view');
 });
 
@@ -63,6 +66,24 @@ Route::middleware([Auth::class])->group(function(){
             Route::post('/store','galleryStore')->name('gallery.store');
             Route::delete('/delete/{gallery}','galleryDelete')->name('gallery.delete');
             Route::get('/gallery-ishome','galleryIsHome')->name('galleryIsHome');
+        });
+    });
+    Route::prefix('clients')->group(function(){
+        Route::controller(ClientsController::class)->group(function(){
+            Route::get('/','clients')->name('clients_.view');
+            Route::get('/create','clientsCreate')->name('clients.create');
+            Route::post('/store','clientsStore')->name('clients.store');
+            Route::get('/edit/{client}','clientsEdit')->name('clients.edit');
+            Route::put('/update/{client}','clientsUpdate')->name('clients.update');
+            Route::delete('/delete/{client}','clientsDelete')->name('clients.delete');
+            Route::prefix('type')->group(function(){
+                Route::get('/','type')->name('clients.type.view');
+                Route::get('/create','typeCreate')->name('clients.type.create');
+                Route::post('/store','typeStore')->name('clients.type.store');
+                Route::get('/edit/{type}','typeEdit')->name('clients.type.edit');
+                Route::put('/update/{type}','typeUpdate')->name('clients.type.update');
+                Route::delete('/delete/{type}','typeDelete')->name('clients.type.delete');
+            });
         });
     });
     });

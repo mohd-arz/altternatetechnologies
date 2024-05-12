@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Clients;
+use App\Models\ClientType;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
 use App\Models\Product;
@@ -16,11 +18,13 @@ class ClientController extends Controller
         $about = About::first();
         $products = Product::where('is_home','1')->get();
         $galleries = Gallery::where(['is_home'=>'1','type'=>'img'])->get();
+        $clients = Clients::get();
         return view('client.pages.home',[
             'banners' => $banners,
             'about' => $about,
             'products' => $products,
             'galleries' => $galleries,
+            'clients' => $clients,
         ]);
     }
     public function products(){
@@ -56,5 +60,17 @@ class ClientController extends Controller
     }
     public function faq(){
         return view('client.pages.faq');
+    }
+    public function clients(){
+        $types = ClientType::get();
+        $clients = Clients::where('client_type_id',$types[0]->id)->get();
+        return view('client.pages.clients',[
+            'clients' => $clients,
+            'types' => $types,
+        ]);
+    }
+    public function clientsByType(Request $request){
+        $clients = Clients::where('client_type_id',$request->id)->get();
+        return response()->json(['clients'=>$clients]);
     }
 }

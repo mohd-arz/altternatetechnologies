@@ -300,35 +300,16 @@
 <div class="row">
   <div class="col d-flex text-center">
       <div class="home4-brand owl-carousel owl-theme d-flex justify-content-center">
-          <div class="items">
-              <img src="{{ asset('client') }}/image/clients/c1.png" alt="client-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/clients/c2.png" class="img-fluid brand-4" alt="clients-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/clients/c3.png" class="img-fluid brand-4" alt="clients-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/clients/c4.png" class="img-fluid brand-4" alt="clients-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/clients/c5.png" class="img-fluid brand-4" alt="clients-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/clients/c6.png" class="img-fluid brand-4" alt="clients-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/clients/c7.png" class="img-fluid brand-4" alt="clients-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/clients/c8.png" class="img-fluid brand-4" alt="clients-image">
-          </div>
+          @foreach ($clients as $client)
+            <div class="items px-2">
+                <img src="{{ asset('storage').'/'.$client->img}}" style="aspect-ratio:3/2;object-fit:cover;" class="img-fluid brand-4" alt="clients-image">
+            </div>
+          @endforeach
       </div>
   </div>
 </div>
 <div class="div justify-content-center d-flex">
-  <a href="clients.html" class="btn btn-style2">View More</a>
+  <a href="{{route('clients.view')}}" class="btn btn-style2">View More</a>
 </div>
 </div>
 </section>
