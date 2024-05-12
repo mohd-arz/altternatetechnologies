@@ -7,47 +7,46 @@
 		<title>Altternate Technologies - @yield('title')</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 		
-        <!-- favicon -->
-        <link rel="shortcut icon" type="{{ asset('client') }}/image/favicon" href="{{ asset('client') }}/image/favicon.svg">
-        <!-- bootstrap -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/bootstrap.min.css">
-        <!-- simple-line icon -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/simple-line-icons.css">
-        <!-- font-awesome icon -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/font-awesome.min.css">
-        <!-- themify icon -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/themify-icons.css">
-        <!-- ion icon -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/ionicons.min.css">
-        <!-- owl slider -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/owl.carousel.min.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/owl.theme.default.min.css">
-        <!-- swiper -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/swiper.min.css">
-        <!-- animation -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/animate.css">
-        <!-- gallery light box -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/simple-lightbox.css">
-        <!-- style -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/altternate-styl.css">
-        <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/altternate-responsive.css">
-
-        @yield('css')
+         <!-- favicon -->
+         <link rel="shortcut icon" type="{{ asset('client') }}/image/favicon" href="{{ asset('client') }}/image/favicon.svg">
+         <!-- bootstrap -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/bootstrap.min.css">
+         <!-- simple-line icon -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/simple-line-icons.css">
+         <!-- font-awesome icon -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/font-awesome.min.css">
+         <!-- themify icon -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/themify-icons.css">
+         <!-- ion icon -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/ionicons.min.css">
+         <!-- owl slider -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/owl.carousel.min.css">
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/owl.theme.default.min.css">
+         <!-- swiper -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/swiper.min.css">
+         <!-- animation -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/animate.css">
+         <!-- gallery light box -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/simple-lightbox.css">
+         <!-- style -->
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/altternate-styl.css">
+         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/altternate-responsive.css">
+ 
+         @yield('css')
 
     </head>
     <body>
         <!-- header start -->
-        <header class="header-area">
+         <header class="header-area">
             <div class="header-main-area">
                 <div class="container">
                     <div class="row">
                         <div class="div">
-                            
-                            <div class="header-main  {{ Request::is('*/') ? 'mt-2 mb-2' : '' }}">
+                            <div class="header-main">
                                 <!-- logo start -->
                                 <div class="col header-element logo">
                                     <a href="index.html">
-                                        <img src="{{ asset('client') }}/image/logo.svg" alt="logo-image" class="logo_m img-fluid">
+                                        <img src="image/logo.svg" alt="logo-image" class="logo_m img-fluid">
                                     </a>
                                 </div>
                                 <!-- logo end -->
@@ -55,33 +54,33 @@
                                 <div class="header-element megamenu-content d-flex justify-content-center">
                                     <div class="mainwrap">
                                         <ul class="main-menu">
-                                            <li class="menu-link parent {{ Request::is('/') ? 'active' : '' }}">
-                                                <a href="{{route('home.view')}}" class="link-title">
+                                            <li class="menu-link parent">
+                                                <a href="index.html" class="link-title">
                                                     <span class="sp-link-title">Home</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent {{ Request::is('products') ? 'active' : '' }}">
-                                                <a href="{{route('products.view')}}" class="link-title">
+                                            <li class="menu-link parent">
+                                                <a href="product.html" class="link-title">
                                                     <span class="sp-link-title">Products</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent {{ Request::is('gallery') ? 'active' : '' }}">
-                                                <a href="{{route('gallery.view')}}" class="link-title">
+                                            <li class="menu-link parent">
+                                                <a href="gallery.html" class="link-title">
                                                     <span class="sp-link-title">Gallery</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent {{ Request::is('about') ? 'active' : '' }}">
-                                                <a href="{{route('aboutUs.view')}}" class="link-title">
+                                            <li class="menu-link parent">
+                                                <a href="about.html" class="link-title">
                                                     <span class="sp-link-title">About</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent {{ Request::is('why-choose-us') ? 'active' : '' }}">
-                                                <a href="{{route('whyChooseUs.view')}}" class="link-title">
+                                            <li class="menu-link parent">
+                                                <a href="why_choose_us.html" class="link-title">
                                                     <span class="sp-link-title">Why Choose Us</span>
                                                 </a>
                                             </li>
-                                            <li class="menu-link parent {{ Request::is('contact') ? 'active' : '' }}">
-                                                <a href="{{route('contact.view')}}" class="link-title">
+                                            <li class="menu-link parent">
+                                                <a href="contact.html" class="link-title">
                                                     <span class="sp-link-title">Contact</span>
                                                 </a>
                                             </li>
@@ -118,7 +117,7 @@
                                                             <span class="cart-icon-wrap">
                                                                 <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
                                                                 <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="{{ asset('client') }}/image/social-icon/facebook.svg">
+                                                                    <img src="image/social-icon/facebook.svg">
                                                                 </span>
                                                                 <!-- <span id="cart-total" class="bigcounter">5</span> -->
                                                             </span>
@@ -133,7 +132,7 @@
                                                             <span class="cart-icon-wrap">
                                                                 <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
                                                                 <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="{{ asset('client') }}/image/social-icon/whatsapp.svg">
+                                                                    <img src="image/social-icon/whatsapp.svg">
                                                                 </span>
                                                                 <!-- <span id="cart-total" class="bigcounter">5</span> -->
                                                             </span>
@@ -148,7 +147,7 @@
                                                             <span class="cart-icon-wrap">
                                                                 <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
                                                                 <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="{{ asset('client') }}/image/social-icon/instagram.svg">
+                                                                    <img src="image/social-icon/instagram.svg">
                                                                 </span>
                                                                 <!-- <span id="cart-total" class="bigcounter">5</span> -->
                                                             </span>
@@ -163,7 +162,7 @@
                                                             <span class="cart-icon-wrap">
                                                                 <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
                                                                 <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="{{ asset('client') }}/image/social-icon/twitter.svg">
+                                                                    <img src="image/social-icon/twitter.svg">
                                                                 </span>
                                                                 <!-- <span id="cart-total" class="bigcounter">5</span> -->
                                                             </span>
@@ -196,32 +195,32 @@
                                             <div class="mainwrap">
                                                 <ul class="main-menu">
                                                     <li class="menu-link parent">
-                                                        <a href="{{route('home.view')}}" class="link-title link-title-lg">
+                                                        <a href="index.html" class="link-title link-title-lg">
                                                             <span>Home</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link parent">
-                                                        <a href="{{route('products.view')}}" class="link-title link-title-lg">
+                                                        <a href="product.html" class="link-title link-title-lg">
                                                             <span>Products</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link parent">
-                                                        <a href="{{route('gallery.view')}}" class="link-title link-title-lg">
+                                                        <a href="gallery.html" class="link-title link-title-lg">
                                                             <span>Gallery</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link parent">
-                                                        <a href="{{route('aboutUs.view')}}" class="link-title link-title-lg">
+                                                        <a href="about.html" class="link-title link-title-lg">
                                                             <span>About</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link parent">
-                                                        <a href="{{route('whyChooseUs.view')}}" class="link-title link-title-lg">
+                                                        <a href="why_choose_us.html" class="link-title link-title-lg">
                                                             <span>Why Choose Us</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-link parent">
-                                                        <a href="{{route('contact.view')}}" class="link-title link-title-lg">
+                                                        <a href="contact.html" class="link-title link-title-lg">
                                                             <span>Contact</span>
                                                         </a>
                                                     </li>
@@ -255,8 +254,88 @@
         </header>
 
         <!--header end-->
-    
-        @yield('content')
+  
+        <section class="blog-page nutritional_values">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title5 section-t-padding">
+                        <h1>FAQ</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <section class="faq-collapse section-b-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="faq-start">
+                    <h2 class="mt-4 mb-4">About Altternate Technologies</h2>
+                    <a href="#collapse-7" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">What is Altternate Technologies 
+                        <div class="d-flex justify-content-end">
+                            <i class="fas fa-arrow-down align-self-center"></i>
+                        </div>
+                    </a>
+                    <div class="collapse collapse-content" id="collapse-7">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-start">
+                    <a href="#collapse-8" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">Where does the name Altternate Technologies
+                        <div class="d-flex justify-content-end">
+                            <i class="fas fa-arrow-down align-self-center"></i>
+                        </div>
+                    </a>
+                    <div class="collapse collapse-content" id="collapse-8">
+                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-start">
+                    <a href="#collapse-9" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">How is Altternate Technologies
+                        <div class="d-flex justify-content-end">
+                            <i class="fas fa-arrow-down align-self-center"></i>
+                        </div>
+                    </a>
+                    <div class="collapse collapse-content" id="collapse-9">
+                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                </div>
+                <div class="faq-start">
+                    <a href="#collapse-10" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">What is Altternate Technologies
+                        <div class="d-flex justify-content-end">
+                            <i class="fas fa-arrow-down align-self-center"></i>
+                        </div>
+                    </a>
+                    <div class="collapse collapse-content" id="collapse-10">
+                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
+                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
         <!-- footer start -->
         <section class="footer-7 section-tb-padding">
@@ -267,7 +346,7 @@
                             <div class="footer-link">
                                 <div class="f-info footer-logo">
                                     <!-- <h2 class="h-footer">Altternate Technologies</h2> -->
-                                    <a href="index.html"><img src="{{ asset('client') }}/image/logo.svg"></a>
+                                    <a href="index.html"><img src="image/logo.svg"></a>
                                     <ul class="footer-first">
                                         <li class="logo-content footer-details">
                                             <ul class="f-map">
@@ -305,7 +384,7 @@
                                         <i class="fa fa-angle-down"></i>
                                     </a>
                                     <ul class="f-link-ul collapse" id="services" data-bs-parent="#footer-accordian">
-                                        <li class="f-link-ul-li"><a href="{{route('faq.view')}}">FAQ</a></li>
+                                      <li class="f-link-ul-li"><a href="{{route('faq.view')}}">FAQ</a></li>
                                         <li class="f-link-ul-li"><a href="{{route('contact.view')}}">Contact Us</a></li>
                                         <li class="f-link-ul-li"><a href="privacy_policy.html">Privacy Policy</a></li>
                                     </ul>
@@ -317,8 +396,8 @@
                                         <i class="fa fa-angle-down"></i>
                                     </a>
                                     <ul class="f-link-ul collapse" id="privacy" data-bs-parent="#footer-accordian">
-                                        <li class="f-link-ul-li"><a href="{{route('whyChooseUs.view')}}">Why Choose Us</a></li>
-                                        <li class="f-link-ul-li"><a href="{{route('aboutUs.view')}}">About Us</a></li>
+                                      <li class="f-link-ul-li"><a href="{{route('whyChooseUs.view')}}">Why Choose Us</a></li>
+                                      <li class="f-link-ul-li"><a href="{{route('aboutUs.view')}}">About Us</a></li>
                                         <li class="f-link-ul-li"><a href="#">Careers</a></li>
                                     </ul>
                                 </div>
@@ -338,9 +417,6 @@
                                             <!-- <a href="https://www.pinterest.com/" class="f-icn-link"><i class="fa fa-pinterest-p"></i></a> -->
                                         </li>
                                     </ul>
-                                    <div class="gem_log">
-                                        <img src="{{ asset('client') }}/image/gem.jpg" alt="Gem">
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -356,7 +432,7 @@
                     <div class="col">
                         <div class="f-bottom">
                             <p>Copyright <i class="fa fa-copyright"></i> 2022 Altternate Technologies</p>
-                            <!-- <img src="{{ asset('client') }}/image/payment.png" class="img-fluid" alt="p-image"> -->
+                            <!-- <img src="image/payment.png" class="img-fluid" alt="p-image"> -->
                         </div>
                     </div>
                 </div>

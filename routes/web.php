@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\About\AboutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Clients\ClientsController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Gallery\GalleryController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Products\ProductsController;
 use App\Http\Middleware\Auth;
+use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(ClientController::class)->group(function(){
@@ -84,6 +86,12 @@ Route::middleware([Auth::class])->group(function(){
                 Route::put('/update/{type}','typeUpdate')->name('clients.type.update');
                 Route::delete('/delete/{type}','typeDelete')->name('clients.type.delete');
             });
+        });
+    });
+    Route::prefix('about')->group(function(){
+        Route::controller(AboutController::class)->group(function(){
+            Route::get('/','about')->name('about_.view');
+            Route::post('/','aboutStore')->name('about_.store');
         });
     });
     });

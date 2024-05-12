@@ -218,6 +218,15 @@
                                         class="side-menu__icon fe fe-user"></i><span
                                         class="side-menu__label">Clients</span></a> 
                                 </li>
+
+                                {{-- About --}}
+                                   {{-- Clients --}}
+                                   <li class="slide"> <a
+                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    data-bs-toggle="slide" href="{{ route('about_.view') }}"><i
+                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__label">About</span></a> 
+                                    </li>
                                 
                             {{-- Reports --}}
                                 <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">

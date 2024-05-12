@@ -49,7 +49,9 @@ class ClientController extends Controller
         ]);
     }
     public function about(){
-        return view('client.pages.about',[
+        $about = About::first();
+    return view('client.pages.about',[
+            'about' => $about
         ]);
     }
     public function whyChooseUs(){

@@ -26,14 +26,14 @@
                     {{-- <div class="prism-toggle"></div> --}}
                 </div>
                 <div class="card-body">
-                    <form action="{{route('about.store')}}" method="POST"
+                    <form action="{{route('about_.store')}}" method="POST"
                         id="home-about-form" data-parsley-validate="true" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-4">
                                 <label for="title">Title</label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
-                                    data-parsley-required-message="Title is required" @if($about) value="{{$about->home_title}}" @endif/>
+                                    data-parsley-required-message="Title is required" @if($about) value="{{$about->about_title}}" @endif/>
                                 <span id="title_error"></span>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                 <label for="description">Description</label>
                                 <textarea name="description" class="editor">
                                     @if($about)
-                                    {{$about->home_description}}
+                                    {{$about->about_description}}
                                     @endif
                                 </textarea>
                                 <span id="description_error"></span>
@@ -54,7 +54,7 @@
                                 <input type="file" accept="Image/*" class="form-control-file" id="img-file">
                                 <div class="result">
                                     @if($about)
-                                    <i>(Old) </i><a href="{{asset('storage').'/'.$about->home_img}}">View</a>
+                                    <i>(Old) </i><a href="{{asset('storage').'/'.$about->about_img}}">View</a>
                                     @endif
                                   </div>
                                   <input type="hidden" name="banner_img" id="banner_img">
@@ -95,7 +95,8 @@
         </div>
     </div>
 </div>
-@endsection @section('script')
+@endsection
+ @section('script')
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -139,7 +140,7 @@
             }
 
             cropper = new Cropper(img, {
-                aspectRatio:406/593,
+                aspectRatio:16/9,
                 dragMode: 'none',
                 zoomable:false,
                 // responsive:false,
@@ -208,7 +209,7 @@
                             timeOut: 5000,
                         });
                         setTimeout(() => {
-                            window.location.href = "{{route('about.view')}}"
+                            window.location.href = "{{route('about_.view')}}"
                         }, 1000);
                     } else {
                         toastr.options.positionClass = "toast-top-right";

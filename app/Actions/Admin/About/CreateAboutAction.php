@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Admin\Home\About;
+namespace App\Actions\Admin\About;
 
 use App\Models\About;
 use Illuminate\Support\Collection;
@@ -14,17 +14,17 @@ class CreateAboutAction
         DB::beginTransaction();
         try {
             $about = About::firstOrCreate();
-            $about->home_title = $collection['title'];
-            $about->home_description = $collection['description'];
+            $about->about_title = $collection['title'];
+            $about->about_description = $collection['description'];
 
             if($collection['banner_img'] != null){
               $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $collection->get('banner_img')));
 
-              $fileName = 'home_about_img' . time() . '.png';
+              $fileName = 'about_img' . time() . '.png';
               
-              Storage::disk('public')->put('home_about/' . $fileName, $imageData);
+              Storage::disk('public')->put('about/' . $fileName, $imageData);
               
-              $about->home_img = 'home_about/' . $fileName;
+              $about->about_img = 'about/' . $fileName;
             }
             
             $about->save();
