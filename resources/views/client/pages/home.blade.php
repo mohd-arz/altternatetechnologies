@@ -270,19 +270,13 @@
       <h1>Our Gallery</h1>
   </div>
   <div class="row">
-      <div class="col-md-3 col-lg-4 gallery_slider">
-          <a href="{{ asset('client') }}/image/gallery/g11.jpg"><img src="{{ asset('client') }}/image/gallery/g1.jpg" alt="" title="Advanced Anaerobic Bioreactors For Residue-Free Biodegradable Waste Treatment" /></a>
-      </div>
-      <div class="col-md-3 col-lg-4 gallery_slider">
-          <a href="{{ asset('client') }}/image/gallery/g22.jpg"><img src="{{ asset('client') }}/image/gallery/g2.jpg" alt="" title="Heavy Duty Cortifiers" /></a>
-      </div>
-      <div class="col-md-3 col-lg-4 gallery_slider">
-          <a href="{{ asset('client') }}/image/gallery/g44.jpg"><img src="{{ asset('client') }}/image/gallery/g4.jpg" alt="" title="Medium Scale Cortifiers" /></a>
-      </div>
-      <div class="col-md-3 col-lg-4 gallery_slider">
-          <a href="{{ asset('client') }}/image/gallery/g33.jpg"><img src="{{ asset('client') }}/image/gallery/g3.jpg" alt="" title="Heavy Duty Cortifiers" /></a>
-      </div>
-
+    @foreach ($galleries as $gallery)
+        <div class="col-md-3 col-lg-4 gallery_slider">
+            <a href="{{ asset('storage').'/'.$gallery->file}}">
+                <img src="{{ asset('storage').'/'.$gallery->file}}" alt="" style="aspect-ratio:4/3;object-fit:cover;" title="Advanced Anaerobic Bioreactors For Residue-Free Biodegradable Waste Treatment"/>
+            </a>
+        </div> 
+    @endforeach
      </div>
  </div>
   <div class="clear"></div>

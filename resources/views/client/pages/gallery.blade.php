@@ -1,5 +1,8 @@
 @extends('client.layout.app')
 @section('title', 'Gallery')
+@section('css')
+<link rel="stylesheet" href="{{asset('client')}}/css/portfolio_gallery.css" />
+@endsection
 @section('content')
 <!-- portfoilo -->
 
@@ -22,54 +25,30 @@
             <div class="tab-content" id="pills-tabContent">
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                   <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-6 mb-5">
-                          <div class="gallery-item">
-                              <a data-fancybox="images" href="{{ asset('client') }}/image/gallery/g1.jpg" >
-                                  <img class="img-fluid home_img" src="{{ asset('client') }}/image/gallery/g1.jpg">
-                              </a>
-                          </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6 mb-5">
-                          <div class="gallery-item">
-                              <a data-fancybox="images" href="{{ asset('client') }}/image/gallery/g2.jpg" >
-                                  <img class="img-fluid home_img" src="{{ asset('client') }}/image/gallery/g2.jpg">
-                              </a>
-                          </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6 mb-5">
-                          <div class="gallery-item">
-                              <a data-fancybox="images" href="{{ asset('client') }}/image/gallery/g3.jpg" >
-                                  <img class="img-fluid home_img" src="{{ asset('client') }}/image/gallery/g3.jpg">
-                              </a>
-                          </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6 mb-5">
-                          <div class="gallery-item">
-                              <a data-fancybox="images" href="{{ asset('client') }}/image/gallery/g4.jpg" >
-                                  <img class="img-fluid home_img" src="{{ asset('client') }}/image/gallery/g4.jpg">
-                              </a>
-                          </div>
-                      </div>
+                    @foreach ($images as $image)
+                        <div class="col-lg-4 col-md-4 col-sm-6 mb-5">
+                            <div class="gallery-item">
+                                <a data-fancybox="images" href="{{ asset('storage').'/'.$image->file}}" >
+                                    <img class="img-fluid home_img" src="{{ asset('storage').'/'.$image->file}}" style="aspect-ratio:4/3;object-fit:cover;">
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach                      
                   </div>
               </div>
               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                   <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-6 mb-5">
-                          <div class="gallery-item video_play">
-                              <a data-fancybox="images" href="{{ asset('client') }}/image/video/video2.mp4" >
-                                  <div class="video_icon"><i class="fa fa-play-circle"></i></div>
-                                  <img class="img-fluid home_img" src="{{ asset('client') }}/image/video/video2.jpg">
-                              </a>
-                          </div>
-                      </div>
-                      <div class="col-lg-4 col-md-4 col-sm-6 mb-5">
-                          <div class="gallery-item video_play">
-                              <a data-fancybox="images" href="{{ asset('client') }}/image/video/video1.mp4" >
-                                  <div class="video_icon"><i class="fa fa-play-circle"></i></div>
-                                  <img class="img-fluid home_img" src="{{ asset('client') }}/image/video/video1.jpg">
-                              </a>
-                          </div>
-                      </div>
+                    @foreach ($videos as $video)
+                    <div class="col-lg-4 col-md-4 col-sm-6 mb-5">
+                        <div class="gallery-item video_play">
+                            <a data-fancybox="images" href="{{ asset('storage').'/'.$video->file}}" >
+                                <div class="video_icon"><i class="fa fa-play-circle"></i></div>
+                                <video class="img-fluid home_img" src="{{ asset('storage').'/'.$video->file}}">
+                            </a>
+                        </div>
+                    </div>
+                    @endforeach
+                      
                   </div>
               </div>
             </div>
@@ -78,4 +57,7 @@
 </section>
 
 <!-- portfoilo end -->
+@endsection
+@section('script')
+    <script src="{{asset('client')}}/js/fancybox_portfolio_gallery.js"></script>    
 @endsection

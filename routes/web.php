@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Gallery\GalleryController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Products\ProductsController;
 use App\Http\Middleware\Auth;
@@ -53,6 +54,15 @@ Route::middleware([Auth::class])->group(function(){
             Route::get('/edit/{product}','productEdit')->name('product.edit');
             Route::put('/update/{product}','productUpdate')->name('product.update');
             Route::delete('/delete/{product}','productDelete')->name('product.delete');
+        });
+    });
+    Route::prefix('gallery')->group(function(){
+        Route::controller(GalleryController::class)->group(function(){
+            Route::get('/','gallery')->name('gallery_.view');
+            Route::get('/create','galleryCreate')->name('gallery.create');
+            Route::post('/store','galleryStore')->name('gallery.store');
+            Route::delete('/delete/{gallery}','galleryDelete')->name('gallery.delete');
+            Route::get('/gallery-ishome','galleryIsHome')->name('galleryIsHome');
         });
     });
     });

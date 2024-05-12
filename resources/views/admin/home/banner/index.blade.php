@@ -47,10 +47,9 @@
                                     {{$banner->slogan}}
                                 </td>
                                 <td>
-                                    <div style="display: flex;flex-direction:column">
+                                    <a href="{{asset('storage').'/'.$banner->banner_img}}" target="_blank">
                                         <img src="{{asset('storage').'/'.$banner->banner_img}}" width="200px" alt="">
-                                        <a href="{{asset('storage').'/'.$banner->banner_img}}" target="_blank">Full View</a>
-                                    </div>
+                                    </a>
                                 </td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">

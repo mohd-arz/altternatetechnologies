@@ -70,7 +70,7 @@
                                                 </a>
                                             </li>
                                             <li class="menu-link parent">
-                                                <a href="{{route('about.view')}}" class="link-title">
+                                                <a href="{{route('aboutUs.view')}}" class="link-title">
                                                     <span class="sp-link-title">About</span>
                                                 </a>
                                             </li>
@@ -210,7 +210,7 @@
                                                         </a>
                                                     </li>
                                                     <li class="menu-link parent">
-                                                        <a href="{{route('about.view')}}" class="link-title link-title-lg">
+                                                        <a href="{{route('aboutUs.view')}}" class="link-title link-title-lg">
                                                             <span>About</span>
                                                         </a>
                                                     </li>
@@ -395,7 +395,7 @@
                                     </a>
                                     <ul class="f-link-ul collapse" id="privacy" data-bs-parent="#footer-accordian">
                                         <li class="f-link-ul-li"><a href="{{route('whyChooseUs.view')}}">Why Choose Us</a></li>
-                                        <li class="f-link-ul-li"><a href="{{route('about.view')}}">About Us</a></li>
+                                        <li class="f-link-ul-li"><a href="{{route('aboutUs.view')}}">About Us</a></li>
                                         <li class="f-link-ul-li"><a href="#">Careers</a></li>
                                     </ul>
                                 </div>
