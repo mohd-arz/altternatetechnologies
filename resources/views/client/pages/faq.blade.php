@@ -269,67 +269,19 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="faq-start">
-                    <h2 class="mt-4 mb-4">About Altternate Technologies</h2>
-                    <a href="#collapse-7" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">What is Altternate Technologies 
-                        <div class="d-flex justify-content-end">
-                            <i class="fas fa-arrow-down align-self-center"></i>
+                <h2 class="mt-4 mb-4">About Altternate Technologies</h2>
+                @foreach ($faqs as $key => $faq)
+                    <div class="faq-start">
+                        <a href="#collapse-{{$key}}" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">{{$faq->question}} 
+                            <div class="d-flex justify-content-end">
+                                <i class="fas fa-arrow-down align-self-center"></i>
+                            </div>
+                        </a>
+                        <div class="collapse collapse-content" id="collapse-{{$key}}">
+                            <p>{{$faq->answer}}</p>
                         </div>
-                    </a>
-                    <div class="collapse collapse-content" id="collapse-7">
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
                     </div>
-                </div>
-                <div class="faq-start">
-                    <a href="#collapse-8" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">Where does the name Altternate Technologies
-                        <div class="d-flex justify-content-end">
-                            <i class="fas fa-arrow-down align-self-center"></i>
-                        </div>
-                    </a>
-                    <div class="collapse collapse-content" id="collapse-8">
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-                    </div>
-                </div>
-                <div class="faq-start">
-                    <a href="#collapse-9" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">How is Altternate Technologies
-                        <div class="d-flex justify-content-end">
-                            <i class="fas fa-arrow-down align-self-center"></i>
-                        </div>
-                    </a>
-                    <div class="collapse collapse-content" id="collapse-9">
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-                    </div>
-                </div>
-                <div class="faq-start">
-                    <a href="#collapse-10" data-bs-toggle="collapse" class="collapse-title d-flex justify-content-between">What is Altternate Technologies
-                        <div class="d-flex justify-content-end">
-                            <i class="fas fa-arrow-down align-self-center"></i>
-                        </div>
-                    </a>
-                    <div class="collapse collapse-content" id="collapse-10">
-                       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's 
-                        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                         It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
-                        and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Products\CreateProductRequest;
 use App\Http\Requests\Products\EditProductRequest;
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use Exception;
 use Illuminate\Http\Request;
 

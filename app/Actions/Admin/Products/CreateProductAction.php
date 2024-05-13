@@ -3,6 +3,7 @@
 namespace App\Actions\Admin\Products;
 
 use App\Models\Product;
+use App\Models\ProductAttribute;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -15,8 +16,6 @@ class CreateProductAction
         try {
             $product = new Product();
             $product->title = $collection['title'];
-            $product->model = $collection['model'];
-            $product->capacity = $collection['capacity'];
             $product->description = $collection['description'];
             if(isset($collection['is_home'])){
               $product->is_home = true;
@@ -33,8 +32,15 @@ class CreateProductAction
               $imageData =  $collection->get('img3');              
               $product->img3 = Storage::disk('public')->put('products/', $imageData);
             }
+            $product->save();
 
-            
+            foreach($collection['attribute'] as $key => $attributeName){
+              $productAttribute = new ProductAttribute();
+              $productAttribute->attribute = $attributeName;
+              $productAttribute->value = $collection['value'][$key];
+              $productAttribute->product_id = $product->id;
+              $productAttribute->save();
+          }
             // $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $collection->get('banner_img')));
 
             // $fileName = 'cropped_image_' . time() . '.png';
@@ -43,7 +49,6 @@ class CreateProductAction
             
             // $product->banner_img = 'notes/' . $fileName;
             
-            $product->save();
 
             DB::commit();
 

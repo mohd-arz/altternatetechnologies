@@ -47,7 +47,7 @@
                   <div class="col-lg-5 col-xl-5 col-md-5 col-12 col-xs-12 pro-info">
                       <h2 class="product_head">{{$product->title}}</h2>
                       <p>
-                          Advanced Eco-friendly Technology for Source level Solid Waste disposal. Suitable for household, office, Shops, Clinics etc..                               
+                          {{$product->description}}                     
                       </p>
                       <!-- <div class="pro-availabale">
                           <span class="available">Availability:</span>
@@ -60,9 +60,11 @@
                               <span class="p-discount">-8%</span>
                           </div> -->
                       </div>
-                      <span class="pro-details mt-3"><i class="fa fa-circle"></i>Model : {{$product->model}}</span>
-                      <span class="pro-details"><i class="fa fa-circle"></i>Capacity : {{$product->capacity}}</span>
-                      <span class="pro-details"><i class="fa fa-circle"></i>{{$product->description}}</span>
+                        @if($product->getProductAttr->count() > 0)
+                            @foreach ($product->getProductAttr as $item)
+                            <span class="pro-details mt-3"><i class="fa fa-circle"></i>{{$item->attribute}} : {{$item->value}}</span>
+                            @endforeach
+                        @endif
                       <!-- <div class="pro-qty">
                           <span class="qty">Quantity:</span>
                           <div class="plus-minus">
@@ -107,7 +109,7 @@
       @foreach($products as $product)
       <div class="owl-item active">
           <div class="items">
-            <div class="h-t-pro" style="min-height:525px" >
+            <div class="h-t-pro" style="min-height:525px;overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" >
               <div class="tred-pro">
                   <div class="tr-pro-img">
                       <a href="{{route('product-details.view',$product->id)}}">
@@ -118,15 +120,11 @@
               <div class="caption">
                   <h3><a href="{{route('product-details.view',$product->id)}}">{{$product->title}}</a></h3>
                   <div class="pro-price">
-                    @if($product->model)
-                      <p class="new-price">Model : {{$product->model}}</p>
-                    @endif
-                    @if($product->capacity)
-                        <p class="new-price">Capacity : {{$product->capacity}}</p>
-                    @endif
-                    @if($product->description)
-                        <p class="new-price">{{strlen($product->description) > 73 ? substr($product->description, 0, 73) . '...' : $product->description}}</p>
-                    @endif
+                      @if($product->getProductAttr->count() > 0)
+                          @foreach ($product->getProductAttr as $item)
+                              <p class="new-price">{{$item->attribute}} : {{$item->value}}</p>
+                          @endforeach
+                      @endif
                   </div>
               </div>
           </div>

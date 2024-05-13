@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Clients\ClientsController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Faq\FaqController;
 use App\Http\Controllers\Gallery\GalleryController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Products\ProductsController;
@@ -92,6 +93,16 @@ Route::middleware([Auth::class])->group(function(){
         Route::controller(AboutController::class)->group(function(){
             Route::get('/','about')->name('about_.view');
             Route::post('/','aboutStore')->name('about_.store');
+        });
+    });
+    Route::prefix('faq')->group(function(){
+        Route::controller(FaqController::class)->group(function(){
+            Route::get('/','faq')->name('faq_.view');
+            Route::get('/create','faqCreate')->name('faq.create');
+            Route::post('/store','faqStore')->name('faq.store');
+            Route::get('/edit/{faq}','faqEdit')->name('faq.edit');
+            Route::put('/store/{faq}','faqUpdate')->name('faq.update');
+            Route::delete('/delete/{faq}','faqDelete')->name('faq.delete');
         });
     });
     });

@@ -220,13 +220,22 @@
                                 </li>
 
                                 {{-- About --}}
-                                   {{-- Clients --}}
-                                   <li class="slide"> <a
+                                <li class="slide"> <a
+                                class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                data-bs-toggle="slide" href="{{ route('about_.view') }}"><i
+                                    class="side-menu__icon fe fe-user"></i><span
+                                    class="side-menu__label">About</span></a> 
+                                </li>
+
+                                {{-- FAQ --}}
+                                <li class="slide"> <a
                                     class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
-                                    data-bs-toggle="slide" href="{{ route('about_.view') }}"><i
+                                    data-bs-toggle="slide" href="{{ route('faq_.view') }}"><i
                                         class="side-menu__icon fe fe-user"></i><span
-                                        class="side-menu__label">About</span></a> 
-                                    </li>
+                                        class="side-menu__label">FAQ</span></a> 
+                                </li>
+                                    
+                                    
                                 
                             {{-- Reports --}}
                                 <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">

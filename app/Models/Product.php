@@ -22,4 +22,7 @@ class Product extends Model
             Storage::disk('public')->delete($product->img3);
         });
     }
+    public function getProductAttr(){
+        return $this->hasMany(ProductAttribute::class,'product_id','id');
+    }
 }

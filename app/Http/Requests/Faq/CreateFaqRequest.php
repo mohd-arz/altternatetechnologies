@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Products;
+namespace App\Http\Requests\Faq;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateProductRequest extends FormRequest
+class CreateFaqRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,8 @@ class CreateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'img1' => 'required',
-            'img2' => 'required',
-            'img3' => 'required',
-            'is_home' => 'nullable',
-            'attribute.*' => 'required',
-            'value.*' => 'required',
+            'question' => 'required',
+            'answer' => 'required',
         ];
     }
 }

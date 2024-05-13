@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Clients;
 use App\Models\ClientType;
+use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
 use App\Models\Product;
@@ -61,7 +62,10 @@ class ClientController extends Controller
         return view('client.pages.contact');
     }
     public function faq(){
-        return view('client.pages.faq');
+        $faqs = Faq::get();
+        return view('client.pages.faq',[
+            'faqs' => $faqs,
+        ]);
     }
     public function clients(){
         $types = ClientType::get();

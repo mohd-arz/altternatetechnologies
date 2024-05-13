@@ -22,7 +22,7 @@
            @foreach($products as $product)
            <div class="col-md-4 mt-4">
             <div class="items">
-              <div class="h-t-pro" style="min-height:635px">
+              <div class="h-t-pro" style="height: 635px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
                 <div class="tred-pro">
                     <div class="tr-pro-img">
                         <a href="{{route('product-details.view',$product->id)}}">
@@ -33,14 +33,10 @@
                 <div class="caption">
                     <h3><a href="product-details.html">{{$product->title}}</a></h3>
                     <div class="pro-price">
-                        @if($product->model)
-                            <p class="new-price">Model : {{$product->model}}</p>
-                        @endif
-                        @if($product->capacity)
-                            <p class="new-price">Capacity : {{$product->capacity}}</p>
-                        @endif
-                        @if($product->description)
-                            <p class="new-price">{{strlen($product->description) > 95 ? substr($product->description, 0, 95) . '...' : $product->description}}</p>
+                        @if($product->getProductAttr->count() > 0)
+                            @foreach ($product->getProductAttr as $item)
+                                <p class="new-price">{{$item->attribute}} : {{$item->value}}</p>
+                            @endforeach
                         @endif
                     </div>
                 </div>

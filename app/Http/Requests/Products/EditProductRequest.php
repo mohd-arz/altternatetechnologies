@@ -23,13 +23,13 @@ class EditProductRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'model' => 'nullable',
-            'capacity' => 'nullable',
-            'description' => 'nullable',
+            'description' => 'required',
             'img1' => 'nullable',
             'img2' => 'nullable',
             'img3' => 'nullable',
             'is_home' => 'nullable',
+            'attribute.*' => 'required',
+            'value.*' => 'required',
         ];
     }
 }

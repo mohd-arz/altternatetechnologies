@@ -1,18 +1,20 @@
 @extends('admin.layout.app') 
-@section('title', 'Edit Monthly Planner') 
+@section('title', 'Gallery Planner') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+</style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
     <div class="side-app">
         <div class="main-container container-fluid">
             <div class="page-header">
-                <h1 class="page-title">Products</h1>
+                <h1 class="page-title">FAQ</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Products</li>
+                        <li class="breadcrumb-item active" aria-current="page">Clients</li>
                     </ol>
                 </div>
             </div>
@@ -22,8 +24,8 @@
                     </div>
 
                     <div class="prism-toggle">
-                      <a href="{{route('product.create')}}">
-                        <button class="btn btn-primary">Create Product</button>
+                      <a href="{{route('faq.create')}}">
+                        <button class="btn btn-primary">Create FAQ</button>
                       </a>
                     </div>
                 </div>
@@ -31,44 +33,20 @@
                     <table id='table' class="table table-bordered">
                         <thead>
                             <th>SI No</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Img 1</th>
-                            <th>Img 2</th>
-                            <th>Img 3</th>
-                            <th>Home</th>
+                            <th>Question</th>
+                            <th>Answer</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            @foreach($products as $index => $product)
+                            @foreach($faqs as $index => $faq)
                             <tr>
                                 <td>{{$index + 1}}</td>
-                                <td>{{$product->title}}</td>
-                                <td>{{$product->description}}</td>
-                                <td>
-                                    <a href="{{asset('storage').'/'.$product->img1}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$product->img1}}" width="200px" alt="">
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="{{asset('storage').'/'.$product->img2}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$product->img2}}" width="200px" alt="">
-                                    </a>
-                                  {{-- <div style="display: flex;flex-direction:column">
-                                      <img src="{{asset('storage').'/'.$product->img2}}" width="200px" alt="">
-                                      <a href="{{asset('storage').'/'.$product->img2}}" target="_blank">Full View</a>
-                                  </div> --}}
-                              </td>
-                                <td>
-                                    <a href="{{asset('storage').'/'.$product->img3}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$product->img3}}" width="200px" alt="">
-                                    </a>
-                              </td>
-                              <td>{{$product->is_home==1 ? 'True':'False'}}</td>
+                                <td>{{$faq->question}}</td>
+                                <td>{{$faq->answer}}</td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">
-                                        <a href="{{ route('product.edit', $product->id) }}" class='btn btn-success btn-sm'><i class='fa fa-edit'></i>View/Edit</a>
-                                        <form action="{{ route('product.delete', $product->id) }}" method='POST' class='delete_form'>
+                                      <a href="{{ route('faq.edit', $faq->id) }}" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a>
+                                        <form action="{{ route('faq.delete', $faq->id) }}" method='POST' class='delete_form'>
                                             @csrf
                                             @method('DELETE')
                                             <button type='submit' class='btn btn-danger btn-sm'>
@@ -122,7 +100,7 @@
                                     swal("Deleted!", response.message, "success");
                                     setTimeout(() => {
                                         window.location.href =
-                                            "{{ route('products.view') }}";
+                                            "{{ route('faq_.view') }}";
                                     }, 1000)
                                 } else {
                                     swal("Cancelled!", response.message, "error");

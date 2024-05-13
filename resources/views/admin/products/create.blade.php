@@ -36,16 +36,6 @@
                                     data-parsley-required-message="Title is required"/>
                                 <span id="title_error"></span>
                             </div>
-                            <div class="col-4">
-                              <label for="model">Model</label>
-                              <input type="text" name="model" class="form-control" placeholder="Model" />
-                              <span id="model_error"></span>
-                          </div>
-                            <div class="col-3">
-                              <label for="capacity">Capacity</label>
-                              <input type="text" name="capacity" class="form-control" placeholder="Capacity"/>
-                              <span id="capacity_error"></span>
-                          </div>
                           <div class="col-1">
                             <label for="is_home">Home Products</label>
                             <input type="checkbox" name="is_home">
@@ -54,7 +44,7 @@
                           <div class="row">
                             <div class="col-12">
                               <label for="description">Description</label>
-                              <textarea name="description" id="description" class="form-control"></textarea>
+                              <textarea name="description" id="description" class="form-control" required data-parsley-required-message="Description is required"></textarea>
                               <span id="description_error"></span>
                             </div>
                           </div>
@@ -155,7 +145,35 @@
                             </div>
                           </div>
                         </div>
-  
+                        
+                        <table class="responsive-table display table-bordered" style="width: 100%; margin-top: 3rem;"
+                        id="table">
+                        <thead>
+                            <th>Attribute</th>
+                            <th>Value</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody class="add_new_body">
+                            <tr>
+                              <td>
+                                <input type="text" name="attribute[]" class="form-control"
+                                    placeholder="Attribute" required data-parsley-required-message="Attribute is required"/>
+                                <span id="quantity_error"></span>
+                              </td>
+                              <td>
+                                    <input type="text" name="value[]" class="form-control"
+                                        placeholder="Value" required data-parsley-required-message="Value is required" />
+                                    <span id="value_error"></span>
+                              </td>
+                              <td>
+                                    <button class="btn btn-success cyan waves-effect waves-light right add_new"
+                                        style="float: left !important;" type="button" name="action">
+                                        +
+                                    </button>
+                              </td>
+                            </tr>
+                        </tbody>
+                    </table>
 
                         
 
@@ -253,7 +271,7 @@
                             timeOut: 5000,
                         });
                         setTimeout(() => {
-                            window.location.href = "{{route('products.view')}}"
+                            window.location.href = "{{route('product.view')}}"
                         }, 1000);
                     } else {
                         toastr.options.positionClass = "toast-top-right";
@@ -270,6 +288,33 @@
                 },
             });
         });
+        let count = 1;
+
+        $(".add_new").on("click", function() {
+            let newRow = `<tr class="removeTr${count}" id="removeTr${count}">
+                             <td>
+                                <input type="text" name="attribute[]" class="form-control"
+                                    placeholder="Attribute" required data-parsley-required-message="Attribute is required"/>
+                                <span id="quantity_error"></span>
+                              </td>
+                              <td>
+                                    <input type="text" name="value[]" class="form-control"
+                                        placeholder="Value" required data-parsley-required-message="Value is required" />
+                                    <span id="value_error"></span>
+                              </td>
+                              <td>
+                                  <button class="btn btn-danger cyan waves-effect waves-light right" style="float: left!important;" type="button" onclick="remove(${count})" >-</button>
+                              </td>
+                           </tr>`;
+
+            $(".add_new_body").append(newRow);
+
+            count++;
+        });
     });
+
+    function remove(index) {
+        $(".removeTr" + index).remove();
+    }
 </script>
 @endsection
