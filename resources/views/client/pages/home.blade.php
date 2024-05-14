@@ -111,7 +111,11 @@
   <div class="container">
       <div class="row altternate_section">
           <div class="col-md-3 col-lg-4 mb-4">
+            @if($about->home_img)
               <img src="{{ asset('storage').'/'.$about->home_img }}" class="home_img">
+            @else
+                Image Placeholder
+            @endif
           </div>
           <div class="col-md-8">
               <div class="altternate_about">
