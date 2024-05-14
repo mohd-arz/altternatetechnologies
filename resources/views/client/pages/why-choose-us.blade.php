@@ -5,14 +5,8 @@
   <div class="container">
       <div class="row">
           <div class="section-title55 section-tb-padding">
-              <h5>Reduce Your Fuel Costs With Waste to energy Solutions</h5>
-              <h5 class="mb-3 mt-2">Without The Risks.</h5>
-              <p>Embarking on an alternative fuels project is a great step
-                  towards reducing your environmental impact and your fuel
-                  costs. <br>Turning waste into energy makes your plant more
-                  sustainable and profitable - but it can produce new
-                  risks to your process. <br>You need an experienced partner
-                  to help you select the best solution for your facility. </p>
+              <h5>{{$wca->title}}</h5>
+              {!!$wca->description!!}
           </div>
       </div>
   </div>
@@ -136,21 +130,21 @@
                   <div class="health-well-img blog-start">
                       <div class="blog-post">
                           <div class="blog-image1">
-                              <img src="{{ asset('client') }}/image/about/h1.jpg" alt="blog-image" class="img-fluid">
+                              <img src="{{ asset('storage').'/'.$wca->img1 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
                           </div>
                       </div>
                   </div>
                   <div class="health-well-img blog-start">
                       <div class="blog-post">
                           <div class="blog-image1">
-                              <img src="{{ asset('client') }}/image/about/h3.jpg" alt="blog-image" class="img-fluid">
+                              <img src="{{ asset('storage').'/'.$wca->img2 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
                           </div>
                       </div>
                   </div>
                   <div class="health-well-img blog-start">
                       <div class="blog-post">
                           <div class="blog-image1">
-                              <img src="{{ asset('client') }}/image/about/h2.jpg" alt="blog-image" class="img-fluid">
+                              <img src="{{ asset('storage').'/'.$wca->img3 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
                           </div>
                       </div>
                   </div>

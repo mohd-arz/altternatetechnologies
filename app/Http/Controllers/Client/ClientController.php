@@ -10,6 +10,7 @@ use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
 use App\Models\Product;
+use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -56,7 +57,10 @@ class ClientController extends Controller
         ]);
     }
     public function whyChooseUs(){
-        return view('client.pages.why-choose-us');
+        $wca = WhyChooseUs::first();
+        return view('client.pages.why-choose-us',[
+            'wca' => $wca
+        ]);
     }
     public function contact(){
         return view('client.pages.contact');

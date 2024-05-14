@@ -235,6 +235,13 @@
                                         class="side-menu__label">FAQ</span></a> 
                                 </li>
                                     
+                                {{-- Why Choose Us --}}
+                                <li class="slide"> <a
+                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    data-bs-toggle="slide" href="{{ route('whyChooseUs_.view') }}"><i
+                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__label">Why Choose Us</span></a> 
+                                </li>
                                     
                                 
                             {{-- Reports --}}

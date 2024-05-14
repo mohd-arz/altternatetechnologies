@@ -9,6 +9,7 @@ use App\Http\Controllers\Faq\FaqController;
 use App\Http\Controllers\Gallery\GalleryController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Products\ProductsController;
+use App\Http\Controllers\WhyChooseUs\WhyChooseUsController;
 use App\Http\Middleware\Auth;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Route;
@@ -103,6 +104,12 @@ Route::middleware([Auth::class])->group(function(){
             Route::get('/edit/{faq}','faqEdit')->name('faq.edit');
             Route::put('/store/{faq}','faqUpdate')->name('faq.update');
             Route::delete('/delete/{faq}','faqDelete')->name('faq.delete');
+        });
+    });
+    Route::prefix('why-choose-us')->group(function(){
+        Route::controller(WhyChooseUsController::class)->group(function(){
+            Route::get('/','whyChooseUs')->name('whyChooseUs_.view');
+            Route::post('/store','whyChooseUsStore')->name('whyChooseUs.store');
         });
     });
     });

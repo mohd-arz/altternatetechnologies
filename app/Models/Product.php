@@ -15,7 +15,6 @@ class Product extends Model
     {
         parent::boot();
 
-        // Listen for the 'deleting' event of the model
         static::deleting(function ($product) {
             Storage::disk('public')->delete($product->img1);
             Storage::disk('public')->delete($product->img2);
