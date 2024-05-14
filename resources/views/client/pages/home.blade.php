@@ -120,9 +120,17 @@
           <div class="col-md-8">
               <div class="altternate_about">
                   <!-- <p>What is</p> -->
-                  <h1>{{$about->title}}</h1>
+                  @if (isset($about->home_title))
+                    <h1>{{$about->home_title}}</h1>
+                  @else
+                    Title Placeholder
+                  @endif
                       <div class="div mt-3">
+                        @if (isset($about->home_description))
                           {!!$about->home_description!!}
+                        @else
+                          description Placeholder
+                        @endif
                           <a href="{{route('aboutUs.view')}}" class="btn btn-style2">View More</a>
                       </div>
                       
@@ -223,7 +231,11 @@
 <div class="row">
   <div class="col-lg-12">      
   <video controls="" autoplay="" muted="" loop="" id="myVideo" style="border-radius: 8px;">
+    @if(isset($video->video))
       <source src="{{ asset('storage').'/'.$video->video}}">
+    @else
+        Video Placeholder
+    @endif
       {{-- <source src="{{ asset('client') }}/image/altternatetechnologies_video.mp4" type="video/ogg"> --}}
  </video>
 </div>
