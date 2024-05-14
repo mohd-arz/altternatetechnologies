@@ -5,8 +5,12 @@
   <div class="container">
       <div class="row">
           <div class="section-title55 section-tb-padding">
+            @if(isset($wca->title))
               <h5>{{$wca->title}}</h5>
+              @endif
+              @if(isset($wca->description))
               {!!$wca->description!!}
+              @endif
           </div>
       </div>
   </div>
@@ -130,22 +134,28 @@
                   <div class="health-well-img blog-start">
                       <div class="blog-post">
                           <div class="blog-image1">
+                            @if(isset($wca->img1))
                               <img src="{{ asset('storage').'/'.$wca->img1 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
-                          </div>
+                            @endif
+                           </div>
                       </div>
                   </div>
                   <div class="health-well-img blog-start">
                       <div class="blog-post">
                           <div class="blog-image1">
+                            @if(isset($wca->img2))
                               <img src="{{ asset('storage').'/'.$wca->img2 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
-                          </div>
+                            @endif
+                           </div>
                       </div>
                   </div>
                   <div class="health-well-img blog-start">
                       <div class="blog-post">
                           <div class="blog-image1">
+                            @if(isset($wca->img3))
                               <img src="{{ asset('storage').'/'.$wca->img3 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
-                          </div>
+                            @endif
+                            </div>
                       </div>
                   </div>
                   

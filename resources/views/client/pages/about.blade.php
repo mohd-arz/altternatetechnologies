@@ -26,14 +26,20 @@
                   <div class="blog-start">
                       <div class="blog-post">
                           <div class="blog-image">
+                            @if(isset($about->about_img))
                               <img src="{{ asset('storage').'/'.$about->about_img }}" alt="blog-image" class="img-fluid">
+                            @endif
                           </div>
                           <div class="blog-content">
                               <div class="blog-title">
+                                  @if(isset($about->about_title))
                                   <h4 class="mb-3">{{$about->about_title}}</h4>
+                                  @endif
+                                  @if(isset($about->about_description))
                                   <p>
                                       {!!$about->about_description!!}                                              
                                   </p>
+                                  @endif
                               </div>
                           </div>
                       </div>
