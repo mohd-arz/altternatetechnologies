@@ -52,6 +52,20 @@ Route::middleware([Auth::class])->group(function(){
                 Route::post('/store','aboutStore')->name('about.store');
             });
         });
+        Route::prefix('certificate')->group(function(){
+            Route::controller(HomeController::class)->group(function(){
+                Route::get('/','certificate')->name('certificate.view');
+                Route::get('/create','certificateCreate')->name('certificate.create');
+                Route::post('/store','certificateStore')->name('certificate.store');
+                Route::delete('/delete/{certificate}','certificateDelete')->name('certificate.delete');
+            });
+        });
+        Route::prefix('video')->group(function(){
+            Route::controller(HomeController::class)->group(function(){
+                Route::get('/','video')->name('video.view');
+                Route::post('/','videoStore')->name('video.store');
+            });
+        });
     });
     Route::prefix('products')->group(function(){
         Route::controller(ProductsController::class)->group(function(){

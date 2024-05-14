@@ -17,7 +17,7 @@ class CreateClientsAction
             $clients->client_type_id = $collection['type'];
             if($collection['file']){ 
               $fileData =  $collection->get('file');              
-              $clients->img = Storage::disk('public')->put('clients/', $fileData);
+              $clients->img = Storage::disk('public')->put('clients', $fileData);
             }
 
             $clients->save();

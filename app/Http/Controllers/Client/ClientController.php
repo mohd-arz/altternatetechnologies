@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Certificate;
 use App\Models\Clients;
 use App\Models\ClientType;
 use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
 use App\Models\Product;
+use App\Models\Video;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 
@@ -21,12 +23,16 @@ class ClientController extends Controller
         $products = Product::where('is_home','1')->get();
         $galleries = Gallery::where(['is_home'=>'1','type'=>'img'])->get();
         $clients = Clients::get();
+        $certificates = Certificate::get();
+        $video = Video::first();
         return view('client.pages.home',[
             'banners' => $banners,
             'about' => $about,
             'products' => $products,
             'galleries' => $galleries,
             'clients' => $clients,
+            'certificates' => $certificates,
+            'video' => $video
         ]);
     }
     public function products(){

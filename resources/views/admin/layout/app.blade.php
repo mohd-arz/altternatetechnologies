@@ -173,21 +173,14 @@
                                                                 <li><a href="{{ route('about.view') }}"
                                                                     class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
                                                                     About</a></li>
-                                                                <li><a href="{{ ('index_daily_plan_reports') }}"
-                                                                        class="slide-item {{ Request::is('*/daily-plan-report*') ? 'active' : '' }}">Daily
-                                                                        Plan Reports</a></li>
-                                                                <li><a href="{{ ('index_monthly_plan_reports') }}"
-                                                                        class="slide-item {{ Request::is('*/monthly-plan-report*') ? 'active' : '' }}">Monthly
-                                                                        Plan Reports</a></li>
-                                                            <li><a href="{{ ('abstract.index') }}"
-                                                                    class="slide-item {{ Request::is('*/abstract-bill-report*') ? 'active' : '' }}">Abstract
-                                                                    Bill Report</a></li>
-                                                            <li><a href="{{ ('work_order_reports.index') }}"
-                                                                    class="slide-item {{ Request::is('*/work-order-reports*') ? 'active' : '' }}">Work
-                                                                    Order Reports</a></li>
-                                                            <li><a href="{{ ('sub_con_work_reports.index') }}"
-                                                                    class="slide-item {{ Request::is('*/sub-con-work-reports*') ? 'active' : '' }}">Sub
-                                                                    Contractor Work Reports</a></li>
+
+                                                                <li><a href="{{ route('certificate.view') }}"
+                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    Certificate</a></li>
+
+                                                                <li><a href="{{ route('video.view') }}"
+                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    Video</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>

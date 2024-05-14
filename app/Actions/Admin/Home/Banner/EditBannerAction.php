@@ -19,6 +19,7 @@ class EditBannerAction
             $home_banner->sub_title = $collection['sub_title'];
             $home_banner->slogan = $collection['slogan'];
             if($collection['banner_img'] != null){
+              Storage::disk('public')->delete($home_banner->banner_img);
               $imageData = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $collection->get('banner_img')));
   
               $fileName = 'home_banner' . time() . '.png';

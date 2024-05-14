@@ -21,16 +21,19 @@ class EditProductAction
               $product->is_home = true;
             }
             if(isset($collection['img1']) && $collection['img1']){ 
+              Storage::disk('public')->delete($product->img1);
               $imageData =  $collection->get('img1');              
-              $product->img1 = Storage::disk('public')->put('products/', $imageData);
+              $product->img1 = Storage::disk('public')->put('products', $imageData);
             }
             if(isset($collection['img2']) && $collection['img2']){
+              Storage::disk('public')->delete($product->img2);
               $imageData =  $collection->get('img2');              
-              $product->img2 = Storage::disk('public')->put('products/', $imageData);
+              $product->img2 = Storage::disk('public')->put('products', $imageData);
             }
             if(isset($collection['img3']) && $collection['img3']){
+              Storage::disk('public')->delete($product->img3);
               $imageData =  $collection->get('img3');              
-              $product->img3 = Storage::disk('public')->put('products/', $imageData);
+              $product->img3 = Storage::disk('public')->put('products', $imageData);
             }
             $product->save();
 

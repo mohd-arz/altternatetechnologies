@@ -29,7 +29,7 @@ class CreateWhyChooseUsAction
                 }
                 
                 if (isset($collection['img3'])) {
-                    Storage::disk('public')->delete($collection->get('img3'));
+                    Storage::disk('public')->delete($wca['img3']);
                     $wca->img3 = Storage::disk('public')->put('whychooseus', $collection->get('img3'));
                 }
 

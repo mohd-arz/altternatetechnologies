@@ -219,8 +219,8 @@
 <div class="row">
   <div class="col-lg-12">      
   <video controls="" autoplay="" muted="" loop="" id="myVideo" style="border-radius: 8px;">
-      <source src="{{ asset('client') }}/image/altternatetechnologies_video.mp4" type="video/mp4">
-      <source src="{{ asset('client') }}/image/altternatetechnologies_video.mp4" type="video/ogg">
+      <source src="{{ asset('storage').'/'.$video->video}}">
+      {{-- <source src="{{ asset('client') }}/image/altternatetechnologies_video.mp4" type="video/ogg"> --}}
  </video>
 </div>
 </div>
@@ -242,18 +242,11 @@
 <div class="row">
   <div class="col d-flex text-center">
       <div class="home4-brand owl-carousel owl-theme d-flex justify-content-center">
-          <div class="items">
-              <img src="{{ asset('client') }}/image/certificate/crt1.png" class="img-fluid brand-3" alt="brand-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/certificate/crt2.png" class="img-fluid brand-3" alt="brand-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/certificate/crt3.png" class="img-fluid brand-3" alt="brand-image">
-          </div>
-          <div class="items">
-              <img src="{{ asset('client') }}/image/certificate/crt4.png" class="img-fluid brand-3" alt="brand-image">
-          </div>
+        @foreach ($certificates as $certificate)
+            <div class="items">
+                <img src="{{ asset('storage').'/'.$certificate->img }}" style="aspect-ratio:1/1;object-fit:cover;" class="img-fluid brand-3" alt="brand-image">
+            </div>
+        @endforeach
       </div>
   </div>
 </div>

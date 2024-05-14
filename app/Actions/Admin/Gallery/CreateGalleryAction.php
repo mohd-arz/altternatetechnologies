@@ -17,7 +17,7 @@ class CreateGalleryAction
             $gallery->type = $collection['type'];
             if($collection['file']){ 
               $fileData =  $collection->get('file');              
-              $gallery->file = Storage::disk('public')->put('gallery/', $fileData);
+              $gallery->file = Storage::disk('public')->put('gallery', $fileData);
             }
             if(isset($collection['is_home'])){
               $gallery->is_home = true;

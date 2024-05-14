@@ -16,6 +16,7 @@ class EditClientsAction
         try {
             $clients->client_type_id = $collection['type'];
             if(isset($collection['file']) && $collection['file']){ 
+              Storage::disk('public')->delete($clients->file);
               $fileData =  $collection->get('file');              
               $clients->img = Storage::disk('public')->put('clients/', $fileData);
             }
