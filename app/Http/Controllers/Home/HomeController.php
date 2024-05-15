@@ -7,24 +7,29 @@ use App\Actions\Admin\Home\Banner\CreateBannerAction;
 use App\Actions\Admin\Home\Banner\EditBannerAction;
 use App\Actions\Admin\Video\CreateVideoAction;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Brochure\CreateBrochureRequest;
 use App\Http\Requests\Home\About\CreateAboutRequest;
 use App\Http\Requests\Home\Banner\CreateBannerRequest;
 use App\Http\Requests\Home\Banner\EditBannerRequest;
 use App\Models\About;
+use App\Models\Brochure;
 use App\Models\Certificate;
 use App\Models\HomeBanner;
 use App\Models\Video;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Throwable;
 
 class HomeController extends Controller
 {
     // Banner -- > 
     public function banner(){
         $banners = HomeBanner::get();
+        $brochure = Brochure::first();
         return view('admin.home.banner.index',[
             'banners' => $banners,
+            'brochure' => $brochure,
         ]);
     }
     public function bannerCreate(){
@@ -55,6 +60,25 @@ class HomeController extends Controller
             return response()->json(['status' => true, 'message' => 'Banner has been deleted successfully']);
         }catch(Exception $e){
             return response()->json(['status' => false, 'error' => 'Failed to delete']);
+        }
+    }
+
+    public function brochureStore(CreateBrochureRequest $request){
+        try{
+            $brochure = Brochure::first();
+            if($brochure){
+                Storage::disk('public')->delete($brochure->file);
+                $brochure->brochure = $request->file;
+                $brochure->save();
+            }else{
+                $brochure = new Brochure();
+                $brochure->brochure = Storage::disk('public')->put('brochure', $request->file);
+                $brochure->save();
+            }
+            return response()->json(['status' => true, 'message' => 'Brochure has been update successfully.']);
+        }catch(Throwable $th){
+            info($th);
+            return response()->json(['status' => false, 'error' => 'Failed to update Brochure.']);
         }
     }
 

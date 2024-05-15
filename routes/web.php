@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(ClientController::class)->group(function(){
     Route::get('/','home')->name('home.view');
+    Route::get('/services','services')->name('services.view');
     Route::get('/products','products')->name('products.view');
     Route::get('/product-details/{product}','productDetails')->name('product-details.view');
     Route::get('/gallery','gallery')->name('gallery.view');
@@ -39,6 +40,7 @@ Route::middleware([Auth::class])->group(function(){
         Route::prefix('banner')->group(function(){
             Route::controller(HomeController::class)->group(function(){
                 Route::get('/','banner')->name('banner.view');
+                Route::post('/brochure/store','brochureStore')->name("banner.brochureStore");
                 Route::get('/create','bannerCreate')->name('banner.create');
                 Route::post('/store','bannerStore')->name('banner.store');
                 Route::get('/edit/{banner}','bannerEdit')->name('banner.edit');

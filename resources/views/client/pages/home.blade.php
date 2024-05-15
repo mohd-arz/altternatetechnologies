@@ -17,8 +17,10 @@
                     <h1 class="banner_head">{{$banner->sub_title}}</h1>
                     @endif
                     <span class="slider-slogan">{{$banner->slogan}}</span><br>
-                    <a href="services.html" class="btn btn-style1"><span>Our Services</span></a>
-                    <a href="{{ asset('client') }}/image/altternate_brochure_common.pdf" target="_blank" class="btn btn-style4"><span>Download Brochure</span></a>
+                    <a href="{{route('services.view')}}" class="btn btn-style1"><span>Our Services</span></a>
+                    @if ($brochure)
+                        <a href="{{ asset('storage').'/'.$brochure->brochure }}" target="_blank" class="btn btn-style4"><span>Download Brochure</span></a>
+                    @endif
                 </div>
             </div>
         </div>

@@ -25,6 +25,41 @@
                       <a href="{{route('banner.create')}}">
                         <button class="btn btn-primary">Create Banner</button>
                       </a>
+                      <button class="btn btn-primary" id="import-brochure">
+                        Import Brochure
+                      </button>
+
+                      <div class="modal fade" id="cropperModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Upload Brochure</h5>
+                              <button type="button" id="close-modal"  class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form action="{{route('banner.brochureStore')}}" method="POST" id="brochure-form" data-parsley-validate>
+                                <div class="modal-body">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="title">Brochure</label>
+                                            <input type="file" name="file" class="form-control-file" accept="application/pdf" required  data-parsley-required-message="Brochure is required">
+                                            @if ($brochure)
+                                                <i>(Old)</i>
+                                                <a href="{{asset('storage').'/'.$brochure->brochure}}">View</a>
+                                            @endif
+                                            <span id="file_error"></span>
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="submit" id="save-crop" class="btn btn-primary">Save changes</button>
+                            </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                 </div>
                 <div class="card-body">
@@ -78,6 +113,56 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $(function() {
+        $('#import-brochure').on('click',function(){
+            $('#cropperModal').modal('show');
+        })
+        $('#close-modal').on('click',function(){
+             $('#cropperModal').modal('hide');
+        });
+
+
+        $("#brochure-form").submit(function(e) {
+            $("#brochure-form").parsley().validate();
+            if (!$("#brochure-form").parsley().isValid()) {
+                return false;
+            }
+            e.preventDefault();
+            var data = new FormData($(this)[0]);
+            var url = $(this).attr("action");
+            var method = $(this).attr("method");
+            submitBtn(true);
+            $.ajax({
+                url: url,
+                method: method,
+                data: data,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    submitBtn(false);
+                    if (response.status) {
+                        toastr.options.positionClass = "toast-top-right";
+                        toastr.success(response.message, {
+                            timeOut: 5000,
+                        });
+                        setTimeout(() => {
+                            window.location.href = "{{route('banner.view')}}"
+                        }, 1000);
+                    } else {
+                        toastr.options.positionClass = "toast-top-right";
+                        toastr.warning(response.error, {
+                            timeOut: 5000,
+                        });
+                    }
+                },
+                error: function(error) {
+                    submitBtn(false);
+                    $.each(error.responseJSON.errors, function(key, value) {
+                        $("#" + key + "_error").text(value[0]);
+                    });
+                },
+            });
+        });
+
         $('#table').on('submit', '.delete_form', function(e) {
             e.preventDefault();
             let form = $(this);
