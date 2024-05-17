@@ -12,6 +12,7 @@ use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
 use App\Models\Product;
+use App\Models\ServiceMaster;
 use App\Models\Video;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
@@ -39,7 +40,10 @@ class ClientController extends Controller
         ]);
     }
     public function services(){
-        return view('client.pages.services');
+        $service = ServiceMaster::with(['getSub','getSub.getProducts'])->first();
+        return view('client.pages.services',[
+            'service' => $service,
+        ]);
     }
     public function products(){
         $products = Product::get();

@@ -68,6 +68,19 @@ Route::middleware([Auth::class])->group(function(){
                 Route::post('/','videoStore')->name('video.store');
             });
         });
+        Route::prefix('services')->group(function(){
+            Route::controller(HomeController::class)->group(function(){
+                Route::get('/','services')->name('services.view');
+                Route::post('/','servicesStore')->name('services.store');
+                Route::prefix('product')->group(function(){
+                    Route::get('/create','productCreate')->name('service.product.create');
+                    Route::get('/edit/{product}','productEdit')->name('service.product.edit');
+                    Route::post('/store','productStore')->name('service.product.store');
+                    Route::put('/update/{product}','productUpdate')->name('service.product.update');
+                    Route::delete('/delete/{product}','productDelete')->name('service.product.delete');
+                });
+            });
+        });
     });
     Route::prefix('products')->group(function(){
         Route::controller(ProductsController::class)->group(function(){
