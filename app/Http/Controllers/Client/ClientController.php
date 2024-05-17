@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Address;
 use App\Models\Brochure;
 use App\Models\Certificate;
 use App\Models\Clients;
@@ -82,7 +83,10 @@ class ClientController extends Controller
         ]);
     }
     public function contact(){
-        return view('client.pages.contact');
+        $address = Address::first();
+        return view('client.pages.contact',[
+            'address' => $address,
+        ]);
     }
     public function faq(){
         $faqs = Faq::get();

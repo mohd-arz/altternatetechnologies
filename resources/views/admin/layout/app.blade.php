@@ -244,7 +244,30 @@
                                         class="side-menu__icon fe fe-user"></i><span
                                         class="side-menu__label">Why Choose Us</span></a> 
                                 </li>
-                                    
+                                {{-- Settings  --}}
+                                <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">
+                                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
+                                            class="side-menu__icon fe fe-layers"></i><span
+                                            class="side-menu__label">Settings</span><i
+                                            class="angle fe fe-chevron-right"></i>
+                                    </a>
+                                    <ul class="slide-menu">
+                                        <li class="panel sidetab-menu">
+                                            <div class="panel-body tabs-menu-body p-0 border-0">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="side9">
+                                                        <ul class="sidemenu-list">
+                                                                <li><a href="{{ route('address.view') }}"
+                                                                        class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                        Address</a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 
 
                         <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg"

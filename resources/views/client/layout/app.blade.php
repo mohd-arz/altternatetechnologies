@@ -259,6 +259,9 @@
         @yield('content')
 
         <!-- footer start -->
+        @php
+            $address = App\Models\Address::first();
+        @endphp
         <section class="footer-7 section-tb-padding">
             <div class="container">
                 <div class="row">
@@ -267,7 +270,8 @@
                             <div class="footer-link">
                                 <div class="f-info footer-logo">
                                     <!-- <h2 class="h-footer">Altternate Technologies</h2> -->
-                                    <a href="index.html"><img src="{{ asset('client') }}/image/logo.svg"></a>
+                                    <a href="{{route('home.view')}}"><img src="{{ asset('client') }}/image/logo.svg"></a>
+                                    @if($address)
                                     <ul class="footer-first">
                                         <li class="logo-content footer-details">
                                             <ul class="f-map">
@@ -275,8 +279,8 @@
                                                     <i class="fas fa-home"></i>
                                                 </li>
                                                 <li class="map-text">
-                                                    <p>Door No 12/324, Altternate Tower,</p>
-                                                    <p>NH 966, Kondotty, Malappuram - 673 638</p>
+                                                    <p>{{$address->addr1}}</p>
+                                                    <p>{{$address->addr2}}</p>
                                                 </li>
                                             </ul>
                                             <ul class="f-map">
@@ -284,7 +288,7 @@
                                                     <i class="fas fa-envelope-open-text"></i>
                                                 </li>
                                                 <li class="map-text">
-                                                    <p>altternatetech2018@gmail.com</p>
+                                                    <p>{{$address->email}}</p>
                                                 </li>
                                             </ul>
                                             <ul class="f-map">
@@ -292,11 +296,12 @@
                                                     <i class="fas fa-mobile-alt"></i>
                                                 </li>
                                                 <li class="map-text">
-                                                    <p>+91 9747 299 119</p>
+                                                    <p>{{$address->main_phno}}</p>
                                                 </li>
                                             </ul>
                                         </li>
                                     </ul>
+                                    @endif
                                 </div>
                                 <div class="f-link">
                                     <h2 class="h-footer">Privacy & terms</h2>

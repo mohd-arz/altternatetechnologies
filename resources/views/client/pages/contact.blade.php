@@ -24,26 +24,27 @@
                                   <ul class="info-details">
                                       <li><i class="fas fa-home"></i></li>
                                       <li>
-                                          <p>Door No 12/324, Altternate Tower, NH 966, <br> Kondotty, Malappuram - 673 638</p>
+                                          <p>{{$address->addr1 ?? ''}}</p>
+                                            <p> {{$address->addr2 ?? ''}}</p>
                                       </li>
                                   </ul>
                                   <ul class="info-details">
                                       <li><i class="fa fa-envelope"></i></li>
                                       <li>
-                                          <p>altternatetech2018@gmail.com</p>
+                                          <p>{{$address->email ?? ''}}</p>
                                       </li>
                                   </ul>
                                   <ul class="info-details">
                                       <li><i class="fa fa-phone" aria-hidden="true"></i></li>
                                       <li>
-                                          <p>0483 296 0210</p>
+                                          <p>{{$address->main_phno ?? ''}}</p>
                                       </li>
                                   </ul>
                                   <ul class="info-details">
                                       <li><i class="fas fa-mobile-alt"></i></li>
                                       <li>
-                                          <p>+91 8281 601 161</p>
-                                          <p>+91 9747 299 119</p>
+                                          <p>{{$address->alter_phno1 ?? ''}}</p>
+                                          <p>{{$address->alter_phno2 ?? ''}}</p>
                                       </li>
                                   </ul>
                               </div>

@@ -9,8 +9,10 @@ use App\Http\Controllers\Faq\FaqController;
 use App\Http\Controllers\Gallery\GalleryController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Products\ProductsController;
+use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\WhyChooseUs\WhyChooseUsController;
 use App\Http\Middleware\Auth;
+use Hamcrest\Core\Set;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Route;
 
@@ -152,6 +154,14 @@ Route::middleware([Auth::class])->group(function(){
         Route::controller(WhyChooseUsController::class)->group(function(){
             Route::get('/','whyChooseUs')->name('whyChooseUs_.view');
             Route::post('/store','whyChooseUsStore')->name('whyChooseUs.store');
+        });
+    });
+    Route::prefix('settings')->group(function(){
+        Route::prefix('address')->group(function(){
+            Route::controller(SettingsController::class)->group(function(){
+                Route::get('/','address')->name('address.view');
+                Route::post('/','addressStore')->name('address.store');
+            });
         });
     });
     });
