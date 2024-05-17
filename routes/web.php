@@ -26,6 +26,7 @@ Route::controller(ClientController::class)->group(function(){
     Route::get('/clients','clients')->name('clients.view');
     Route::get('/clients-by-type','clientsByType')->name('clientsByType');
     Route::get('/faq','faq')->name('faq.view');
+    Route::get('/news/{news}','news')->name('news.view');
 });
 
 Route::middleware([Auth::class])->group(function(){
@@ -81,6 +82,18 @@ Route::middleware([Auth::class])->group(function(){
                 });
             });
         });
+        Route::prefix('news')->group(function(){
+            Route::controller(HomeController::class)->group(function(){
+                Route::get('/','news')->name('news_.view');
+                Route::get('/create','newsCreate')->name('news.create');
+                Route::post('/store','newsStore')->name('news.store');
+                Route::get('/edit/{news}','newsEdit')->name('news.edit');
+                Route::put('/update/{news}','newsUpdate')->name('news.update');
+                Route::delete('/delete/{news}','newsDelete')->name('news.delete');
+
+            });
+        });
+        
     });
     Route::prefix('products')->group(function(){
         Route::controller(ProductsController::class)->group(function(){

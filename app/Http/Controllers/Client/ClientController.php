@@ -11,6 +11,7 @@ use App\Models\ClientType;
 use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
+use App\Models\News;
 use App\Models\Product;
 use App\Models\ServiceMaster;
 use App\Models\Video;
@@ -28,6 +29,7 @@ class ClientController extends Controller
         $clients = Clients::get();
         $certificates = Certificate::get();
         $video = Video::first();
+        $news = News::get();
         return view('client.pages.home',[
             'banners' => $banners,
             'brochure' => $brochure,
@@ -36,7 +38,8 @@ class ClientController extends Controller
             'galleries' => $galleries,
             'clients' => $clients,
             'certificates' => $certificates,
-            'video' => $video
+            'video' => $video,
+            'news' => $news,
         ]);
     }
     public function services(){
@@ -98,5 +101,10 @@ class ClientController extends Controller
     public function clientsByType(Request $request){
         $clients = Clients::where('client_type_id',$request->id)->get();
         return response()->json(['clients'=>$clients]);
+    }
+    public function news(News $news){
+        return view('client.pages.news',[
+            'news'=>$news,
+        ]);
     }
 }

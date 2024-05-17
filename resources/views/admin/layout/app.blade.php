@@ -186,6 +186,10 @@
                                                                 <li><a href="{{ route('video.view') }}"
                                                                     class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
                                                                     Video</a></li>
+                                                                
+                                                                <li><a href="{{ route('news_.view') }}"
+                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    News</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>

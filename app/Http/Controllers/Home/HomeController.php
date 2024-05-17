@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Home;
 use App\Actions\Admin\Home\About\CreateAboutAction;
 use App\Actions\Admin\Home\Banner\CreateBannerAction;
 use App\Actions\Admin\Home\Banner\EditBannerAction;
+use App\Actions\Admin\Home\News\CreateNewsAction;
+use App\Actions\Admin\Home\News\EditNewsAction;
 use App\Actions\Admin\Home\Services\CreateServiceProductAction;
 use App\Actions\Admin\Home\Services\CreateservicesAction;
 use App\Actions\Admin\Home\Services\EditServiceProductAction;
@@ -14,6 +16,8 @@ use App\Http\Requests\Brochure\CreateBrochureRequest;
 use App\Http\Requests\Home\About\CreateAboutRequest;
 use App\Http\Requests\Home\Banner\CreateBannerRequest;
 use App\Http\Requests\Home\Banner\EditBannerRequest;
+use App\Http\Requests\News\CreateNewsRequest;
+use App\Http\Requests\News\EditNewsRequest;
 use App\Http\Requests\Services\CreateServiceProductsRequest;
 use App\Http\Requests\Services\CreateServiceRequest;
 use App\Http\Requests\Services\EditServiceProductsRequest;
@@ -21,6 +25,7 @@ use App\Models\About;
 use App\Models\Brochure;
 use App\Models\Certificate;
 use App\Models\HomeBanner;
+use App\Models\News;
 use App\Models\ServiceMaster;
 use App\Models\ServiceSub;
 use App\Models\ServiceSubProduct;
@@ -212,5 +217,37 @@ class HomeController extends Controller
         }catch(Exception $e){
             return response()->json(['status' => false, 'error' => 'Failed to delete']);
         }
+    }
+
+    // News 
+    public function news(){
+        $news = News::get();
+        return view('admin.home.news.index',[
+            'news' => $news,
+        ]);
+    }
+
+    public function newsCreate(){
+        return view('admin.home.news.create');
+    }
+
+    public function newsStore(CreateNewsRequest $request,CreateNewsAction $action){
+        $response = $action->execute(collect($request->validated()));
+        if ($response) {
+            return response()->json(['status' => true, 'message' => 'News has been uploaded successfully.']);
+        }
+        return response()->json(['status' => false, 'error' => 'Failed to upload News.']);
+    }
+    public function newsEdit(News $news){
+        return view('admin.home.news.edit',[
+            'news' => $news,
+        ]);
+    }
+    public function newsUpdate(News $news,EditNewsAction $action,EditNewsRequest $request){
+        $response = $action->execute(collect($request->validated()),$news);
+        if ($response) {
+            return response()->json(['status' => true, 'message' => 'News has been edited successfully.']);
+        }
+        return response()->json(['status' => false, 'error' => 'Failed to edit News.']); 
     }
 }

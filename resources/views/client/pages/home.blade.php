@@ -362,42 +362,20 @@
           <h2><span>latest News</span></h2>
       </div> -->
       <div class="testi-6 owl-carousel owl-theme mt-4">
-          <div class="items">
-              <div class="testimonial-content">
-                  <img src="{{ asset('client') }}/image/news/news1.jpg" class="img-responsive">
-                  <div class="testimonial-area">
-                      <div class="testi-name">
-                          <!-- <span class="tsti-title text-center">Loram Ipsum</span> -->
-                          <p>In September 2021, Altternate Technologies implemented 25 cum capacity Cow dung to Electricity plants at Bancharoda Gram Panchayat, 
-                              Raipur District  and 10 cum capcity plant at Rakhi gram Panchayat, Bemetara District in the state of Chhattisgarh
-                          </p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="items">
-              <div class="testimonial-content">
-                  <img src="{{ asset('client') }}/image/news/news2.jpg" class="img-responsive">
-                  <div class="testimonial-area">
-                      <div class="testi-name">
-                          <!-- <span class="tsti-title text-center">Loram Ipsum</span> -->
-                          <p>10 APRIL 2022 Commissioning of  1.0 metric ton capacity scientific CORTIFIER at Makthal Municipality - Telangana State
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="items">
-              <div class="testimonial-content">
-                  <img src="{{ asset('client') }}/image/news/news3.jpg" class="img-responsive">
-                  <div class="testimonial-area">
-                      <div class="testi-name">
-                          <p>2022 April 30 - 2.0 TPD Capacity Advanced Solid Waste CORTIFIER Commissioned at Someshwara Town Municipal Corporation, Mangalore, Karnataka
-                          </p>
-                      </div>
-                  </div>
-                  
-              </div>
-          </div>
+        @foreach ($news as $news)
+        <a href="{{route('news.view',$news->id)}}">
+            <div class="items">
+                <div class="testimonial-content">
+                    <img src="{{ asset('storage').'/'.$news->img}}" style="object-fit: cover;aspect-ratio:389/211" class="img-responsive">
+                    <div class="testimonial-area">
+                        <div class="testi-name" style="max-height: 150px; overflow: hidden; text-overflow: ellipsis;">
+                            {!! $news->description !!}
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </a>
+        @endforeach
       </div>
   </div>
 </div>
