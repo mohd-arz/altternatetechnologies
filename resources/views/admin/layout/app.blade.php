@@ -171,7 +171,7 @@
                                                                         class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
                                                                         Banner</a></li>
 
-                                                                <li><a href="{{ route('services.view') }}"
+                                                                <li><a href="{{ route('services_.view') }}"
                                                                     class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
                                                                     Services</a></li>
                                                                     
@@ -244,6 +244,15 @@
                                         class="side-menu__icon fe fe-user"></i><span
                                         class="side-menu__label">Why Choose Us</span></a> 
                                 </li>
+
+                                {{-- Privacy Policy --}}
+                                <li class="slide"> <a
+                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    data-bs-toggle="slide" href="{{ route('privacyPolicy_.view') }}"><i
+                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__label">Privacy Policy</span></a> 
+                                </li>
+
                                 {{-- Settings  --}}
                                 <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i

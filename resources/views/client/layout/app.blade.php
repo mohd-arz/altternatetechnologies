@@ -32,6 +32,10 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/altternate-styl.css">
         <link rel="stylesheet" type="text/css" href="{{ asset('client') }}/css/altternate-responsive.css">
 
+        {{-- Toastr --}}
+        <link rel="stylesheet" type="text/css" href="{{ asset('admin') }}/css/toastr.min.css">
+
+
         @yield('css')
 
     </head>
@@ -312,7 +316,7 @@
                                     <ul class="f-link-ul collapse" id="services" data-bs-parent="#footer-accordian">
                                         <li class="f-link-ul-li"><a href="{{route('faq.view')}}">FAQ</a></li>
                                         <li class="f-link-ul-li"><a href="{{route('contact.view')}}">Contact Us</a></li>
-                                        <li class="f-link-ul-li"><a href="privacy_policy.html">Privacy Policy</a></li>
+                                        <li class="f-link-ul-li"><a href="{{route('privacyPolicy.view')}}">Privacy Policy</a></li>
                                     </ul>
                                 </div>
                                 <div class="f-link">
@@ -324,7 +328,7 @@
                                     <ul class="f-link-ul collapse" id="privacy" data-bs-parent="#footer-accordian">
                                         <li class="f-link-ul-li"><a href="{{route('whyChooseUs.view')}}">Why Choose Us</a></li>
                                         <li class="f-link-ul-li"><a href="{{route('aboutUs.view')}}">About Us</a></li>
-                                        <li class="f-link-ul-li"><a href="#">Careers</a></li>
+                                        {{-- <li class="f-link-ul-li"><a href="#">Careers</a></li> --}}
                                     </ul>
                                 </div>
 
@@ -360,7 +364,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="f-bottom">
-                            <p>Copyright <i class="fa fa-copyright"></i> 2022 Altternate Technologies</p>
+                            <p>Copyright <i class="fa fa-copyright"></i> {{now()->format('Y')}} Altternate Technologies</p>
                             <!-- <img src="{{ asset('client') }}/image/payment.png" class="img-fluid" alt="p-image"> -->
                         </div>
                     </div>
@@ -391,6 +395,9 @@
         <script src="{{ asset('client') }}/js/altternate_custom.js"></script>
         <!-- gallery js-->
         <script src="{{ asset('client') }}/js/simple-lightbox.js"></script>
+
+        {{-- Toastr --}}
+        <script src="{{ asset('admin') }}/js/toastr/toastr.min.js"></script>
         <script>
             (function() {
                 var $gallery = new SimpleLightbox('.gallery a', {});

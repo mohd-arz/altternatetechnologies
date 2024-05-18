@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use App\Models\About;
 use App\Models\Address;
 use App\Models\Brochure;
@@ -13,11 +14,14 @@ use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
 use App\Models\News;
+use App\Models\PrivacyPolicy;
 use App\Models\Product;
 use App\Models\ServiceMaster;
 use App\Models\Video;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Throwable;
 
 class ClientController extends Controller
 {
@@ -110,5 +114,31 @@ class ClientController extends Controller
         return view('client.pages.news',[
             'news'=>$news,
         ]);
+    }
+    public function privacyPolicy(){
+        $pp = PrivacyPolicy::first();
+        return view('client.pages.privacy-policy',[
+            'pp' => $pp,
+        ]);
+    }
+    public function sendMail(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'message' => 'required',
+        ]);
+
+        try{
+            Mail::to('mohammedarsh75@gmail.com')->send(new ContactMail([
+                'name' => $request->name,
+                'email' => $request->email,
+                'message' => $request->message,
+            ]));
+            return response()->json(['status'=>true,'message'=>'Message send successfully']);
+
+        }catch(Throwable $th){
+            info($th);
+            return response()->json(['status'=>false,'message'=>'Failed to send message']);
+        }
     }
 }

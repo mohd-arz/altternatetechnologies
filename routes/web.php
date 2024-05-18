@@ -8,6 +8,8 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Faq\FaqController;
 use App\Http\Controllers\Gallery\GalleryController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\PrivacyPolicy\PrivacyPolicyContainer;
+use App\Http\Controllers\PrivacyPolicy\PrivacyPolicyController;
 use App\Http\Controllers\Products\ProductsController;
 use App\Http\Controllers\Settings\SettingsController;
 use App\Http\Controllers\WhyChooseUs\WhyChooseUsController;
@@ -29,6 +31,8 @@ Route::controller(ClientController::class)->group(function(){
     Route::get('/clients-by-type','clientsByType')->name('clientsByType');
     Route::get('/faq','faq')->name('faq.view');
     Route::get('/news/{news}','news')->name('news.view');
+    Route::get('/privacy-policy','privacyPolicy')->name('privacyPolicy.view');
+    Route::post('/send-mail','sendMail')->name('sendMail');
 });
 
 Route::middleware([Auth::class])->group(function(){
@@ -73,7 +77,7 @@ Route::middleware([Auth::class])->group(function(){
         });
         Route::prefix('services')->group(function(){
             Route::controller(HomeController::class)->group(function(){
-                Route::get('/','services')->name('services.view');
+                Route::get('/','services')->name('services_.view');
                 Route::post('/','servicesStore')->name('services.store');
                 Route::prefix('product')->group(function(){
                     Route::get('/create','productCreate')->name('service.product.create');
@@ -154,6 +158,12 @@ Route::middleware([Auth::class])->group(function(){
         Route::controller(WhyChooseUsController::class)->group(function(){
             Route::get('/','whyChooseUs')->name('whyChooseUs_.view');
             Route::post('/store','whyChooseUsStore')->name('whyChooseUs.store');
+        });
+    });
+    Route::prefix('privacy-policy')->group(function(){
+        Route::controller(PrivacyPolicyController::class)->group(function(){
+            Route::get('/','privacyPolicy')->name('privacyPolicy_.view');
+            Route::post('/','privacyPolicyStore')->name('privacyPolicy.store');
         });
     });
     Route::prefix('settings')->group(function(){
