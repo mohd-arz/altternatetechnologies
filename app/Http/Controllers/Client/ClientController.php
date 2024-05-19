@@ -17,6 +17,7 @@ use App\Models\News;
 use App\Models\PrivacyPolicy;
 use App\Models\Product;
 use App\Models\ServiceMaster;
+use App\Models\SocialMedia;
 use App\Models\Video;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;

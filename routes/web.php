@@ -173,7 +173,13 @@ Route::middleware([Auth::class])->group(function(){
                 Route::post('/','addressStore')->name('address.store');
             });
         });
-    });
+        Route::prefix('social-media')->group(function(){
+            Route::controller(SettingsController::class)->group(function(){
+                Route::get('/','socialMedia')->name('socialMedia.view');
+                Route::post('/','socialMediaStore')->name('socialMedia.store');
+            });
+        });
+        });
     });
 });
 

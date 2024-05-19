@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- INTERNAL Switcher css -->
     <link href="{{ asset('admin') }}/switcher/css/switcher.css" rel="stylesheet">
+    {{-- Font Awesome select --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{{ asset('admin') }}/css/fontawesome-iconpicker.min.css" rel="stylesheet">
 
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css"
@@ -267,6 +270,12 @@
                                                                         Address</a></li>
 
                                                         </ul>
+                                                        <ul class="sidemenu-list">
+                                                            <li><a href="{{ route('socialMedia.view') }}"
+                                                                class="slide-item {{ Request::is('*/address*') ? 'active' : '' }} ">
+                                                                    Social Media</a></li>
+
+                                                    </ul>
                                                     </div>
                                                 </div>
                                             </div>
@@ -329,6 +338,8 @@
             <script src="{{ asset('admin') }}/plugins/treeview/treeview.js"></script>
             <script src="{{ asset('admin') }}/plugins/sweet-alert/sweetalert.min.js"></script>
             <script src="{{ asset('admin') }}/js/toastr/toastr.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/fontawesome.min.js" integrity="sha512-1M9vud0lqoXACA9QaA8IY8k1VR2dMJ2Qmqzt9pN2AH7eQHWpNsxBpaayV0kKkUsF7FLVQ2sA2SSc8w5VOm7/mg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            <script src="{{ asset('admin') }}/js/fontawesome-iconpicker.min.js"></script>
 
             {{-- Date picker and Data parsely CDN --}}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"

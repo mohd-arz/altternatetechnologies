@@ -115,14 +115,18 @@
                                             <li class="side-wrap user-wrap">
                                               
                                             </li>
+                                            @php
+                                                $social_media = App\Models\SocialMedia::get();
+                                            @endphp
+                                            @foreach ($social_media as $medium)
                                             <li class="side-wrap">
                                                 <div class="shopping-widget">
                                                     <div class="shopping-cart">
-                                                        <a href="#" class="cart-count">
+                                                        <a href="{{$medium->link}}" class="cart-count" target="_blank">
                                                             <span class="cart-icon-wrap">
                                                                 <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
                                                                 <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="{{ asset('client') }}/image/social-icon/facebook.svg">
+                                                                    <i class="{{$medium->icon}}" style="font-size: larger"></i>
                                                                 </span>
                                                                 <!-- <span id="cart-total" class="bigcounter">5</span> -->
                                                             </span>
@@ -130,51 +134,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="side-wrap">
-                                                <div class="shopping-widget">
-                                                    <div class="shopping-cart">
-                                                        <a href="#" class="cart-count">
-                                                            <span class="cart-icon-wrap">
-                                                                <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
-                                                                <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="{{ asset('client') }}/image/social-icon/whatsapp.svg">
-                                                                </span>
-                                                                <!-- <span id="cart-total" class="bigcounter">5</span> -->
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="side-wrap">
-                                                <div class="shopping-widget">
-                                                    <div class="shopping-cart">
-                                                        <a href="#" class="cart-count">
-                                                            <span class="cart-icon-wrap">
-                                                                <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
-                                                                <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="{{ asset('client') }}/image/social-icon/instagram.svg">
-                                                                </span>
-                                                                <!-- <span id="cart-total" class="bigcounter">5</span> -->
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="side-wrap">
-                                                <div class="shopping-widget">
-                                                    <div class="shopping-cart">
-                                                        <a href="#" class="cart-count">
-                                                            <span class="cart-icon-wrap">
-                                                                <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
-                                                                <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="{{ asset('client') }}/image/social-icon/twitter.svg">
-                                                                </span>
-                                                                <!-- <span id="cart-total" class="bigcounter">5</span> -->
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </div>
@@ -340,10 +300,9 @@
                                     </a>
                                     <ul class="f-bottom" id="account" data-bs-parent="#footer-accordian">
                                         <li class="f-social">
-                                            <a href="#" class="f-icn-link"><i class="fa fa-whatsapp"></i></a>
-                                            <a href="#" class="f-icn-link"><i class="fa fa-facebook-f"></i></a>
-                                            <a href="#" class="f-icn-link"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" class="f-icn-link"><i class="fa fa-instagram"></i></a>
+                                            @foreach ($social_media as $medium)
+                                            <a href="{{$medium->link}}" class="f-icn-link"><i class="{{$medium->icon}}"></i></a>
+                                            @endforeach
                                             <!-- <a href="https://www.pinterest.com/" class="f-icn-link"><i class="fa fa-pinterest-p"></i></a> -->
                                         </li>
                                     </ul>
