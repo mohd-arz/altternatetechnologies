@@ -39,70 +39,21 @@
   <div class="container">
       <div class="row">
           <div class="service">
-              <div class="col-md-2 service-box">
-                  <div class="s-box">
-                      <div class="service-image icon-slider">
-                          <a href="#">
-                              <i class="fa fa-archive"></i>
-                          </a>
-                      </div>
-                      <div class="service-content">
-                          <h3>Solid & Liquid Waste</h3> 
-                          <!--Treatment-->
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-3 service-box">
-                  <div class="s-box">
-                      <div class="service-image icon-slider">
-                          <a href="#">
-                              <i class="fa fa-leaf"></i>
-                          </a>
-                      </div>
-                      <div class="service-content">
-                          <h3>Generates Clean Energy</h3>
-                              <!--<p>Steam, Fuel, Electricity</p>-->
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-3 service-box">
-                  <div class="s-box">
-                      <div class="service-image icon-slider">
-                          <a href="#">
-                              <i class="fa fa-heartbeat"></i>
-                          </a>
-                      </div>
-                      <div class="service-content">
-                          <h3>Zero Residue</h3>
-                              <!--<p>Advanced Discharge Treatment Technology-->
-                              <!--    Convest Discharge Into Useful By Products</p>-->
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-2 service-box">
-                  <div class="s-box">
-                      <div class="service-image icon-slider">
-                          <a href="#">
-                              <i class="fa fa-money-bill"></i>
-                          </a>
-                      </div>
-                      <div class="service-content">
-                          <h3>Small Budget</h3>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-2 service-box">
-                  <div class="s-box">
-                      <div class="service-image icon-slider">
-                          <a href="#">
-                              <i class="fa fa-puzzle-piece"></i>
-                          </a>
-                      </div>
-                      <div class="service-content">
-                          <h3>Customized Designs</h3>
-                      </div>
-                  </div>
-              </div>
+            @foreach ($icon_box as $medium)
+                <div class="col-md-2 service-box">
+                    <div class="s-box">
+                        <div class="service-image icon-slider">
+                            <a href="#">
+                                <i class="{{$medium->icon}}" style="font-size:xx-large"></i>
+                            </a>
+                        </div>
+                        <div class="service-content">
+                            <h3>{{$medium->text}}</h3> 
+                            <!--Treatment-->
+                        </div>
+                    </div>
+                </div>
+            @endforeach
           </div>
       </div>
   </div>
@@ -147,14 +98,14 @@
 
 
 <section class="home-countdown1 section-t-padding">
-  <div class="back-img" style="background-image: url({{ asset('client') }}/image/advance_bg.jpg);">
+  <div class="back-img" style="background-image: url({{ asset('storage').'/'.$bannerImage->image1 }});">
       <div class="container">
           <div class="row">
               <div class="col">
                   <div class="deal-content">
-                      <h2>Advanced Scientific WtE Cortifier For MSW Management</h2>
+                      <h2>{{$bannerImage->title1}}</h2>
                       <!-- <span class="deal-c">Need Zùsto</span><br> -->
-                      <a href="why_choose_us.html" class="btn btn-style1">View More</a>
+                      <a href="{{route('whyChooseUs.view')}}" class="btn btn-style1">View More</a>
                   </div>
               </div>
           </div>
@@ -327,12 +278,12 @@
 <!-- home brand end --> 
 
 <section class="home-countdown1 section-t-padding">
-<div class="back-img" style="background-image: url({{ asset('client') }}/image/about-bg_m1.jpg);">
+<div class="back-img" style="background-image: url({{ asset('storage').'/'.$bannerImage->image2 }});">
 <div class="container">
   <div class="row">
       <div class="col d-flex justify-content-center">
           <div class="deal-content text-center">
-              <h2>WASTE IS NOT WASTE UNTIL<br>IT IS WASTED</h2>
+              <h2>{{$bannerImage->title2}}</h2>
               <!-- <a href="#" class="btn btn-style1">Try Now</a> -->
           </div>
       </div>

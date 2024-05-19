@@ -99,6 +99,9 @@
                               toastr.success(response.message, {
                                   timeOut: 5000,
                               });
+                              setTimeout(() => {
+                                window.location.reload();
+                              }, 1000);
                           } else {
                               toastr.options.positionClass = "toast-top-right";
                               toastr.warning(response.message, {

@@ -55,6 +55,12 @@ Route::middleware([Auth::class])->group(function(){
                 Route::delete('/delete/{banner}','bannerDelete')->name('banner.delete');
             });
         });
+        Route::prefix('icon-box')->group(function(){
+            Route::controller(HomeController::class)->group(function(){
+                Route::get('/','iconBox')->name('iconBox.view');
+                Route::post('/','iconBoxStore')->name('iconBox.store');
+            });
+        });
         Route::prefix('about')->group(function(){
             Route::controller(HomeController::class)->group(function(){
                 Route::get('/','about')->name('about.view');
@@ -86,6 +92,12 @@ Route::middleware([Auth::class])->group(function(){
                     Route::put('/update/{product}','productUpdate')->name('service.product.update');
                     Route::delete('/delete/{product}','productDelete')->name('service.product.delete');
                 });
+            });
+        });
+        Route::prefix('banner-img')->group(function(){
+            Route::controller(HomeController::class)->group(function(){
+                Route::get('/','bannerImage')->name('bannerImage.view');
+                Route::post('/','bannerImageStore')->name('bannerImage.store');   
             });
         });
         Route::prefix('news')->group(function(){
@@ -158,6 +170,15 @@ Route::middleware([Auth::class])->group(function(){
         Route::controller(WhyChooseUsController::class)->group(function(){
             Route::get('/','whyChooseUs')->name('whyChooseUs_.view');
             Route::post('/store','whyChooseUsStore')->name('whyChooseUs.store');
+            Route::prefix('/image-box')->group(function(){
+                Route::controller(WhyChooseUsController::class)->group(function(){
+                    Route::get('/create','imageBoxCreate')->name('imageBox.create');
+                    Route::post('/store','imageBoxStore')->name('imageBox.store');
+                    Route::get('/edit/{imageBox}','imageBoxEdit')->name('imageBox.edit');
+                    Route::put('/update/{imageBox}','imageBoxUpdate')->name('imageBox.update');
+                    Route::delete('/delete/{imageBox}','imageBoxDelete')->name('imageBox.delete');
+                });
+            });
         });
     });
     Route::prefix('privacy-policy')->group(function(){
@@ -177,6 +198,12 @@ Route::middleware([Auth::class])->group(function(){
             Route::controller(SettingsController::class)->group(function(){
                 Route::get('/','socialMedia')->name('socialMedia.view');
                 Route::post('/','socialMediaStore')->name('socialMedia.store');
+            });
+        });
+        Route::prefix('footer-image')->group(function(){
+            Route::controller(SettingsController::class)->group(function(){
+                Route::get('/','footerImage')->name('footerImage.view');
+                Route::post('/','footerImageStore')->name('footerImage.store');
             });
         });
         });

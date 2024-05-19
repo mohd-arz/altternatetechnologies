@@ -26,28 +26,28 @@
                     {{-- <div class="prism-toggle"></div> --}}
                 </div>
                 <div class="card-body">
-                    <form action="{{route('socialMedia.store')}}" method="POST"
+                    <form action="{{route('iconBox.store')}}" method="POST"
                         id="home-about-form" data-parsley-validate="true" enctype="multipart/form-data">
                         @csrf
                 <table class="responsive-table display table-bordered" style="width: 100%; margin-top: 3rem;"
                 id="table">
                 <thead>
                     <th>Icon</th>
-                    <th>Link</th>
+                    <th>Text</th>
                     <th>Action</th>
                   </thead>
                 <tbody class="add_new_body">
-                @if($social_media && $social_media->count() > 0)
-                  @foreach ($social_media as $key => $medium)
+                @if($icon_box && $icon_box->count() > 0)
+                  @foreach ($icon_box as $key => $medium)
                   <tr @if($key>0) class="removeTr{{$key}}" id="removeTr{{$key}}" @endif>
                     <td>
                         <input type="text" id="font_awesome_class" name="icon[]" value="{{$medium->icon}}" class="cat_inp form-control icon-picker iconpicker-element iconpicker-input" autocomplete="off" data-parsley-trigger="change" required data-parsley-required-message="Select Icon">
                            <span id="icon_error" class="text-danger"></span>
                     </td>
                     <td>
-                          <input type="text" name="link[]" class="form-control"
-                              placeholder="Link" required data-parsley-required-message="Link is required" value="{{$medium->link}}"/>
-                          <span id="link_error"></span>
+                          <input type="text" name="text[]" class="form-control"
+                              placeholder="Text" required data-parsley-required-message="text is required" value="{{$medium->text}}"/>
+                          <span id="text_error"></span>
                     </td>
                     <td>
                       @if($key == 0)
@@ -68,9 +68,9 @@
                            <span id="icon_error" class="text-danger"></span>
                     </td>
                     <td>
-                          <input type="text" name="link[]" class="form-control"
-                              placeholder="Link" required data-parsley-required-message="Link is required" />
-                          <span id="link_error"></span>
+                          <input type="text" name="text[]" class="form-control"
+                              placeholder="Text" required data-parsley-required-message="Text is required" />
+                          <span id="text_error"></span>
                     </td>
                     <td>
                           <button class="btn btn-success cyan waves-effect waves-light right add_new"
@@ -131,7 +131,7 @@
                             timeOut: 5000,
                         });
                         setTimeout(() => {
-                            window.location.href = "{{route('socialMedia.view')}}"
+                            window.location.href = "{{route('iconBox.view')}}"
                         }, 1000);
                     } else {
                         toastr.options.positionClass = "toast-top-right";
@@ -149,8 +149,8 @@
             });
         });
 
-    var socialMedia = @json($social_media);
-    var count = socialMedia ? socialMedia.length : 1;
+    var iconBox = @json($icon_box);
+    var count = iconBox ? iconBox.length : 1;
 
   $(".add_new").on("click", function() {
       let newRow = `<tr class="removeTr${count}" id="removeTr${count}">
@@ -159,9 +159,9 @@
                         <span id="icon_error" class="text-danger"></span>
                         </td>
                         <td>
-                          <input type="text" name="link[]" class="form-control"
-                                placeholder="Link" required data-parsley-required-message="Link is required" />
-                            <span id="link_error"></span>
+                          <input type="text" name="text[]" class="form-control"
+                                placeholder="Text" required data-parsley-required-message="Text is required" />
+                            <span id="text_error"></span>
                         </td>
                         <td>
                             <button class="btn btn-danger cyan waves-effect waves-light right" style="float: left!important;" type="button" onclick="remove(${count})" >-</button>

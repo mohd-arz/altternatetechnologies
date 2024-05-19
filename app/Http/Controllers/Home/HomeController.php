@@ -5,26 +5,32 @@ namespace App\Http\Controllers\Home;
 use App\Actions\Admin\Home\About\CreateAboutAction;
 use App\Actions\Admin\Home\Banner\CreateBannerAction;
 use App\Actions\Admin\Home\Banner\EditBannerAction;
+use App\Actions\Admin\Home\BannerImage\CreateBannerImageAction;
 use App\Actions\Admin\Home\News\CreateNewsAction;
 use App\Actions\Admin\Home\News\EditNewsAction;
 use App\Actions\Admin\Home\Services\CreateServiceProductAction;
 use App\Actions\Admin\Home\Services\CreateservicesAction;
 use App\Actions\Admin\Home\Services\EditServiceProductAction;
+use App\Actions\Admin\Home\IconBox\CreateIconBoxAction;
 use App\Actions\Admin\Video\CreateVideoAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Brochure\CreateBrochureRequest;
 use App\Http\Requests\Home\About\CreateAboutRequest;
 use App\Http\Requests\Home\Banner\CreateBannerRequest;
 use App\Http\Requests\Home\Banner\EditBannerRequest;
+use App\Http\Requests\Home\BannerImage\CreateBannerImageRequest;
 use App\Http\Requests\News\CreateNewsRequest;
 use App\Http\Requests\News\EditNewsRequest;
 use App\Http\Requests\Services\CreateServiceProductsRequest;
 use App\Http\Requests\Services\CreateServiceRequest;
 use App\Http\Requests\Services\EditServiceProductsRequest;
+use App\Http\Requests\Settings\IconBox\CreateIconBoxRequest;
 use App\Models\About;
+use App\Models\BannerImage;
 use App\Models\Brochure;
 use App\Models\Certificate;
 use App\Models\HomeBanner;
+use App\Models\HomeIconBox;
 use App\Models\News;
 use App\Models\ServiceMaster;
 use App\Models\ServiceSub;
@@ -75,6 +81,21 @@ class HomeController extends Controller
         }catch(Exception $e){
             return response()->json(['status' => false, 'error' => 'Failed to delete']);
         }
+    }
+
+    // Icon Box 
+    public function iconBox(){
+        $icon_box = HomeIconBox::get();
+        return view('admin.home.icon_box.index',[
+            'icon_box' => $icon_box,
+        ]);
+    }
+    public function iconBoxStore(CreateIconBoxRequest $request, CreateIconBoxAction $action){
+        $response = $action->execute(collect($request->validated()));
+        if ($response) {
+            return response()->json(['status' => true, 'message' => 'Icon Box has been updated successfully.']);
+        }
+        return response()->json(['status' => false, 'error' => 'Failed to update Icon Box.']);
     }
 
     // Brochure --
@@ -252,5 +273,20 @@ class HomeController extends Controller
             return response()->json(['status' => true, 'message' => 'News has been edited successfully.']);
         }
         return response()->json(['status' => false, 'error' => 'Failed to edit News.']); 
+    }
+    // Banner Image
+
+    public function bannerImage(){
+        $bannerImg = BannerImage::first();
+        return view('admin.home.banner_img.index',[
+            'bannerImg' => $bannerImg,
+        ]);
+    }
+    public function bannerImageStore(CreateBannerImageAction $action,CreateBannerImageRequest $request){
+        $response = $action->execute(collect($request->validated()));
+        if ($response) {
+            return response()->json(['status' => true, 'message' => 'Banner Image has been edited successfully.']);
+        }
+        return response()->json(['status' => false, 'error' => 'Failed to edit Banner Image.']); 
     }
 }

@@ -13,7 +13,10 @@ class CreateAboutAction
     {
         DB::beginTransaction();
         try {
-            $about = About::firstOrCreate();
+            $about = About::first();
+            if(!$about){
+                $about = new About();
+            }
             $about->about_title = $collection['title'];
             $about->about_description = $collection['description'];
 

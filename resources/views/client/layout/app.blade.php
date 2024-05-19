@@ -122,7 +122,7 @@
                                             <li class="side-wrap">
                                                 <div class="shopping-widget">
                                                     <div class="shopping-cart">
-                                                        <a href="{{$medium->link}}" class="cart-count" target="_blank">
+                                                        <a href="{{$medium->link}}" target="_blank">
                                                             <span class="cart-icon-wrap">
                                                                 <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
                                                                 <span class="cart-icon d-flex justify-content-center pt-2">
@@ -306,8 +306,11 @@
                                             <!-- <a href="https://www.pinterest.com/" class="f-icn-link"><i class="fa fa-pinterest-p"></i></a> -->
                                         </li>
                                     </ul>
+                                    @php
+                                        $footerImage = App\Models\FooterImage::first();
+                                    @endphp
                                     <div class="gem_log">
-                                        <img src="{{ asset('client') }}/image/gem.jpg" alt="Gem">
+                                        <img src="{{ asset('storage').'/'.$footerImage->image }}" style="aspect-ratio:217/150;object-fit:cover" alt="Gem">
                                     </div>
                                 </div>
                             </div>

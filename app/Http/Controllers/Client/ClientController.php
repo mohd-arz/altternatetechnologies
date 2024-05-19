@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\ContactMail;
 use App\Models\About;
 use App\Models\Address;
+use App\Models\BannerImage;
 use App\Models\Brochure;
 use App\Models\Certificate;
 use App\Models\Clients;
@@ -13,6 +14,8 @@ use App\Models\ClientType;
 use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
+use App\Models\HomeIconBox;
+use App\Models\ImageBox;
 use App\Models\News;
 use App\Models\PrivacyPolicy;
 use App\Models\Product;
@@ -36,6 +39,8 @@ class ClientController extends Controller
         $certificates = Certificate::get();
         $video = Video::first();
         $news = News::get();
+        $icon_box = HomeIconBox::get();
+        $bannerImage = BannerImage::first();
         return view('client.pages.home',[
             'banners' => $banners,
             'brochure' => $brochure,
@@ -46,6 +51,8 @@ class ClientController extends Controller
             'certificates' => $certificates,
             'video' => $video,
             'news' => $news,
+            'icon_box' => $icon_box,
+            'bannerImage' => $bannerImage,
         ]);
     }
     public function services(){
@@ -83,8 +90,10 @@ class ClientController extends Controller
     }
     public function whyChooseUs(){
         $wca = WhyChooseUs::first();
+        $imageBox = ImageBox::get();
         return view('client.pages.why-choose-us',[
-            'wca' => $wca
+            'wca' => $wca,
+            'imageBox' => $imageBox,
         ]);
     }
     public function contact(){

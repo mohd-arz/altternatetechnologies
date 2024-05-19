@@ -19,109 +19,19 @@
 <section>
   <div class="container">
       <div class="row section-b-padding">
-              <div class="col-md-3">
-               <div class="altternate-m d-flex">
-                   <div class="altternate-icon">
-                       <img src="{{ asset('client') }}/image/icons/wy1.png">
-                   </div>
-                   <div class="altternate-content">
-                      <h3>Eco-Friendly</h3>
-                       <p>Alternative hydrocarbon
-                          fuel substitution
-                          rates up to 100% </p>
-                   </div>
-               </div>
-              </div>
-              <div class="col-md-3">
-               <div class="altternate-m d-flex">
-                   <div class="altternate-icon">
-                       <img src="{{ asset('client') }}/image/icons/wy2.png">
-                   </div>
-                   <div class="altternate-content">
-                      <h3>High Quality</h3>
-                       <p>Overall system guarantee
-                          from production materials
-                          to installation quality</p>
-                   </div>
-               </div>
-              </div>
-              <div class="col-md-3">
-               <div class="altternate-m d-flex">
-                   <div class="altternate-icon">
-                       <img src="{{ asset('client') }}/image/icons/wy3.png">
-                   </div>
-                   <div class="altternate-content">
-                      <h3>Customization</h3>
-                       <p>Customized solutions,
-                          from quick-start
-                          to complex</p>
-                   </div>
-               </div>
-              </div>
-              <div class="col-md-3">
-               <div class="altternate-m d-flex">
-                   <div class="altternate-icon">
-                       <img src="{{ asset('client') }}/image/icons/wy4.png">
-                   </div>
-                   <div class="altternate-content">
-                      <h3>High Performance</h3>
-                       <p>Research-based approach
-                          to ensure state-of-the-art performance </p>
-                   </div>
-               </div>
-              </div>
-              <div class="col-md-3">
-               <div class="altternate-m d-flex">
-                   <div class="altternate-icon">
-                       <img src="{{ asset('client') }}/image/icons/wy5.png">
-                   </div>
-                   <div class="altternate-content">
-                      <h3>Heat</h3>
-                       <p>There is high demand
-                          for the heat generated from
-                          Thermal Combustion
-                          for Steam/ Electricity Production</p>
-                   </div>
-               </div>
-              </div>
-              <div class="col-md-3">
-               <div class="altternate-m d-flex">
-                   <div class="altternate-icon">
-                       <img src="{{ asset('client') }}/image/icons/wy6.png">
-                   </div>
-                   <div class="altternate-content">
-                      <h3>ASH</h3>
-                       <p>Bottom inert and sterile
-                          ash is used for ash
-                          brick manufacturing</p>
-                   </div>
-               </div>
-              </div>
-              <div class="col-md-3">
-               <div class="altternate-m d-flex">
-                   <div class="altternate-icon">
-                       <img src="{{ asset('client') }}/image/icons/wy7.png">
-                   </div>
-                   <div class="altternate-content">
-                      <h3>Fuel Gas</h3>
-                       <p>Purified for minimal
-                          hazardous emission</p>
-                   </div>
-               </div>
-              </div>
-              <div class="col-md-3">
-               <div class="altternate-m d-flex">
-                   <div class="altternate-icon">
-                       <img src="{{ asset('client') }}/image/icons/wy1.png">
-                   </div>
-                   <div class="altternate-content">
-                       <h3>Drain</h3>
-                       <p>Emission Cleansing Drain
-                          is recycled & reclaimed
-                          within the system.</p>
-                   </div>
-               </div>
-              </div>
+            @foreach ($imageBox as $item)
+                <div class="col-md-3">
+                <div class="altternate-m d-flex">
+                    <div class="altternate-icon">
+                        <img src="{{ asset('storage').'/'.$item->image }}" style="aspect-ratio:1/1;object-fit:cover">
+                    </div>
+                    <div class="altternate-content">
+                        <h3>{{$item->title}}</h3>
+                        <p>{{$item->description}}/p>
+                    </div>
+                </div>
+                </div>
+            @endforeach
           </div>
       </div>
 </section>

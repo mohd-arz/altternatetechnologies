@@ -381,7 +381,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="f-bottom">
-                            <p>Copyright <i class="fa fa-copyright"></i> 2022 Altternate Technologies</p>
+                            <p>Copyright <i class="fa fa-copyright"></i> {{now()->format('Y')}} Altternate Technologies</p>
                             <!-- <img src="{{ asset('client') }}/image/payment.png" class="img-fluid" alt="p-image"> -->
                         </div>
                     </div>

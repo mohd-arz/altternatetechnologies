@@ -170,10 +170,18 @@
                                                                         class="slide-item {{ Request::is('*/banner*') ? 'active' : '' }} ">
                                                                         Banner</a></li>
 
+                                                                <li><a href="{{ route('iconBox.view') }}"
+                                                                    class="slide-item {{ Request::is('*/banner*') ? 'active' : '' }} ">
+                                                                    Icon Box</a></li>
+
                                                                 <li><a href="{{ route('services_.view') }}"
                                                                     class="slide-item {{ Request::is('*/services*') ? 'active' : '' }} ">
                                                                     Services</a></li>
                                                                     
+                                                                <li><a href="{{ route('bannerImage.view') }}"
+                                                                    class="slide-item {{ Request::is('*/services*') ? 'active' : '' }} ">
+                                                                    Banner Images</a></li>
+
                                                                 <li><a href="{{ route('about.view') }}"
                                                                     class="slide-item {{ Request::is('*/about*') ? 'active' : '' }} ">
                                                                     About</a></li>
@@ -269,13 +277,14 @@
                                                                     class="slide-item {{ Request::is('*/address*') ? 'active' : '' }} ">
                                                                         Address</a></li>
 
-                                                        </ul>
-                                                        <ul class="sidemenu-list">
                                                             <li><a href="{{ route('socialMedia.view') }}"
                                                                 class="slide-item {{ Request::is('*/address*') ? 'active' : '' }} ">
                                                                     Social Media</a></li>
+                                                            <li><a href="{{ route('footerImage.view') }}"
+                                                                class="slide-item {{ Request::is('*/address*') ? 'active' : '' }} ">
+                                                                    Footer Image</a></li>
 
-                                                    </ul>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>

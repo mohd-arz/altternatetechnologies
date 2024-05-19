@@ -8,12 +8,12 @@
     <div class="side-app">
         <div class="main-container container-fluid">
             <div class="page-header">
-                <h1 class="page-title">Banner</h1>
+                <h1 class="page-title">Why Choose Us</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         {{-- <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Banner</a></li> --}}
-                        <li class="breadcrumb-item active" aria-current="page">About</li>
+                        <li class="breadcrumb-item active" aria-current="page">Why Choose Us</li>
                     </ol>
                 </div>
             </div>
@@ -23,7 +23,11 @@
                         {{-- <h2>{{ $site }}</h2> --}}
                     </div>
 
-                    {{-- <div class="prism-toggle"></div> --}}
+                    <div class="prism-toggle">
+                      <a href="{{route('imageBox.create')}}">
+                        <button class="btn btn-primary">Upload Image Box</button>
+                      </a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <form action="{{route('whyChooseUs.store')}}" method="POST"
@@ -51,7 +55,7 @@
                         <div class="row">
                           <div class="col-4">
                             <label for="title">Image 1<small>(Max 2MB)</small> </label>
-                              <input type="file" name="img1" accept="Image/*" class="form-control-file" id="img1">
+                              <input type="file" name="img1" accept="Image/*" class="form-control file" id="img1">
                               <div class="result1">
                                 @if($wca && $wca->img1)
                                 <i>(Old) </i><a href="{{asset('storage').'/'.$wca->img1}}">View</a>
@@ -60,68 +64,20 @@
                               {{-- <input type="hidden" name="main_img" id="main_img"> --}}
                               <span id="img1_error"></span>
                           </div>
-
-                          <!-- Modal -->
-                          <div class="modal fade" id="cropperModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                  <button type="button" id="close-modal"  class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body" style="display: flex;justify-content:center;">
-                                    <img id="cropper-img" style="display: block;max-width: 100%;">
-                                </div>
-                                <div class="modal-footer">
-                                  {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-                                  <button type="button" id="save-crop" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </div>
+                              <div class="col-4">
+                                <label for="title">Image 2<small>(Max 2MB)</small> </label>
+                                  <input type="file" name="img2"  accept="Image/*" class="form-control file" id="img2">
+                                  <div class="result2">
+                                    @if($wca && $wca->img2)
+                                    <i>(Old) </i><a href="{{asset('storage').'/'.$wca->img2}}">View</a>
+                                    @endif
+                                  </div>
+                                  {{-- <input type="hidden" name="sub_img1" id="sub_img1"> --}}
+                                  <span id="img2_error"></span>
                             </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-4">
-                              <label for="title">Image 2<small>(Max 2MB)</small> </label>
-                                <input type="file" name="img2"  accept="Image/*" class="form-control-file" id="img2">
-                                <div class="result2">
-                                  @if($wca && $wca->img2)
-                                  <i>(Old) </i><a href="{{asset('storage').'/'.$wca->img2}}">View</a>
-                                  @endif
-                                </div>
-                                {{-- <input type="hidden" name="sub_img1" id="sub_img1"> --}}
-                                <span id="img2_error"></span>
-                          </div>
-
-                          <!-- Modal -->
-                          <div class="modal fade" id="cropperModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                              <div class="modal-content2">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                  <button type="button" id="close-modal"  class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body" style="display: flex;justify-content:center;">
-                                    <img id="cropper-img2" style="display: block;max-width: 100%;">
-                                </div>
-                                <div class="modal-footer">
-                                  {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-                                  <button type="button" id="save-crop" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="row">
-                          <div class="col-4">
+                            <div class="col-4">
                               <label for="title">Image 3<small>(Max 2MB)</small> </label>
-                                <input type="file" name="img3" accept="Image/*" class="form-control-file" id="img3">
+                                <input type="file" name="img3" accept="Image/*" class="form-control file" id="img3">
                                 <div class="result3">
                                   @if($wca && $wca->img3)
                                   <i>(Old) </i><a href="{{asset('storage').'/'.$wca->img3}}">View</a>
@@ -129,27 +85,6 @@
                                 </div>
                                 {{-- <input type="hidden" name="sub_img2" id="sub_img2"> --}}
                                 <span id="img3_error"></span>
-                          </div>
-
-                          <!-- Modal -->
-                          <div class="modal fade" id="cropperModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                              <div class="modal-content3">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                  <button type="button" id="close-modal"  class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body" style="display: flex;justify-content:center;">
-                                    <img id="cropper-img3" style="display: block;max-width: 100%;">
-                                </div>
-                                <div class="modal-footer">
-                                  {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-                                  <button type="button" id="save-crop" class="btn btn-primary">Save changes</button>
-                                </div>
-                              </div>
-                            </div>
                           </div>
                         </div>
 
@@ -160,6 +95,41 @@
                         </button>
                         <span id="message" class="alert"></span>
                     </form>
+                    <table id='table' class="table table-bordered">
+                      <thead>
+                          <th>SI No</th>
+                          <th>Title</th>
+                          <th>Description</th>
+                          <th>Image</th>
+                          <th>Action</th>
+                      </thead>
+                      <tbody>
+                          @foreach($imageBox as $index => $imageBox)
+                          <tr>
+                              <td>{{$index + 1}}</td>
+                              <td>{{$imageBox->title}}</td>
+                              <td>{{$imageBox->description}}</td>
+                              <td>
+                                <a href="{{asset('storage').'/'.$imageBox->image}}" target="_blank">
+                                  <img src="{{asset('storage').'/'.$imageBox->image}}" width="200px" alt="">
+                              </a>
+                              </td>
+                              <td>
+                                  <div style="display: flex;gap:.5rem;">
+                                      <a href="{{ route('imageBox.edit', $imageBox->id) }}" class='btn btn-success btn-sm'><i class='fe fe-edit'></i>Edit</a>
+                                      <form action="{{ route('imageBox.delete', $imageBox->id) }}" method='POST' class='delete_form'>
+                                          @csrf
+                                          @method('DELETE')
+                                          <button type='submit' class='btn btn-danger btn-sm'>
+                                              <i class='fe fe-trash'></i>
+                                          </button>
+                                      </form>
+                                  </div>                                    
+                              </td>
+                          </tr>
+                          @endforeach
+                      </tbody>
+                  </table>
                 </div>
             </div>
         </div>
@@ -296,6 +266,48 @@
                 },
             });
         });
+        $('#table').on('submit', '.delete_form', function(e) {
+            e.preventDefault();
+            let form = $(this);
+            let formData = new FormData(this);
+            swal({
+                    title: "Confirm",
+                    text: "Are you sure want to Delete ?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Delete",
+                    cancelButtonText: "No",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function(isConfirm) {
+
+                    if (isConfirm) {
+                        $.ajax({
+                            url: form.attr('action'),
+                            method: form.attr('method'),
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            success: function(response) {
+                                console.log(response);
+                                if (response.status) {
+                                    swal("Deleted!", response.message, "success");
+                                    setTimeout(() => {
+                                        window.location.href =
+                                            "{{ route('whyChooseUs_.view') }}";
+                                    }, 1000)
+                                } else {
+                                    swal("Cancelled!", response.message, "error");
+                                }
+                            },
+                        })
+                    } else {
+                        swal("Cancelled", "Your Deletion is cancelled", "error");
+                    }
+                })
+        })
     });
 </script>
 @endsection
