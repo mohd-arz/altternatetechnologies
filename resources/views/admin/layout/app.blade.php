@@ -11,8 +11,8 @@
     <meta name="keywords"
         content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin') }}/images/favicon-32x32.png"> <!-- TITLE -->
-    <title>HiLite Contracts - @yield('title')</title> <!-- BOOTSTRAP CSS -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('client') }}/image/logo-short-dark.png"> <!-- TITLE -->
+    <title>Altternate Technologies - @yield('title')</title> <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('admin') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- STYLE CSS -->
     <link href="{{ asset('admin') }}/css/style.css" rel="stylesheet"> <!-- Plugins CSS -->
@@ -59,9 +59,9 @@
                     <div class="d-flex"> <a aria-label="Hide Sidebar" class="app-sidebar__toggle"
                             data-bs-toggle="sidebar" href="javascript:void(0)"></a> <!-- sidebar-toggle--> <a
                             class="logo-horizontal " href="{{ route('dashboard') }}"> <img
-                                src="{{ asset('admin') }}/images/brand/hilite-contracts-logo.jpg"
+                                src="{{ asset('client') }}/image/logo.svg"
                                 class="header-brand-img desktop-logo" alt="logo" style="width:100px;"> <img
-                                src="{{ asset('admin') }}/images/brand/hilite-contracts-logo.jpg"
+                                src="{{ asset('client') }}/image/logo.svg"
                                 class="header-brand-img light-logo1" alt="logo" style="width:100px;"> </a>
                         <!-- LOGO -->
                         <div class="d-flex order-lg-2 ms-auto header-right-icons">
@@ -129,13 +129,14 @@
                 <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
                 <div class="app-sidebar">
                     <div class="side-header"> <a class="header-brand1" href="#"> <img
-                                src="{{ asset('admin') }}/images/brand/hilite-contracts-logo.jpg" width="50"
+                                src="{{ asset('client') }}/image/logo-dark.png"" width="50"
                                 height="50" class="header-brand-img desktop-logo" alt="logo"> <img
-                                src="{{ asset('admin') }}/images/brand/hilite-contracts-logo-short.jpg"
+                                src="{{ asset('client') }}/image/logo-short-dark.png"
                                 width="50" height="50" class="header-brand-img toggle-logo" alt="logo">
-                            <img src="{{ asset('admin') }}/images/brand/hilite-contracts-logo-short.jpg"
+
+                            <img src="{{ asset('client') }}/image/logo-short.png"
                                 width="50" height="50" class="header-brand-img light-logo" alt="logo">
-                            <img src="{{ asset('admin') }}/images/brand/hilite-contracts-logo.jpg" width="50"
+                            <img src="{{ asset('client') }}/image/logo.svg" width="50"
                                 height="50" class="header-brand-img light-logo1" alt="logo"> </a>
                         <!-- LOGO -->
                     </div>
@@ -148,16 +149,11 @@
                             <li class="sub-category">
                                 <h3>Main</h3>
                             </li>
-                            <li class="slide"> <a
-                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
-                                    data-bs-toggle="slide" href="{{ route('dashboard') }}"><i
-                                        class="side-menu__icon fe fe-user"></i><span
-                                        class="side-menu__label">Dashboard</span></a> 
-                                    </li>
+                        
                                 {{-- Home --}}
-                                <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">
+                                <li class="slide {{ Request::is('dashboard/home/*') ? 'is-expanded' : '' }}">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                                            class="side-menu__icon fe fe-layers"></i><span
+                                            class="side-menu__icon fe fe-home"></i><span
                                             class="side-menu__label">Home</span><i
                                             class="angle fe fe-chevron-right"></i>
                                     </a>
@@ -168,27 +164,27 @@
                                                     <div class="tab-pane active" id="side9">
                                                         <ul class="sidemenu-list">
                                                                 <li><a href="{{ route('banner.view') }}"
-                                                                        class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                        class="slide-item {{ Request::is('*/banner*') ? 'active' : '' }} ">
                                                                         Banner</a></li>
 
                                                                 <li><a href="{{ route('services_.view') }}"
-                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    class="slide-item {{ Request::is('*/services*') ? 'active' : '' }} ">
                                                                     Services</a></li>
                                                                     
                                                                 <li><a href="{{ route('about.view') }}"
-                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    class="slide-item {{ Request::is('*/about*') ? 'active' : '' }} ">
                                                                     About</a></li>
 
                                                                 <li><a href="{{ route('certificate.view') }}"
-                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    class="slide-item {{ Request::is('*/certificate*') ? 'active' : '' }} ">
                                                                     Certificate</a></li>
 
                                                                 <li><a href="{{ route('video.view') }}"
-                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    class="slide-item {{ Request::is('*/video*') ? 'active' : '' }} ">
                                                                     Video</a></li>
                                                                 
                                                                 <li><a href="{{ route('news_.view') }}"
-                                                                    class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    class="slide-item {{ Request::is('*/news*') ? 'active' : '' }} ">
                                                                     News</a></li>
                                                         </ul>
                                                     </div>
@@ -199,64 +195,64 @@
                                 </li>
                                 {{-- Products --}}
                                 <li class="slide"> <a
-                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    class="side-menu__item has-link {{ Request::is('dashboard/product*') ? 'active' : '' }}"
                                     data-bs-toggle="slide" href="{{ route('product.view') }}"><i
-                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__icon fe fe-shopping-bag"></i><span
                                         class="side-menu__label">Products</span></a> 
                                 </li>
 
                                 {{-- Gallery  --}}
                                 <li class="slide"> <a
-                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    class="side-menu__item has-link {{ Request::is('dashboard/gallery*') ? 'active' : '' }}"
                                     data-bs-toggle="slide" href="{{ route('gallery_.view') }}"><i
-                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__icon fe fe-image"></i><span
                                         class="side-menu__label">Gallery</span></a> 
                                 </li>
 
                                 {{-- Clients --}}
                                 <li class="slide"> <a
-                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    class="side-menu__item has-link {{ Request::is('dashboard/clients*') ? 'active' : '' }}"
                                     data-bs-toggle="slide" href="{{ route('clients_.view') }}"><i
-                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__icon fe fe-users"></i><span
                                         class="side-menu__label">Clients</span></a> 
                                 </li>
 
                                 {{-- About --}}
                                 <li class="slide"> <a
-                                class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                class="side-menu__item has-link {{ Request::is('dashboard/about*') ? 'active' : '' }}"
                                 data-bs-toggle="slide" href="{{ route('about_.view') }}"><i
-                                    class="side-menu__icon fe fe-user"></i><span
+                                    class="side-menu__icon fe fe-info"></i><span
                                     class="side-menu__label">About</span></a> 
                                 </li>
 
                                 {{-- FAQ --}}
                                 <li class="slide"> <a
-                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    class="side-menu__item has-link {{ Request::is('dashboard/faq*') ? 'active' : '' }}"
                                     data-bs-toggle="slide" href="{{ route('faq_.view') }}"><i
-                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__icon fe fe-help-circle"></i><span
                                         class="side-menu__label">FAQ</span></a> 
                                 </li>
                                     
                                 {{-- Why Choose Us --}}
                                 <li class="slide"> <a
-                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    class="side-menu__item has-link {{ Request::is('dashboard/why-choose-us*') ? 'active' : '' }}"
                                     data-bs-toggle="slide" href="{{ route('whyChooseUs_.view') }}"><i
-                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__icon fe fe-check-circle"></i><span
                                         class="side-menu__label">Why Choose Us</span></a> 
                                 </li>
 
                                 {{-- Privacy Policy --}}
                                 <li class="slide"> <a
-                                    class="side-menu__item has-link {{ Request::is('/*') ? 'active' : '' }}"
+                                    class="side-menu__item has-link {{ Request::is('dashboard/privacy-policy*') ? 'active' : '' }}"
                                     data-bs-toggle="slide" href="{{ route('privacyPolicy_.view') }}"><i
-                                        class="side-menu__icon fe fe-user"></i><span
+                                        class="side-menu__icon fe fe-lock"></i><span
                                         class="side-menu__label">Privacy Policy</span></a> 
                                 </li>
 
                                 {{-- Settings  --}}
-                                <li class="slide {{ Request::is('reports/*') ? 'is-expanded' : '' }}">
+                                <li class="slide {{ Request::is('dashboard/settings/*') ? 'is-expanded' : '' }}">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i
-                                            class="side-menu__icon fe fe-layers"></i><span
+                                            class="side-menu__icon fe fe-settings"></i><span
                                             class="side-menu__label">Settings</span><i
                                             class="angle fe fe-chevron-right"></i>
                                     </a>
@@ -267,7 +263,7 @@
                                                     <div class="tab-pane active" id="side9">
                                                         <ul class="sidemenu-list">
                                                                 <li><a href="{{ route('address.view') }}"
-                                                                        class="slide-item {{ Request::is('*/dsr-reports*') ? 'active' : '' }} ">
+                                                                    class="slide-item {{ Request::is('*/address*') ? 'active' : '' }} ">
                                                                         Address</a></li>
 
                                                         </ul>
@@ -297,9 +293,7 @@
                 <div class="container">
                     <div class="row align-items-center flex-row-reverse">
                         <div class="col-md-12 col-sm-12 text-center"> Copyright © <span id="year"></span> <a
-                                href="javascript:void(0)">HiLite Contracts</a>. Designed with <span
-                                class="fa fa-heart text-danger"></span> by <a href="https://meridian.net.in/">
-                                Meridian Solutions Inc </a> All rights reserved. </div>
+                                href="javascript:void(0)">Altternate Technologies</a>
                     </div>
                 </div>
             </footer> <!-- FOOTER END -->

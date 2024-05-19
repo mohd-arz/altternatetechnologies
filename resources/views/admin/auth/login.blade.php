@@ -13,10 +13,10 @@
         content="admin,admin dashboard,admin panel,admin template,bootstrap,clean,dashboard,flat,jquery,modern,responsive,premium admin templates,responsive admin,ui,ui kit.">
 
     <!-- FAVICON -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin') }}/images/favicon-32x32.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('client') }}/image/logo-short-dark.png">
 
     <!-- TITLE -->
-    <title>HiLite Contracts</title>
+    <title>Altternate Technologies</title>
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('admin') }}/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,8 +61,8 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <a href="index.html"><img src="{{ asset('admin') }}/images/brand/hilite-contracts-logo.jpg"
-                                height="100" width="100" class="header-brand-img" alt=""></a>
+                        <a href="index.html"><img src="{{ asset('client') }}/image/logo.svg"
+                                height="70" width="70" class="header-brand-img" alt=""></a>
                     </div>
                 </div>
 
