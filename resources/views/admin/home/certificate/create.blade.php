@@ -2,25 +2,31 @@
 @section('title', 'Create Home Banner') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+</style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
     <div class="side-app">
         <div class="main-container container-fluid">
             <div class="page-header">
-                <h1 class="page-title">certificate</h1>
+                <h1 class="page-title">Certificate</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('certificate.view') }}">certificate</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create Banner</li>
+                        <li class="breadcrumb-item"><a href="{{ route('certificate.view') }}">Certificate</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Upload Certificate</li>
                     </ol>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Upload Certificate
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -31,9 +37,9 @@
                         @csrf
                         <div class="row">
                           <div class="col-4">
-                              <label for="title">File <small>(Max 2MB)</small> </label>
-                                <input type="file" accept="Image/*" class="form-control-file" id="img-file" required data-parsley-required-message="Image is required">
-                                <div class="result"></div>
+                              <label for="title">Image<b class="text-danger">*</b> <small>(Max 2MB)</small> </label>
+                                <input type="file" accept="Image/*" class="form-control file" id="img-file" required data-parsley-required-message="Image is required">
+                                <div class="result" style="width:250px;margin-top:.5rem;"></div>
                                 <input type="hidden" name="img" id="banner_img">
                                 <span id="banner_img_error"></span>
                           </div>
@@ -96,14 +102,20 @@
 
             cropper = new Cropper(img, {
                 aspectRatio:1/1,
-                dragMode: 'none',
                 zoomable:false,
-                // responsive:false,
                 highlight:false,
-                minContainerWidth:600,
-                minContainerHeight:600,
-
-                // Add any other Cropper options here
+                minContainerWidth:500,
+                minContainerHeight:500,
+                autoCropArea: 1,
+                viewMode: 2,
+                center: true,
+                dragMode: 'move',
+                movable: true,
+                scalable: true,
+                guides: true,
+                zoomOnWheel: true,
+                cropBoxMovable: true,
+                wheelZoomRatio: 0.1,
             });
         };
         reader.readAsDataURL(file);

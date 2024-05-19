@@ -44,7 +44,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <label for="title">Brochure</label>
-                                            <input type="file" name="file" class="form-control-file" accept="application/pdf" required  data-parsley-required-message="Brochure is required">
+                                            <input type="file" name="file" class="form-control file" accept="application/pdf" required  data-parsley-required-message="Brochure is required">
                                             @if ($brochure)
                                                 <i>(Old)</i>
                                                 <a href="{{asset('storage').'/'.$brochure->brochure}}">View</a>

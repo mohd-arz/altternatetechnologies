@@ -8,11 +8,11 @@
     <div class="side-app">
         <div class="main-container container-fluid">
             <div class="page-header">
-                <h1 class="page-title">Banner</h1>
+                <h1 class="page-title">News</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Banner</li>
+                        <li class="breadcrumb-item active" aria-current="page">News</li>
                     </ol>
                 </div>
             </div>

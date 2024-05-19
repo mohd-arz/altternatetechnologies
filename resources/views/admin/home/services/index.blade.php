@@ -2,6 +2,15 @@
 @section('title', 'Home About') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+    #submitbtn{
+        margin: 1rem 0;
+    }
+</style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
@@ -13,7 +22,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         {{-- <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Banner</a></li> --}}
-                        <li class="breadcrumb-item active" aria-current="page">About</li>
+                        <li class="breadcrumb-item active" aria-current="page">Services</li>
                     </ol>
                 </div>
             </div>
@@ -35,7 +44,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-4">
-                                <label for="title">Title</label>
+                                <label for="title">Title<b class="text-danger">*</b></label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
                                     data-parsley-required-message="Title is required" @if($service) value="{{$service->title}}" @endif/>
                                 <span id="title_error"></span>
@@ -43,7 +52,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="description">Description</label>
+                                <label for="description">Description<b class="text-danger">*</b></label>
                                 <textarea name="description" class="editor">
                                     @if($service)
                                     {{$service->description}}
@@ -54,8 +63,8 @@
                         </div>
                         <div class="row">
                           <div class="col-4">
-                            <label for="title">Image 1<small>(Max 2MB)</small> </label>
-                              <input type="file" name="img1" accept="Image/*" class="form-control-file" id="img1">
+                            <label for="title">Image 1<small>(Max 5MB)</small> </label>
+                              <input type="file" name="img1" accept="Image/*" class="form-control file" id="img1" data-parsley-max-file-size="5" data-parsley-error-message="Please upload an image file with a maximum size of 5MB">
                               <div class="result1"> 
                                 @if($service)
                                 <i>(Old) </i><a href="{{asset('storage').'/'.$service->img1}}">View</a>
@@ -64,8 +73,8 @@
                               <span id="img1_error"></span>
                           </div>
                           <div class="col-4">
-                            <label for="title">Image 2<small>(Max 2MB)</small> </label>
-                              <input type="file" name="img2"  accept="Image/*" class="form-control-file" id="img2">
+                            <label for="title">Image 2<small>(Max 5MB)</small> </label>
+                              <input type="file" name="img2"  accept="Image/*" class="form-control file" id="img2">
                               <div class="result1"> 
                                 @if($service)
                                 <i>(Old) </i><a href="{{asset('storage').'/'.$service->img2}}">View</a>
@@ -74,8 +83,8 @@
                               <span id="img2_error"></span>
                           </div>
                         <div class="col-4">
-                          <label for="title">Image 3<small>(Max 2MB)</small> </label>
-                            <input type="file" name="img3" accept="Image/*" class="form-control-file" id="img3">
+                          <label for="title">Image 3<small>(Max 5MB)</small> </label>
+                            <input type="file" name="img3" accept="Image/*" class="form-control file" id="img3">
                             @if($service)
                             <i>(Old) </i><a href="{{asset('storage').'/'.$service->img3}}">View</a>
                             @endif
@@ -186,7 +195,7 @@
                             timeOut: 5000,
                         });
                         setTimeout(() => {
-                            window.location.href = "{{route('services.view')}}"
+                            window.location.href = "{{route('services_.view')}}"
                         }, 1000);
                     } else {
                         toastr.options.positionClass = "toast-top-right";
@@ -234,7 +243,7 @@
                                     swal("Deleted!", response.message, "success");
                                     setTimeout(() => {
                                         window.location.href =
-                                            "{{ route('services.view') }}";
+                                            "{{ route('services_.view') }}";
                                     }, 1000)
                                 } else {
                                     swal("Cancelled!", response.message, "error");

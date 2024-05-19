@@ -2,6 +2,12 @@
 @section('title', 'Create Home Banner') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+</style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
@@ -20,7 +26,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Create Banner
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -31,7 +37,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-4">
-                                <label for="title">Title</label>
+                                <label for="title">Title<b class="text-danger">*</b></label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
                                     data-parsley-required-message="Title is required"/>
                                 <span id="title_error"></span>
@@ -42,7 +48,7 @@
                               <span id="sub_title_error"></span>
                           </div>
                             <div class="col-4">
-                              <label for="slogan">Slogan</label>
+                              <label for="slogan">Slogan<b class="text-danger">*</b></label>
                               <input type="text" name="slogan" class="form-control" placeholder="Slogan" required
                                   data-parsley-required-message="Slogan is required"/>
                               <span id="slogan_error"></span>
@@ -50,25 +56,28 @@
                         </div>
                         <div class="row">
                           <div class="col-4">
-                              <label for="title">File <small>(Max 2MB)</small> </label>
-                                <input type="file" accept="Image/*" class="form-control-file" id="img-file" required data-parsley-required-message="Image is required">
-                                <div class="result"></div>
-                                <input type="hidden" name="banner_img" id="banner_img">
-                                <span id="banner_img_error"></span>
+                            <div class="form-group">
+                                <label for="title">Image<b class="text-danger">*</b> <small>(Max 5MB)</small> </label>
+                                  <input type="file" accept="Image/*" class="form-control file" id="img-file" required data-parsley-required-message="Image is required"
+                                  data-parsley-trigger="change">
+                                  <div class="result" style="width:250px;margin-top:.5rem;"></div>
+                                  <input type="hidden" name="banner_img" id="banner_img">
+                                  <span id="banner_img_error"></span>
+                            </div>
                           </div>
 
                           <!-- Modal -->
                           <div class="modal fade" id="cropperModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Crop</h5>
                                   <button type="button" id="close-modal"  class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
                                 <div class="modal-body" style="display: flex;justify-content:center;">
-                                    <img id="cropper-img" style="display: block;max-width: 100%;">
+                                    <img id="cropper-img" style="max-width: 100%;">
                                 </div>
                                 <div class="modal-footer">
                                   {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
@@ -82,7 +91,7 @@
                         <button type="submit" id="submitbtn" class="btn btn-primary mt-2" style="min-width:85px">
                             <span class="spinner-border spinner-border-sm" style="display: none" id="btn-loader"
                                 role="status" aria-hidden="true"></span>
-                            <span id="btn-text">Create Banner</span>
+                            <span id="btn-text">Create</span>
                         </button>
                         <span id="message" class="alert"></span>
                     </form>
@@ -115,14 +124,20 @@
 
             cropper = new Cropper(img, {
                 aspectRatio:16/9,
-                dragMode: 'none',
                 zoomable:false,
-                // responsive:false,
                 highlight:false,
-                minContainerWidth:600,
-                minContainerHeight:600,
-
-                // Add any other Cropper options here
+                minContainerWidth:500,
+                minContainerHeight:500,
+                autoCropArea: 1,
+                viewMode: 2,
+                center: true,
+                dragMode: 'move',
+                movable: true,
+                scalable: true,
+                guides: true,
+                zoomOnWheel: true,
+                cropBoxMovable: true,
+                wheelZoomRatio: 0.1,
             });
         };
         reader.readAsDataURL(file);
@@ -130,6 +145,7 @@
 
     $('#close-modal').on('click',function(){
       $('#cropperModal').modal('hide');
+      $('#img-file').val('');
     });
 
 
@@ -147,17 +163,6 @@
       $('#cropperModal').modal('hide');
 
     })
-
-        // $(".add_new_body").on("input", ".rate, .quantity", function() {
-        //     let row = $(this).closest("tr");
-        //     let rate = row.find(".rate").val();
-        //     let quantity = row.find(".quantity").val();
-        //     let amount = rate * quantity;
-
-        //     row.find("#amount").val(amount);
-        // });
-
-        // $(".select2").select2();
 
         $("#home-banner-form").submit(function(e) {
             $("#home-banner-form").parsley().validate();

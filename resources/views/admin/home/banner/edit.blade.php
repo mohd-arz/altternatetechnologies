@@ -2,6 +2,12 @@
 @section('title', 'Edit Home Banner') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+</style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
@@ -20,7 +26,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Edit Banner
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -32,7 +38,7 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-4">
-                                <label for="title">Title</label>
+                                <label for="title">Title<b class="text-danger">*</b></label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
                                     data-parsley-required-message="Title is required" value="{{$banner->title}}"/>
                                 <span id="title_error"></span>
@@ -43,7 +49,7 @@
                               <span id="sub_title_error"></span>
                           </div>
                             <div class="col-4">
-                              <label for="slogan">Slogan</label>
+                              <label for="slogan">Slogan<b class="text-danger">*</b></label>
                               <input type="text" name="slogan" class="form-control" placeholder="Slogan" required
                                   data-parsley-required-message="Slogan is required" value="{{$banner->slogan}}"/>
                               <span id="slogan_error"></span>
@@ -51,8 +57,8 @@
                         </div>
                         <div class="row">
                           <div class="col-4">
-                              <label for="title">New File <small>(Max 2MB)</small></label>
-                                <input type="file" accept="Image/*" class="form-control-file" id="img-file">
+                              <label for="title">New Image <small>(Max 2MB)</small></label>
+                                <input type="file" accept="Image/*" class="form-control file" id="img-file">
                                 <div class="result">
                                   <i>(Old) </i><a href="{{asset('storage').'/'.$banner->banner_img}}">View</a>
                                 </div>
@@ -65,7 +71,7 @@
                             <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Crop</h5>
                                   <button type="button" id="close-modal" class="close btn btn-danger" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
@@ -85,7 +91,7 @@
                         <button type="submit" id="submitbtn" class="btn btn-primary mt-2" style="min-width:85px">
                             <span class="spinner-border spinner-border-sm" style="display: none" id="btn-loader"
                                 role="status" aria-hidden="true"></span>
-                            <span id="btn-text">Edit Banner</span>
+                            <span id="btn-text">Edit</span>
                         </button>
                         <span id="message" class="alert"></span>
                     </form>
@@ -117,15 +123,21 @@
             }
 
             cropper = new Cropper(img, {
-                aspectRatio: 16 / 9,
-                dragMode: 'none',
+                aspectRatio:16/9,
                 zoomable:false,
-                // responsive:false,
                 highlight:false,
-                minContainerWidth:600,
-                minContainerHeight:600,
-
-                // Add any other Cropper options here
+                minContainerWidth:500,
+                minContainerHeight:500,
+                autoCropArea: 1,
+                viewMode: 2,
+                center: true,
+                dragMode: 'move',
+                movable: true,
+                scalable: true,
+                guides: true,
+                zoomOnWheel: true,
+                cropBoxMovable: true,
+                wheelZoomRatio: 0.1,
             });
         };
         reader.readAsDataURL(file);
@@ -133,6 +145,7 @@
 
     $('#close-modal').on('click',function(){
       $('#cropperModal').modal('hide');
+      $('#img-file').val('');
     });
 
     $('#save-crop').on('click',function(){

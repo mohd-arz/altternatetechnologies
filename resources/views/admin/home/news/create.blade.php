@@ -2,6 +2,12 @@
 @section('title', 'Create Home Banner') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+</style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
@@ -12,7 +18,7 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">News</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('news_.view') }}">News</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Create News</li>
                     </ol>
                 </div>
@@ -20,7 +26,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Create News
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -31,13 +37,13 @@
                         @csrf
                         <div class="row">
                           <div class="col-4">
-                              <label for="title">File <small>(Max 2MB)</small> </label>
-                                <input type="file" name="img" accept="Image/*" class="form-control-file" id="img-file" required data-parsley-required-message="Image is required">
-                                <div class="result"></div>
+                              <label for="title">Image <b class="text-danger">*</b><small>(Max 5MB)</small> </label>
+                                <input type="file" name="img" accept="Image/*" class="form-control file" id="img-file" required data-parsley-required-message="Image is required">
+                                <div class="result" style="width:250px;margin-top:.5rem;"></div>
                                 <span id="img_error"></span>
                           </div>
                           <div class="col-12">
-                            <label for="description">Description</label>
+                            <label for="description">Description<b class="text-danger">*</b></label>
                             <textarea name="description" class="editor">
                             </textarea>
                             <span id="description_error"></span>
@@ -47,7 +53,7 @@
                         <button type="submit" id="submitbtn" class="btn btn-primary mt-2" style="min-width:85px">
                             <span class="spinner-border spinner-border-sm" style="display: none" id="btn-loader"
                                 role="status" aria-hidden="true"></span>
-                            <span id="btn-text">Create News</span>
+                            <span id="btn-text">Create</span>
                         </button>
                         <span id="message" class="alert"></span>
                     </form>

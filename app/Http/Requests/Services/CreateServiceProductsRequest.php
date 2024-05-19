@@ -24,8 +24,16 @@ class CreateServiceProductsRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'img.*' => 'nullable',
+            'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'img_desc.*' => 'nullable',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'img.image' => 'The uploaded file must be an image.',
+            'img.mimes' => 'Only JPEG, PNG, JPG, and GIF images are allowed.',
+            'img.max' => 'The image size must not exceed 5MB.',
         ];
     }
 }

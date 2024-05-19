@@ -2,13 +2,19 @@
 @section('title', 'Home About') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+</style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
     <div class="side-app">
         <div class="main-container container-fluid">
             <div class="page-header">
-                <h1 class="page-title">Banner</h1>
+                <h1 class="page-title">Home About</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
@@ -31,7 +37,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-4">
-                                <label for="title">Title</label>
+                                <label for="title">Title<b class="text-danger">*</b></label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
                                     data-parsley-required-message="Title is required" @if($about) value="{{$about->home_title}}" @endif/>
                                 <span id="title_error"></span>
@@ -39,7 +45,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="description">Description</label>
+                                <label for="description">Description<b class="text-danger">*</b></label>
                                 <textarea name="description" class="editor">
                                     @if($about)
                                     {{$about->home_description}}
@@ -50,9 +56,9 @@
                         </div>
                         <div class="row">
                           <div class="col-4">
-                              <label for="title">File <small>(Max 2MB)</small> </label>
-                                <input type="file" accept="Image/*" class="form-control-file" id="img-file">
-                                <div class="result">
+                              <label for="title">Image<b class="text-danger">*</b> <small>(Max 5MB)</small> </label>
+                                <input type="file" accept="Image/*" class="form-control file" id="img-file">
+                                <div class="result" style="width:250px;margin-top:.5rem;">
                                     @if($about)
                                     <i>(Old) </i><a href="{{asset('storage').'/'.$about->home_img}}">View</a>
                                     @endif
@@ -140,14 +146,19 @@
 
             cropper = new Cropper(img, {
                 aspectRatio:406/593,
-                dragMode: 'none',
-                zoomable:false,
-                // responsive:false,
                 highlight:false,
-                minContainerWidth:600,
-                minContainerHeight:600,
-
-                // Add any other Cropper options here
+                minContainerWidth:500,
+                minContainerHeight:500,
+                autoCropArea: 1,
+                viewMode: 2,
+                center: true,
+                dragMode: 'move',
+                movable: true,
+                scalable: true,
+                guides: true,
+                zoomOnWheel: true,
+                cropBoxMovable: true,
+                wheelZoomRatio: 0.1,
             });
         };
         reader.readAsDataURL(file);
@@ -155,6 +166,7 @@
 
     $('#close-modal').on('click',function(){
       $('#cropperModal').modal('hide');
+      $('#img-file').val('');
     });
 
 

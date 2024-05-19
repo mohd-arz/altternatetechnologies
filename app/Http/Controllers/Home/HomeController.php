@@ -160,6 +160,9 @@ class HomeController extends Controller
         ]);
     }
     public function videoStore(Request $request,CreateVideoAction $action){
+        $request->validate([
+           'video' => 'nullable|file|mimes:mp4,mov,avi,wmv|max:35000',
+        ]);
         $response = $action->execute(collect($request->all()));
         if ($response) {
             return response()->json(['status' => true, 'message' => 'Home Video has been created successfully.']);

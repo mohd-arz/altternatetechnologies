@@ -22,8 +22,17 @@ class CreateNewsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'img' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
             'description' => 'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'img.required' => 'Please upload an image file.',
+            'img.image' => 'The uploaded file must be an image.',
+            'img.mimes' => 'Only JPEG, PNG, JPG, and GIF images are allowed.',
+            'img.max' => 'The image size must not exceed 5MB.',
         ];
     }
 }

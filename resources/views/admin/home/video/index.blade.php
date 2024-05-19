@@ -14,6 +14,10 @@
       text-align: center;
       font-size: 2rem;
   }
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
 </style>
 @endsection 
 @section('content')
@@ -44,9 +48,9 @@
                         @csrf
                         <div class="row">
                           <div class="col-4">
-                              <label for="title">File <small>(Max 20MB)</small> </label>
+                              <label for="title">Video<b class="text-danger">*</b> <small>(Max 30MB)</small> </label>
                                 <input type="file" name="video" class="form-control-file" id="file" accept="video/*">
-                                <div class="result">
+                                <div class="result" style="width:250px;margin-top:.5rem;">
                                     @if($video && $video->video)
                                     <i>(Old)</i>
                                     <div class="gallery-item video_play" style="width:200px;">

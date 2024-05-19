@@ -2,6 +2,12 @@
 @section('title', 'Create Products') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+</style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
@@ -12,7 +18,7 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('products.view') }}">Products</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('services_.view') }}">Service</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
                     </ol>
                 </div>
@@ -20,7 +26,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Edit Product
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -32,7 +38,7 @@
                         @method('PUT')
                         <div class="row">
                             <div class="col-4">
-                                <label for="title">Title</label>
+                                <label for="title">Title<b class="text-danger">*</b></label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
                                     data-parsley-required-message="Title is required" value="{{$product->title}}" />
                                 <span id="title_error"></span>
@@ -40,22 +46,22 @@
                         </div>
                         <div class="row">
                           <div class="col-12">
-                              <label for="description">Description</label>
+                              <label for="description">Description<b class="text-danger">*</b></label>
                               <textarea name="description" class="editor">
                                 {!!$product->description!!}
                               </textarea>
                               <span id="description_error"></span>
                           </div>
                       </div>
-                      <div>
+                      <div style="margin-top: 1rem">
                         <h4>
                           Max 3 Images
                         </h4>
                       </div>
-                        <table class="responsive-table display table-bordered" style="width: 100%; margin-top: 3rem;"
+                        <table class="responsive-table display table-bordered" style="width: 100%;"
                         id="table">
                         <thead>
-                            <th>Image</th>
+                            <th>Image (Max 5MB)</th>
                             <th>Img Description</th>
                             <th>Action</th>
                         </thead>
@@ -63,7 +69,7 @@
                           @foreach($product->getProducts as $key => $data)
                           <tr @if($key > 0) class="removeTr{{ $key }}" @endif>
                             <td>
-                              <input type="file" name="img[]" accept="Image/*" class="form-control-file" id="img1">
+                              <input type="file" name="img[]" accept="Image/*" class="form-control file" id="img1">
                               <input type="hidden" value="{{$data->img}}" name="old_img[]">
                               @if($data->img)
                                 <i>(Old) </i><a href="{{asset('storage').'/'.$data->img}}">View</a>
@@ -167,7 +173,7 @@
                             timeOut: 5000,
                         });
                         setTimeout(() => {
-                            window.location.href = "{{route('services.view')}}"
+                            window.location.href = "{{route('services_.view')}}"
                         }, 1000);
                     } else {
                         toastr.options.positionClass = "toast-top-right";
@@ -191,7 +197,7 @@
 
             let newRow = `<tr class="removeTr${count}" id="removeTr${count}">
                               <td>
-                                <input type="file" name="img[]" accept="Image/*" class="form-control-file" id="img1" required data-parsley-required-message="Image is required">
+                                <input type="file" name="img[]" accept="Image/*" class="form-control file" id="img1" required data-parsley-required-message="Image is required">
                                 <span id="img_error"></span>
                               </td>
                               <td>
