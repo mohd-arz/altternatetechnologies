@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('service_masters', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('img1');
             $table->string('img2');
             $table->string('img3');

@@ -23,7 +23,7 @@ class EditServiceProductsRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required',
+            'description' => 'nullable',
             'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'old_img.*' => 'nullable',
             'img_desc.*' => 'nullable',

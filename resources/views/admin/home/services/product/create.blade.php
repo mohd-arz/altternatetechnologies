@@ -45,7 +45,7 @@
                         </div>
                         <div class="row">
                           <div class="col-12">
-                              <label for="description">Description<b class="text-danger">*</b></label>
+                              <label for="description">Description</label>
                               <textarea name="description" class="editor">
                               </textarea>
                               <span id="description_error"></span>

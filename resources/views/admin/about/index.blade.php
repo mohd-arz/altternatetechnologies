@@ -59,7 +59,7 @@
                               <label for="title">Image <b class="text-danger">*</b><small>(Max 5MB)</small> </label>
                                 <input type="file" accept="Image/*" class="form-control file" id="img-file">
                                 <div class="result" style="width:250px;margin-top:.5rem;">
-                                    @if($about)
+                                    @if($about && $about->about_img)
                                     <i>(Old) </i><a href="{{asset('storage').'/'.$about->about_img}}">View</a>
                                     @endif
                                   </div>

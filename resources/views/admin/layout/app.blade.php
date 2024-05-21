@@ -315,7 +315,7 @@
                     </div>
                 </div>
             </footer> <!-- FOOTER END -->
-            <!-- BACK-TO-TOP --> <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+            <!-- BACK-TO-TOP --> <a href="#top" id="back-to-top" style="display: flex;justify-content:center"><i class="fe fe-arrow-up"></i></a>
             <!-- JQUERY JS -->
             <script src="{{ asset('admin') }}/js/jquery.min.js"></script> <!-- BOOTSTRAP JS -->
             <script src="{{ asset('admin') }}/plugins/bootstrap/js/popper.min.js"></script>

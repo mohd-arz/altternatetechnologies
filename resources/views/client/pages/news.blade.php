@@ -33,7 +33,7 @@
                           <div class="blog-content">
                               <div class="blog-title">
                                   <p>
-                                      {!!$news->description!!}                                              
+                                      {!!$news->description ?? ''!!}                                              
                                   </p>
                               </div>
                           </div>

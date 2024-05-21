@@ -11,43 +11,43 @@
                       <div class="tab-content">
                           <div class="tab-pane fade show active" id="image-11">
                               <a href="" class="long-img">
-                                  <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img1}})">
-                                      <img src="{{asset('storage').'/'.$product->img1}}" class="img-fluid" style="aspect-ratio:17/22;object-fit:cover" alt="image">
+                                  <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img1 ?? ''}})">
+                                      <img src="{{asset('storage').'/'.$product->img1 ?? ''}}" class="img-fluid" style="aspect-ratio:17/22;object-fit:cover" alt="image">
                                   </figure>
                               </a>
                           </div>
                           <div class="tab-pane fade" id="image-22">
                               <a href="" class="long-img">
-                                  <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img2}})">
-                                      <img src="{{asset('storage').'/'.$product->img2}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image">
+                                  <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img2 ?? ''}})">
+                                      <img src="{{asset('storage').'/'.$product->img2 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image">
                                   </figure>
                               </a>
                           </div>
                           <div class="tab-pane fade" id="image-33">
                               <a href="" class="long-img">
-                                  <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img3}})">
-                                      <img src="{{asset('storage').'/'.$product->img3}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image">
+                                  <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img3 ?? ''}})">
+                                      <img src="{{asset('storage').'/'.$product->img3 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image">
                                   </figure>
                               </a>
                           </div>
                       </div>
                       <ul class="nav nav-tabs pro-page-slider owl-carousel owl-theme">
                           <li class="nav-item items">
-                              <a class="nav-link active" data-bs-toggle="tab" href="#image-11"><img src="{{asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image"></a>
+                              <a class="nav-link active" data-bs-toggle="tab" href="#image-11"><img src="{{asset('storage').'/'.$product->img1 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image"></a>
                           </li>
                           <li class="nav-item items">
-                              <a class="nav-link" data-bs-toggle="tab" href="#image-22"><img src="{{asset('storage').'/'.$product->img2}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="iamge"></a>
+                              <a class="nav-link" data-bs-toggle="tab" href="#image-22"><img src="{{asset('storage').'/'.$product->img2 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="iamge"></a>
                           </li>
                           <li class="nav-item items">
-                              <a class="nav-link" data-bs-toggle="tab" href="#image-33"><img src="{{asset('storage').'/'.$product->img3}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="iamge"></a>
+                              <a class="nav-link" data-bs-toggle="tab" href="#image-33"><img src="{{asset('storage').'/'.$product->img3 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="iamge"></a>
                           </li>
                       </ul>
                   </div>
                   <!-- <div class="col-lg-1 col-xl-1 col-md-1 col-12 col-xs-12"></div> -->
                   <div class="col-lg-5 col-xl-5 col-md-5 col-12 col-xs-12 pro-info">
-                      <h2 class="product_head">{{$product->title}}</h2>
+                      <h2 class="product_head">{{$product->title ?? ''}}</h2>
                       <p>
-                          {{$product->description}}                     
+                          {{$product->description ?? ''}}                     
                       </p>
                       <!-- <div class="pro-availabale">
                           <span class="available">Availability:</span>
@@ -60,7 +60,7 @@
                               <span class="p-discount">-8%</span>
                           </div> -->
                       </div>
-                        @if($product->getProductAttr->count() > 0)
+                        @if($product && $product->getProductAttr->count() > 0)
                             @foreach ($product->getProductAttr as $item)
                             <span class="pro-details mt-3"><i class="fa fa-circle"></i>{{$item->attribute}} : {{$item->value}}</span>
                             @endforeach
@@ -120,7 +120,7 @@
               <div class="caption">
                   <h3><a href="{{route('product-details.view',$product->id)}}">{{$product->title}}</a></h3>
                   <div class="pro-price">
-                      @if($product->getProductAttr->count() > 0)
+                      @if($product && $product->getProductAttr->count() > 0)
                           @foreach ($product->getProductAttr as $item)
                               <p class="new-price">{{$item->attribute}} : {{$item->value}}</p>
                           @endforeach

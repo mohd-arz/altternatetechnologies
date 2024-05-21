@@ -1,13 +1,13 @@
 @extends('client.layout.app')
 @section('title', 'Products')
 @section('content')
-<section class="page-header clearfix" style="background-image: url({{ asset('client') }}/image/advance_bg.jpg);">
+<section class="page-header clearfix" style="background-image: url({{ asset('storage').'/'.$bannerImg->image1 }});">
   <div class="container">
       <div class="row">
           <div class="col-xl-12 text-center">
               <div class="page-header__wrapper_p clearfix">
                   <div class="course-header-wrap_p">
-                      <h1 class="title">Advanced Scientific Wte Incinerators For Msw Management</h1>
+                      <h1 class="title">{{$bannerImg->title1}}</h1>
                   </div>
               </div>
           </div>
@@ -30,10 +30,10 @@
                         </a>
                     </div>
                 </div>
-                <div class="caption">
+                <div class="caption" style="text-wrap:wrap;">
                     <h3><a href="product-details.html">{{$product->title}}</a></h3>
                     <div class="pro-price">
-                        @if($product->getProductAttr->count() > 0)
+                        @if($product && $product->getProductAttr->count() > 0)
                             @foreach ($product->getProductAttr as $item)
                                 <p class="new-price">{{$item->attribute}} : {{$item->value}}</p>
                             @endforeach

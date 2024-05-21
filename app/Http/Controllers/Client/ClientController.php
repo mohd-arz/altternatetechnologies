@@ -63,8 +63,10 @@ class ClientController extends Controller
     }
     public function products(){
         $products = Product::get();
+        $bannerImg = BannerImage::first();
         return view('client.pages.products',[
             'products' => $products,
+            'bannerImg' => $bannerImg,
         ]);
     }
     public function productDetails(Product $product){

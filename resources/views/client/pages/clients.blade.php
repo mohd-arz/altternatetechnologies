@@ -13,7 +13,7 @@
 
 
 
-<section class="contact section-b-padding">
+<section class="contact section-b-padding" style="flex: 1">
   <div class="container">
       <div class="row">
       <!-- clients page tab start -->

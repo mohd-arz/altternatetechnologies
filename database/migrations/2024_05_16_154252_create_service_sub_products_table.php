@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('service_sub_products', function (Blueprint $table) {
             $table->id();
             $table->string('img');
-            $table->string('img_desc');
+            $table->text('img_desc');
             $table->string('sub_id');
             $table->timestamps();
         });

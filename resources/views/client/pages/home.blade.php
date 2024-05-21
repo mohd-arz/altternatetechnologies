@@ -98,12 +98,12 @@
 
 
 <section class="home-countdown1 section-t-padding">
-  <div class="back-img" style="background-image: url({{ asset('storage').'/'.$bannerImage->image1 }});">
+  <div class="back-img" @if($bannerImage) style="background-image: url({{ asset('storage').'/'.$bannerImage->image1}});" @endif>
       <div class="container">
           <div class="row">
               <div class="col">
                   <div class="deal-content">
-                      <h2>{{$bannerImage->title1}}</h2>
+                      <h2>{{$bannerImage->title1  ?? '' }}</h2>
                       <!-- <span class="deal-c">Need Zùsto</span><br> -->
                       <a href="{{route('whyChooseUs.view')}}" class="btn btn-style1">View More</a>
                   </div>
@@ -138,7 +138,7 @@
     @foreach($products as $product)
     <div class="owl-item active">
         <div class="items">
-          <div class="h-t-pro" style="min-height:500px">
+          <div class="h-t-pro" style="min-height:500px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
             <div class="tred-pro">
                 <div class="tr-pro-img">
                     <a href="{{route('product-details.view',$product->id)}}">
@@ -146,14 +146,14 @@
                     </a>
                 </div>
             </div>
-            <div class="caption">
+            <div class="caption" style="text-wrap:wrap;">
                 <h3><a href="{{route('product-details.view',$product->id)}}">{{$product->title}}</a></h3>
                 <div class="pro-price">
-                    <!-- <p class="new-price">Model : ALT-100 FSWSS</p> -->
-                    @if($product->capacity)
-                        <p class="new-price">Capacity : {{$product->capacity}}</p>
-                    @endif
-                    <!-- <p class="new-price">Features : Dual Combustion Chamber</p> -->
+                  @if($product && $product->getProductAttr->count() > 0)
+                    @foreach ($product->getProductAttr as $item)
+                        <p class="new-price">{{$item->attribute}} : {{$item->value}}</p>
+                    @endforeach
+                  @endif
                 </div>
             </div>
         </div>
@@ -278,12 +278,12 @@
 <!-- home brand end --> 
 
 <section class="home-countdown1 section-t-padding">
-<div class="back-img" style="background-image: url({{ asset('storage').'/'.$bannerImage->image2 }});">
+<div class="back-img" @if($bannerImage) style="background-image: url({{ asset('storage').'/'.$bannerImage->image2}});" @endif>
 <div class="container">
   <div class="row">
       <div class="col d-flex justify-content-center">
           <div class="deal-content text-center">
-              <h2>{{$bannerImage->title2}}</h2>
+              <h2>{{$bannerImage->title2  ?? ''}}</h2>
               <!-- <a href="#" class="btn btn-style1">Try Now</a> -->
           </div>
       </div>

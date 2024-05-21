@@ -37,14 +37,14 @@
                                   <ul class="info-details">
                                       <li><i class="fa fa-phone" aria-hidden="true"></i></li>
                                       <li>
-                                          <p>{{$address->main_phno ?? ''}}</p>
+                                          <p>{{$address->alter_phno2?? ''}}</p>
                                       </li>
                                   </ul>
                                   <ul class="info-details">
                                       <li><i class="fas fa-mobile-alt"></i></li>
                                       <li>
                                           <p>{{$address->alter_phno1 ?? ''}}</p>
-                                          <p>{{$address->alter_phno2 ?? ''}}</p>
+                                          <p>{{$address->main_phno ?? ''}}</p>
                                       </li>
                                   </ul>
                               </div>

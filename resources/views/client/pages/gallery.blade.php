@@ -6,7 +6,7 @@
 @section('content')
 <!-- portfoilo -->
 
-<section class="mb-80">
+<section class="mb-80"  style="flex: 1">
   <div class="wrapper">
       <div class="container">
           <div class="section-title5 mt-5 mb-5">

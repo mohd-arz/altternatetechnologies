@@ -35,7 +35,7 @@
          @yield('css')
 
     </head>
-    <body>
+    <body style="display:flex;flex-direction:column">
         <!-- header start -->
          <header class="header-area">
             <div class="header-main-area">
@@ -110,14 +110,18 @@
                                             <li class="side-wrap user-wrap">
                                               
                                             </li>
+                                            @php
+                                                $social_media = App\Models\SocialMedia::get();
+                                            @endphp
+                                            @foreach ($social_media as $medium)
                                             <li class="side-wrap">
                                                 <div class="shopping-widget">
                                                     <div class="shopping-cart">
-                                                        <a href="#" class="cart-count">
+                                                        <a href="{{$medium->link}}" target="_blank">
                                                             <span class="cart-icon-wrap">
                                                                 <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
                                                                 <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="image/social-icon/facebook.svg">
+                                                                    <i class="{{$medium->icon}}" style="font-size: larger"></i>
                                                                 </span>
                                                                 <!-- <span id="cart-total" class="bigcounter">5</span> -->
                                                             </span>
@@ -125,52 +129,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="side-wrap">
-                                                <div class="shopping-widget">
-                                                    <div class="shopping-cart">
-                                                        <a href="#" class="cart-count">
-                                                            <span class="cart-icon-wrap">
-                                                                <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
-                                                                <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="image/social-icon/whatsapp.svg">
-                                                                </span>
-                                                                <!-- <span id="cart-total" class="bigcounter">5</span> -->
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="side-wrap">
-                                                <div class="shopping-widget">
-                                                    <div class="shopping-cart">
-                                                        <a href="#" class="cart-count">
-                                                            <span class="cart-icon-wrap">
-                                                                <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
-                                                                <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="image/social-icon/instagram.svg">
-                                                                </span>
-                                                                <!-- <span id="cart-total" class="bigcounter">5</span> -->
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="side-wrap">
-                                                <div class="shopping-widget">
-                                                    <div class="shopping-cart">
-                                                        <a href="#" class="cart-count">
-                                                            <span class="cart-icon-wrap">
-                                                                <!-- <span class="cart-icon"><i class="icon-handbag"></i></span> -->
-                                                                <span class="cart-icon d-flex justify-content-center pt-2">
-                                                                    <img src="image/social-icon/twitter.svg">
-                                                                </span>
-                                                                <!-- <span id="cart-total" class="bigcounter">5</span> -->
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                            @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -265,7 +224,7 @@
             </div>
         </section>
 
-       <section class="faq-collapse section-b-padding">
+       <section class="faq-collapse section-b-padding" style="flex:1;">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -288,6 +247,9 @@
 </section>
 
         <!-- footer start -->
+        @php
+            $address = App\Models\Address::first();
+        @endphp
         <section class="footer-7 section-tb-padding">
             <div class="container">
                 <div class="row">
@@ -296,7 +258,8 @@
                             <div class="footer-link">
                                 <div class="f-info footer-logo">
                                     <!-- <h2 class="h-footer">Altternate Technologies</h2> -->
-                                    <a href="index.html"><img src="{{ asset('client') }}/image/logo.svg"></a>
+                                    <a href="{{route('home.view')}}"><img src="{{ asset('client') }}/image/logo.svg"></a>
+                                    @if($address)
                                     <ul class="footer-first">
                                         <li class="logo-content footer-details">
                                             <ul class="f-map">
@@ -304,8 +267,8 @@
                                                     <i class="fas fa-home"></i>
                                                 </li>
                                                 <li class="map-text">
-                                                    <p>Door No 12/324, Altternate Tower,</p>
-                                                    <p>NH 966, Kondotty, Malappuram - 673 638</p>
+                                                    <p>{{$address->addr1}}</p>
+                                                    <p>{{$address->addr2}}</p>
                                                 </li>
                                             </ul>
                                             <ul class="f-map">
@@ -313,7 +276,7 @@
                                                     <i class="fas fa-envelope-open-text"></i>
                                                 </li>
                                                 <li class="map-text">
-                                                    <p>altternatetech2018@gmail.com</p>
+                                                    <p>{{$address->email}}</p>
                                                 </li>
                                             </ul>
                                             <ul class="f-map">
@@ -321,11 +284,12 @@
                                                     <i class="fas fa-mobile-alt"></i>
                                                 </li>
                                                 <li class="map-text">
-                                                    <p>+91 9747 299 119</p>
+                                                    <p>{{$address->main_phno}}</p>
                                                 </li>
                                             </ul>
                                         </li>
                                     </ul>
+                                    @endif
                                 </div>
                                 <div class="f-link">
                                     <h2 class="h-footer">Privacy & terms</h2>
@@ -348,7 +312,6 @@
                                     <ul class="f-link-ul collapse" id="privacy" data-bs-parent="#footer-accordian">
                                         <li class="f-link-ul-li"><a href="{{route('whyChooseUs.view')}}">Why Choose Us</a></li>
                                         <li class="f-link-ul-li"><a href="{{route('aboutUs.view')}}">About Us</a></li>
-                                        <li class="f-link-ul-li"><a href="#">Careers</a></li>
                                     </ul>
                                 </div>
 
@@ -360,11 +323,9 @@
                                     </a>
                                     <ul class="f-bottom" id="account" data-bs-parent="#footer-accordian">
                                         <li class="f-social">
-                                            <a href="#" class="f-icn-link"><i class="fa fa-whatsapp"></i></a>
-                                            <a href="#" class="f-icn-link"><i class="fa fa-facebook-f"></i></a>
-                                            <a href="#" class="f-icn-link"><i class="fa fa-twitter"></i></a>
-                                            <a href="#" class="f-icn-link"><i class="fa fa-instagram"></i></a>
-                                            <!-- <a href="https://www.pinterest.com/" class="f-icn-link"><i class="fa fa-pinterest-p"></i></a> -->
+                                        @foreach ($social_media as $medium)
+                                            <a href="{{$medium->link}}" class="f-icn-link"><i class="{{$medium->icon}}"></i></a>
+                                            @endforeach
                                         </li>
                                     </ul>
                                 </div>

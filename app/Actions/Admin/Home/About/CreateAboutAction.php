@@ -13,7 +13,12 @@ class CreateAboutAction
     {
         DB::beginTransaction();
         try {
-            $about = About::firstOrCreate();
+            $about = About::first();
+            if($about){
+                Storage::disk('public')->delete($about->home_img);
+            }else{
+                $about = new About();
+            }
             $about->home_title = $collection['title'];
             $about->home_description = $collection['description'];
 

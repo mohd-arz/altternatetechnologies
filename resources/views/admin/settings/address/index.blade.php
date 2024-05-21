@@ -58,21 +58,21 @@
                       <div class="col-4">
                           <label for="main_phno">Main Phone Number<b class="text-danger">*</b></label>
                           <input type="text" name="main_phno" class="form-control" placeholder="Phone Number" required
-                              data-parsley-required-message="Phone Number is required" data-parsley-type="number" @if($address) value="{{$address->main_phno}}" @endif/>
+                              data-parsley-required-message="Phone Number is required" @if($address) value="{{$address->main_phno}}" @endif/>
                           <span id="main_phno_error"></span>
                       </div>
                   </div>
                   <div class="row">
                     <div class="col-4">
-                        <label for="alter_phno1">Alternate Number 1</label>
-                        <input type="text" name="alter_phno1" class="form-control" placeholder="Alternate Number" data-parsley-type="number" @if($address && $address->alter_phno1) value="{{$address->alter_phno1}}" @endif/>
+                        <label for="alter_phno1">Alternate Number</label>
+                        <input type="text" name="alter_phno1" class="form-control" placeholder="Alternate Number" @if($address && $address->alter_phno1) value="{{$address->alter_phno1}}" @endif/>
                         <span id="alter_phno1_error"></span>
                     </div>
                 </div>
                    <div class="row">
                     <div class="col-4">
-                        <label for="alter_phno2">Alternate Number 2</label>
-                        <input type="text" name="alter_phno2" class="form-control" placeholder="Alternate Number" data-parsley-type="number" @if($address && $address->alter_phno2) value="{{$address->alter_phno2}}" @endif/>
+                        <label for="alter_phno2">Land Line Number</label>
+                        <input type="text" name="alter_phno2" class="form-control" placeholder="Alternate Number" @if($address && $address->alter_phno2) value="{{$address->alter_phno2}}" @endif/>
                         <span id="alter_phno2_error"></span>
                     </div>
                 </div>

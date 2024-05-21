@@ -39,7 +39,7 @@
         @yield('css')
 
     </head>
-    <body>
+    <body style="display: flex;flex-direction:column;">
         <!-- header start -->
         <header class="header-area">
             <div class="header-main-area">
@@ -310,7 +310,9 @@
                                         $footerImage = App\Models\FooterImage::first();
                                     @endphp
                                     <div class="gem_log">
-                                        <img src="{{ asset('storage').'/'.$footerImage->image }}" style="aspect-ratio:217/150;object-fit:cover" alt="Gem">
+                                        @if($footerImage)
+                                            <img src="{{ asset('storage').'/'.$footerImage->image }}" style="aspect-ratio:217/150;object-fit:cover" alt="Gem">
+                                        @endif
                                     </div>
                                 </div>
                             </div>

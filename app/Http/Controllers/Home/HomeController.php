@@ -194,7 +194,10 @@ class HomeController extends Controller
     // Services --
     public function services(){
         $service = ServiceMaster::first();
-        $products = ServiceSub::where('master_id',$service->id)->get();
+        $products = [];
+        if($service){
+            $products = ServiceSub::where('master_id',$service->id)->get();
+        }
         return view('admin.home.services.index',[
             'service' => $service,
             'products' => $products,
