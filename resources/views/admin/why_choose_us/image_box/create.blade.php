@@ -2,6 +2,12 @@
 @section('title', 'Home About') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+  </style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
@@ -31,7 +37,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-4">
-                                <label for="title">Title</label>
+                                <label for="title">Title<b class="text-danger">*</b></label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
                                     data-parsley-required-message="Title is required"/>
                                 <span id="title_error"></span>
@@ -39,14 +45,14 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="description">Description</label>
+                                <label for="description">Description<b class="text-danger">*</b></label>
                                 <textarea name="description" class="form-control" required data-parsley-required-message="Description is required"></textarea>
                                 <span id="description_error"></span>
                             </div>
                         </div>
                         <div class="row">
                           <div class="col-4">
-                              <label for="title">Image <small>(Max 2MB,PNG only)</small> </label>
+                              <label for="title">Image<b class="text-danger">*</b> <small>(Max 2MB,PNG only)</small> </label>
                                 <input type="file" accept="Image/*" name="image" class="form-control file" id="img-file" required data-parsley-required-message="Image is required">
                                 <div class="result">
                                   </div>

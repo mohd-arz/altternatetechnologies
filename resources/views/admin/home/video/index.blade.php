@@ -55,7 +55,7 @@
                                     <i>(Old)</i>
                                     <div class="gallery-item video_play" style="width:200px;">
                                       <a data-fancybox="images" href="{{asset('storage').'/'.$video->video}}" >
-                                          <div class="video_icon"><i class="fa fa-play-circle"></i></div>
+                                          <div class="video_icon"><i class="fe fe-play-circle"></i></div>
                                           <video class="img-fluid home_img" width="200px" src="{{asset('storage').'/'.$video->video}}">
                                       </a>
                                   </div>

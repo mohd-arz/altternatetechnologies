@@ -52,12 +52,12 @@
                                 </td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">
-                                        <a href="{{ route('news.edit', $news->id) }}" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a>
+                                        <a href="{{ route('news.edit', $news->id) }}" class='btn btn-success btn-sm'><i class='fe fe-edit'></i></a>
                                         <form action="{{ route('news.delete', $news->id) }}" method='POST' class='delete_form'>
                                             @csrf
                                             @method('DELETE')
                                             <button type='submit' class='btn btn-danger btn-sm'>
-                                                <i class='fa fa-trash'></i>
+                                                <i class='fe fe-trash'></i>
                                             </button>
                                         </form>
                                     </div>                                    

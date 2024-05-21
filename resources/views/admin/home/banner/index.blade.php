@@ -88,12 +88,12 @@
                                 </td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">
-                                        <a href="{{ route('banner.edit', $banner->id) }}" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a>
+                                        <a href="{{ route('banner.edit', $banner->id) }}" class='btn btn-success btn-sm'><i class='fe fe-edit'></i></a>
                                         <form action="{{ route('banner.delete', $banner->id) }}" method='POST' class='delete_form'>
                                             @csrf
                                             @method('DELETE')
                                             <button type='submit' class='btn btn-danger btn-sm'>
-                                                <i class='fa fa-trash'></i>
+                                                <i class='fe fe-trash'></i>
                                             </button>
                                         </form>
                                     </div>                                    

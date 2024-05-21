@@ -23,7 +23,15 @@ class CreateClientsRequest extends FormRequest
     {
         return [
             'type' => 'required',
-            'file' => 'required',
+            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:5120',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'file.image' => 'The uploaded file must be an image.',
+            'file.mimes' => 'Only JPEG, PNG, JPG, and GIF images are allowed.',
+            'file.max' => 'The image size must not exceed 5MB.',
         ];
     }
 }

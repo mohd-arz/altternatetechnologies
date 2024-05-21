@@ -167,11 +167,11 @@
                                                     <div class="tab-pane active" id="side9">
                                                         <ul class="sidemenu-list">
                                                                 <li><a href="{{ route('banner.view') }}"
-                                                                        class="slide-item {{ Request::is('*/banner*') ? 'active' : '' }} ">
+                                                                        class="slide-item {{ Request::is('*/banner') ? 'active' : '' }} {{ Request::is('*/banner/*') ? 'active' : '' }}  ">
                                                                         Banner</a></li>
 
                                                                 <li><a href="{{ route('iconBox.view') }}"
-                                                                    class="slide-item {{ Request::is('*/banner*') ? 'active' : '' }} ">
+                                                                    class="slide-item {{ Request::is('*/icon-box*') ? 'active' : '' }} ">
                                                                     Icon Box</a></li>
 
                                                                 <li><a href="{{ route('services_.view') }}"
@@ -179,7 +179,7 @@
                                                                     Services</a></li>
                                                                     
                                                                 <li><a href="{{ route('bannerImage.view') }}"
-                                                                    class="slide-item {{ Request::is('*/services*') ? 'active' : '' }} ">
+                                                                    class="slide-item {{ Request::is('*/banner-img*') ? 'active' : '' }} ">
                                                                     Banner Images</a></li>
 
                                                                 <li><a href="{{ route('about.view') }}"
@@ -278,10 +278,10 @@
                                                                         Address</a></li>
 
                                                             <li><a href="{{ route('socialMedia.view') }}"
-                                                                class="slide-item {{ Request::is('*/address*') ? 'active' : '' }} ">
+                                                                class="slide-item {{ Request::is('*/social-media*') ? 'active' : '' }} ">
                                                                     Social Media</a></li>
                                                             <li><a href="{{ route('footerImage.view') }}"
-                                                                class="slide-item {{ Request::is('*/address*') ? 'active' : '' }} ">
+                                                                class="slide-item {{ Request::is('*/footer-image*') ? 'active' : '' }} ">
                                                                     Footer Image</a></li>
 
                                                         </ul>

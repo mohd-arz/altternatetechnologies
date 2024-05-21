@@ -2,25 +2,31 @@
 @section('title', 'Home About') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+  </style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
     <div class="side-app">
         <div class="main-container container-fluid">
             <div class="page-header">
-                <h1 class="page-title">Banner</h1>
+                <h1 class="page-title">Address</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         {{-- <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Banner</a></li> --}}
-                        <li class="breadcrumb-item active" aria-current="page">About</li>
+                        <li class="breadcrumb-item active" aria-current="page">Address</li>
                     </ol>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Update Address
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -31,18 +37,18 @@
                         @csrf
                         <div class="row">
                             <div class="col-4">
-                                <label for="address">Address</label>
+                                <label for="address">Address<b class="text-danger">*</b></label>
                                 <input type="text" name="addr1" class="form-control" placeholder="Door No,Street,Town" required
-                                    data-parsley-required-message="Address is required" @if($address) value="{{$address->addr1}}" @endif/>
+                                    data-parsley-required-message="Main Address is required" @if($address) value="{{$address->addr1}}" @endif/>
                                 <span id="addr1_error"></span>
                                 <input type="text" name="addr2" class="form-control" placeholder="City,District,Pin" required
-                                data-parsley-required-message="Address is required" @if($address) value="{{$address->addr2}}" @endif/>
+                                data-parsley-required-message="Sub Address is required" @if($address) value="{{$address->addr2}}" @endif/>
                             <span id="addr2_error"></span>
                             </div>
                         </div>
                         <div class="row">
                           <div class="col-4">
-                              <label for="email">Email</label>
+                              <label for="email">Email<b class="text-danger">*</b></label>
                               <input type="email" name="email" class="form-control" placeholder="Email" required
                                   data-parsley-required-message="Email is required" @if($address) value="{{$address->email}}" @endif/>
                               <span id="email_error"></span>
@@ -50,7 +56,7 @@
                       </div>
                     <div class="row">
                       <div class="col-4">
-                          <label for="main_phno">Main Phone Number</label>
+                          <label for="main_phno">Main Phone Number<b class="text-danger">*</b></label>
                           <input type="text" name="main_phno" class="form-control" placeholder="Phone Number" required
                               data-parsley-required-message="Phone Number is required" data-parsley-type="number" @if($address) value="{{$address->main_phno}}" @endif/>
                           <span id="main_phno_error"></span>

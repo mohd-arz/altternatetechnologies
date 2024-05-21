@@ -2,25 +2,31 @@
 @section('title', 'Create Clients') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+  </style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
     <div class="side-app">
         <div class="main-container container-fluid">
             <div class="page-header">
-                <h1 class="page-title">Client</h1>
+                <h1 class="page-title">FAQ</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Client</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create Client</li>
+                        <li class="breadcrumb-item"><a href="{{ route('faq_.view') }}">FAQ</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create FAQ</li>
                     </ol>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Create FAQ
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -31,14 +37,14 @@
                         @csrf
                         <div class="row">
                           <div class="col-4">
-                            <label for="question">Question</label>
+                            <label for="question">Question<b class="text-danger">*</b></label>
                             <input type="text" name="question" class="form-control"
                                 placeholder="Question" required data-parsley-required-message="Question is required" />
                             <span id="question_error"></span>
                           </div>
                         
                             <div class="col-12">
-                              <label for="answer">Answer</label>
+                              <label for="answer">Answer<b class="text-danger">*</b></label>
                               <textarea name="answer" id="answer" class="form-control" required data-parsley-required-message="Answer is required"></textarea>
                               <span id="answer_error"></span>
                             </div>

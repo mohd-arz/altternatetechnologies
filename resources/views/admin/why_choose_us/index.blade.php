@@ -2,6 +2,12 @@
 @section('title', 'Home About') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+  </style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
@@ -35,7 +41,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-4">
-                                <label for="title">Title</label>
+                                <label for="title">Title<b class="text-danger">*</b></label>
                                 <input type="text" name="title" class="form-control" placeholder="Title" required
                                     data-parsley-required-message="Title is required" @if($wca) value="{{$wca->title}}" @endif/>
                                 <span id="title_error"></span>
@@ -43,7 +49,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <label for="description">Description</label>
+                                <label for="description">Description<b class="text-danger">*</b></label>
                                 <textarea name="description" class="editor">
                                     @if($wca)
                                     {{$wca->description}}
@@ -54,8 +60,8 @@
                         </div>
                         <div class="row">
                           <div class="col-4">
-                            <label for="title">Image 1<small>(Max 2MB)</small> </label>
-                              <input type="file" name="img1" accept="Image/*" class="form-control file" id="img1">
+                            <label for="title">Image 1<b class="text-danger">*</b><small>(Max 5MB)</small> </label>
+                              <input type="file" name="img1" accept="Image/*" class="form-control file" id="img1" @if(!$wca) required @endif>
                               <div class="result1">
                                 @if($wca && $wca->img1)
                                 <i>(Old) </i><a href="{{asset('storage').'/'.$wca->img1}}">View</a>
@@ -65,8 +71,8 @@
                               <span id="img1_error"></span>
                           </div>
                               <div class="col-4">
-                                <label for="title">Image 2<small>(Max 2MB)</small> </label>
-                                  <input type="file" name="img2"  accept="Image/*" class="form-control file" id="img2">
+                                <label for="title">Image 2<b class="text-danger">*</b><small>(Max 5MB)</small> </label>
+                                  <input type="file" name="img2"  accept="Image/*" class="form-control file" id="img2" @if(!$wca) required @endif>
                                   <div class="result2">
                                     @if($wca && $wca->img2)
                                     <i>(Old) </i><a href="{{asset('storage').'/'.$wca->img2}}">View</a>
@@ -76,8 +82,8 @@
                                   <span id="img2_error"></span>
                             </div>
                             <div class="col-4">
-                              <label for="title">Image 3<small>(Max 2MB)</small> </label>
-                                <input type="file" name="img3" accept="Image/*" class="form-control file" id="img3">
+                              <label for="title">Image 3<b class="text-danger">*</b><small>(Max 5MB)</small> </label>
+                                <input type="file" name="img3" accept="Image/*" class="form-control file" id="img3" @if(!$wca) required @endif>
                                 <div class="result3">
                                   @if($wca && $wca->img3)
                                   <i>(Old) </i><a href="{{asset('storage').'/'.$wca->img3}}">View</a>
@@ -88,7 +94,7 @@
                           </div>
                         </div>
 
-                        <button type="submit" id="submitbtn" class="btn btn-primary mt-2" style="min-width:85px">
+                        <button type="submit" id="submitbtn" class="btn btn-primary mt-2 mb-2" style="min-width:85px">
                             <span class="spinner-border spinner-border-sm" style="display: none" id="btn-loader"
                                 role="status" aria-hidden="true"></span>
                             <span id="btn-text">Save</span>

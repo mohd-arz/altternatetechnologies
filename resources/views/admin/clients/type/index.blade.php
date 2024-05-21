@@ -13,7 +13,7 @@
                 <h1 class="page-title">Type</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('clients_.view') }}">Clients</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Type</li>
                     </ol>
@@ -44,12 +44,12 @@
                                 <td>{{$type->title}}</td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">
-                                      <a href="{{ route('clients.type.edit', $type->id) }}" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a>
+                                      <a href="{{ route('clients.type.edit', $type->id) }}" class='btn btn-success btn-sm'><i class='fe fe-edit'></i></a>
                                         <form action="{{ route('clients.type.delete', $type->id) }}" method='POST' class='delete_form'>
                                             @csrf
                                             @method('DELETE')
                                             <button type='submit' class='btn btn-danger btn-sm'>
-                                                <i class='fa fa-trash'></i>
+                                                <i class='fe fe-trash'></i>
                                             </button>
                                         </form>
                                     </div>                                    

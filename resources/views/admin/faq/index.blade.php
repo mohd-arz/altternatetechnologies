@@ -14,7 +14,7 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Clients</li>
+                        <li class="breadcrumb-item active" aria-current="page">FAQ</li>
                     </ol>
                 </div>
             </div>
@@ -45,12 +45,12 @@
                                 <td>{{$faq->answer}}</td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">
-                                      <a href="{{ route('faq.edit', $faq->id) }}" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a>
+                                      <a href="{{ route('faq.edit', $faq->id) }}" class='btn btn-success btn-sm'><i class='fe fe-edit'></i></a>
                                         <form action="{{ route('faq.delete', $faq->id) }}" method='POST' class='delete_form'>
                                             @csrf
                                             @method('DELETE')
                                             <button type='submit' class='btn btn-danger btn-sm'>
-                                                <i class='fa fa-trash'></i>
+                                                <i class='fe fe-trash'></i>
                                             </button>
                                         </form>
                                     </div>                                    

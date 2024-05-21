@@ -13,7 +13,7 @@
                 <h1 class="page-title">Clients</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Clients</li>
                     </ol>
                 </div>
@@ -52,12 +52,12 @@
                                 </td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">
-                                      <a href="{{ route('clients.edit', $client->id) }}" class='btn btn-success btn-sm'><i class='fa fa-edit'></i></a>
+                                      <a href="{{ route('clients.edit', $client->id) }}" class='btn btn-success btn-sm'><i class='fe fe-edit'></i></a>
                                         <form action="{{ route('clients.delete', $client->id) }}" method='POST' class='delete_form'>
                                             @csrf
                                             @method('DELETE')
                                             <button type='submit' class='btn btn-danger btn-sm'>
-                                                <i class='fa fa-trash'></i>
+                                                <i class='fe fe-trash'></i>
                                             </button>
                                         </form>
                                     </div>                                    

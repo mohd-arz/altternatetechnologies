@@ -24,7 +24,7 @@
                 <h1 class="page-title">Gallery</h1>
                 <div>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Gallery</li>
                     </ol>
                 </div>
@@ -59,7 +59,7 @@
                                         @if($gallery->type == 'vid')
                                             <div class="gallery-item video_play" style="width:200px;">
                                                 <a data-fancybox="images" href="{{asset('storage').'/'.$gallery->file}}" >
-                                                    <div class="video_icon"><i class="fa fa-play-circle"></i></div>
+                                                    <div class="video_icon"><i class="fe fe-play-circle"></i></div>
                                                     <video class="img-fluid home_img" width="200px" src="{{asset('storage').'/'.$gallery->file}}">
                                                 </a>
                                             </div>
@@ -86,7 +86,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type='submit' class='btn btn-danger btn-sm'>
-                                                <i class='fa fa-trash'></i>
+                                                <i class='fe fe-trash'></i>
                                             </button>
                                         </form>
                                     </div>                                    

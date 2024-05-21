@@ -2,6 +2,12 @@
 @section('title', 'Create Clients') 
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" integrity="sha512-UtLOu9C7NuThQhuXXrGwx9Jb/z9zPQJctuAgNUBK3Z6kkSYT9wJ+2+dh6klS+TDBCV9kNPBbAxbVD+vCcfGPaA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<style>
+    label{
+        margin-top:.5rem;
+        margin-block-end: 0;
+    }
+  </style>
 @endsection 
 @section('content')
 <div class="main-content app-content mt-0">
@@ -12,7 +18,7 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Faq</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('faq_.view') }}">Faq</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit Faq</li>
                     </ol>
                 </div>
@@ -32,14 +38,14 @@
                         @method('PUT')
                         <div class="row">
                           <div class="col-4">
-                            <label for="question">Question</label>
+                            <label for="question">Question<b class="text-danger">*</b></label>
                             <input type="text" name="question" class="form-control"
                                 placeholder="Question" required data-parsley-required-message="Question is required" value="{{$faq->question}}"/>
                             <span id="question_error"></span>
                           </div>
                         
                             <div class="col-12">
-                              <label for="answer">Answer</label>
+                              <label for="answer">Answer<b class="text-danger">*</b></label>
                               <textarea name="answer" id="answer" class="form-control" required data-parsley-required-message="Answer is required">{{$faq->answer}}</textarea>
                               <span id="answer_error"></span>
                             </div>

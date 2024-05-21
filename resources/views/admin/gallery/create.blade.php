@@ -8,19 +8,19 @@
     <div class="side-app">
         <div class="main-container container-fluid">
             <div class="page-header">
-                <h1 class="page-title">Banner</h1>
+                <h1 class="page-title">Gallery</h1>
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Banner</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Create Banner</li>
+                        <li class="breadcrumb-item"><a href="{{ route('gallery_.view') }}">Gallery</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Upload Gallery</li>
                     </ol>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Upload Gallery
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -31,16 +31,16 @@
                         @csrf
                         <div class="row">
                           <div class="col-4">
-                            <label for="type">Type</label>
-                            <select name="type" id="type" class="form-control select2">
+                            <label for="type">Type<b class="text-danger">*</b></label>
+                            <select name="type" id="type" class="form-control select2" required data-parsley-required-message="Type is required">
                               <option value="img">Image</option>
                               <option value="vid">Video</option>
                             </select>
                           </div>
                         
                           <div class="col-4">
-                              <label for="title">File <small>(Max 2MB)</small> </label>
-                                <input type="file" name="file" class="form-control-file" id="img-file" required data-parsley-required-message="Image is required">
+                              <label for="title">File <b class="text-danger">*</b><small>(Image - Max 2MB , Video - Max 30MB)</small> </label>
+                                <input type="file" name="file" class="form-control file" id="file" required data-parsley-required-message="File is required">
                                 <div class="result"></div>
                                 {{-- <input type="hidden" name="banner_img" id="banner_img"> --}}
                                 <span id="file_error"></span>
@@ -80,7 +80,7 @@
                         <button type="submit" id="submitbtn" class="btn btn-primary mt-2" style="min-width:85px">
                             <span class="spinner-border spinner-border-sm" style="display: none" id="btn-loader"
                                 role="status" aria-hidden="true"></span>
-                            <span id="btn-text">Create Banner</span>
+                            <span id="btn-text">Upload</span>
                         </button>
                         <span id="message" class="alert"></span>
                     </form>

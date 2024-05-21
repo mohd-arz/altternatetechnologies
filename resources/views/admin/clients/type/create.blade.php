@@ -31,7 +31,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-4">
-                              <label for="title">Title</label>
+                              <label for="title">Title<b class="text-danger">*</b></label>
                               <input type="text" name="title" class="form-control" placeholder="Title" required
                                   data-parsley-required-message="Title is required"/>
                               <span id="title_error"></span>

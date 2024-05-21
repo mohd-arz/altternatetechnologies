@@ -12,7 +12,7 @@
                 <div>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('banner.view') }}">Client</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('clients_.view') }}">Client</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit Client</li>
                     </ol>
                 </div>
@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
-                        {{-- <h2>{{ $site }}</h2> --}}
+                        Edit Client
                     </div>
 
                     {{-- <div class="prism-toggle"></div> --}}
@@ -32,7 +32,7 @@
                         @method('PUT')
                         <div class="row">
                           <div class="col-4">
-                            <label for="type">Type</label>
+                            <label for="type">Type<b class="text-danger">*</b></label>
                             <select name="type" id="type" class="form-control select2" required data-parsley-required-message="Type is required" data-parsley-errors-container="#type_error">
                               <option value="">Select a Type</option>
                               @foreach ($types as $type)
@@ -43,8 +43,8 @@
                           </div>
                         
                           <div class="col-4">
-                              <label for="title">File <small>(Max 2MB)</small> </label>
-                                <input type="file" name="file" accept="Image/*" class="form-control-file" id="img-file">
+                              <label for="title">File <b class="text-danger">*</b><small>(Max 5MB)</small> </label>
+                                <input type="file" name="file" accept="Image/*" class="form-control file" id="img-file">
                                 <div class="result">
                                   <i>(Old) </i><a href="{{asset('storage').'/'.$client->img}}">View</a>
                                 </div>
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="modal-footer">
                                   {{-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> --}}
-                                  <button type="button" id="save-crop" class="btn btn-primary">Save changes</button>
+                                  <button type="button" id="save-crop" class="btn btn-primary">Edit</button>
                                 </div>
                               </div>
                             </div>

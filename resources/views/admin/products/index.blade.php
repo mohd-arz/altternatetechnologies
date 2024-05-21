@@ -67,12 +67,12 @@
                               <td>{{$product->is_home==1 ? 'True':'False'}}</td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">
-                                        <a href="{{ route('product.edit', $product->id) }}" class='btn btn-success btn-sm'><i class='fa fa-edit'></i>View/Edit</a>
+                                        <a href="{{ route('product.edit', $product->id) }}" class='btn btn-success btn-sm'><i class='fe fe-edit'></i>View/Edit</a>
                                         <form action="{{ route('product.delete', $product->id) }}" method='POST' class='delete_form'>
                                             @csrf
                                             @method('DELETE')
                                             <button type='submit' class='btn btn-danger btn-sm'>
-                                                <i class='fa fa-trash'></i>
+                                                <i class='fe fe-trash'></i>
                                             </button>
                                         </form>
                                     </div>                                    
