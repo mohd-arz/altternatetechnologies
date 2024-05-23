@@ -43,7 +43,7 @@
                         <div class="gallery-item video_play">
                             <a data-fancybox="images" href="{{ asset('storage').'/'.$video->file}}" >
                                 <div class="video_icon"><i class="fa fa-play-circle"></i></div>
-                                <video class="img-fluid home_img" src="{{ asset('storage').'/'.$video->file}}">
+                                <video class="img-fluid home_img" src="{{ asset('storage').'/'.$video->file}}" style="width:400px;height:200px;object-fit:cover">
                             </a>
                         </div>
                     </div>
