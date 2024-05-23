@@ -50,7 +50,7 @@
                             <div class="header-main  {{ Request::is('*/') ? 'mt-2 mb-2' : '' }}">
                                 <!-- logo start -->
                                 <div class="col header-element logo">
-                                    <a href="index.html">
+                                    <a href="{{route('home.view')}}">
                                         <img src="{{ asset('client') }}/image/logo.svg" alt="logo-image" class="logo_m img-fluid">
                                     </a>
                                 </div>

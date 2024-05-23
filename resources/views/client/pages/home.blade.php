@@ -138,7 +138,7 @@
     @foreach($products as $product)
     <div class="owl-item active">
         <div class="items">
-          <div class="h-t-pro" style="min-height:500px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+          <div class="h-t-pro" style="height:535px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
             <div class="tred-pro">
                 <div class="tr-pro-img">
                     <a href="{{route('product-details.view',$product->id)}}">

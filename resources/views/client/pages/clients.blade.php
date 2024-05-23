@@ -32,7 +32,7 @@
                           </ul>
 
                           <div class="tab-content">
-                              <div class="tab-pane fade show active" id="tab-1">
+                              <div class="tab-pane show active" id="tab-1">
                                   <div class="row" id="tab-1-row">
                                       @foreach ($clients as $client)
                                         <div class="col-md-2 mb-3">
@@ -65,6 +65,7 @@
             id:id,
         },
         success:function(response){
+            $('.tab-pane').addClass('fade')
             $('#tab-1-row').html = '';
             const assetUrl = "{{ asset('storage') }}";
             let html = ``;
