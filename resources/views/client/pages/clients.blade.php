@@ -65,7 +65,7 @@
             id:id,
         },
         success:function(response){
-            $('.tab-pane').addClass('fade')
+            // $('.tab-pane').addClass('fade')
             $('#tab-1-row').html = '';
             const assetUrl = "{{ asset('storage') }}";
             let html = ``;
