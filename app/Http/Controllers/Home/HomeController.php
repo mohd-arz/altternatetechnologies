@@ -9,7 +9,7 @@ use App\Actions\Admin\Home\BannerImage\CreateBannerImageAction;
 use App\Actions\Admin\Home\News\CreateNewsAction;
 use App\Actions\Admin\Home\News\EditNewsAction;
 use App\Actions\Admin\Home\Services\CreateServiceProductAction;
-use App\Actions\Admin\Home\Services\CreateservicesAction;
+use App\Actions\Admin\Home\Services\CreateServicesAction;
 use App\Actions\Admin\Home\Services\EditServiceProductAction;
 use App\Actions\Admin\Home\IconBox\CreateIconBoxAction;
 use App\Actions\Admin\Video\CreateVideoAction;

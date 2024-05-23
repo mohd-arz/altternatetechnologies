@@ -112,7 +112,10 @@ class ClientController extends Controller
     }
     public function clients(){
         $types = ClientType::get();
-        $clients = Clients::where('client_type_id',$types[0]->id)->get();
+        $clients = [];
+        if($types){
+            $clients = Clients::where('client_type_id',$types[0]->id)->get();
+        }
         return view('client.pages.clients',[
             'clients' => $clients,
             'types' => $types,
