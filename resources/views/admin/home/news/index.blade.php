@@ -42,7 +42,7 @@
                                 <td>{{$index + 1}}</td>
                                 <td>
                                     <a href="{{asset('storage').'/'.$news->img}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$news->img}}" width="200px" alt="">
+                                        <img loading="lazy" src="{{asset('storage').'/'.$news->img}}" width="200px" alt="">
                                     </a>
                                 </td>
                                 <td>

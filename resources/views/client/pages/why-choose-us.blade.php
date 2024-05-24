@@ -23,7 +23,7 @@
                 <div class="col-md-3">
                 <div class="altternate-m d-flex">
                     <div class="altternate-icon">
-                        <img src="{{ asset('storage').'/'.$item->image }}" style="aspect-ratio:1/1;object-fit:cover">
+                        <img loading="lazy" src="{{ asset('storage').'/'.$item->image }}" style="aspect-ratio:1/1;object-fit:cover">
                     </div>
                     <div class="altternate-content">
                         <h3>{{$item->title}}</h3>
@@ -45,7 +45,7 @@
                       <div class="blog-post">
                           <div class="blog-image1">
                             @if(isset($wca->img1))
-                              <img src="{{ asset('storage').'/'.$wca->img1 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
+                              <img loading="lazy" src="{{ asset('storage').'/'.$wca->img1 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
                             @endif
                            </div>
                       </div>
@@ -54,7 +54,7 @@
                       <div class="blog-post">
                           <div class="blog-image1">
                             @if(isset($wca->img2))
-                              <img src="{{ asset('storage').'/'.$wca->img2 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
+                              <img loading="lazy" src="{{ asset('storage').'/'.$wca->img2 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
                             @endif
                            </div>
                       </div>
@@ -63,7 +63,7 @@
                       <div class="blog-post">
                           <div class="blog-image1">
                             @if(isset($wca->img3))
-                              <img src="{{ asset('storage').'/'.$wca->img3 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
+                              <img loading="lazy" src="{{ asset('storage').'/'.$wca->img3 }}" style="aspect-ratio:67/58;object-fit:cover" alt="blog-image" class="img-fluid">
                             @endif
                             </div>
                       </div>

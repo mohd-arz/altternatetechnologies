@@ -47,7 +47,7 @@
                                 <td>{{$client->getType->title}}</td>
                                 <td>
                                       <a href="{{asset('storage').'/'.$client->img}}" target="_blank">
-                                          <img src="{{asset('storage').'/'.$client->img}}" width="200px" alt="">
+                                          <img loading="lazy" src="{{asset('storage').'/'.$client->img}}" width="200px" alt="">
                                       </a>
                                 </td>
                                 <td>

@@ -40,7 +40,7 @@
                                 <td>{{$index + 1}}</td>
                                 <td>
                                     <a href="{{asset('storage').'/'.$certificate->img}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$certificate->img}}" width="200px" alt="">
+                                        <img loading="lazy" src="{{asset('storage').'/'.$certificate->img}}" width="200px" alt="">
                                     </a>
                                 </td>
                                 <td>

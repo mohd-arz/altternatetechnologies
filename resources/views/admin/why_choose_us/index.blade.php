@@ -117,7 +117,7 @@
                               <td>{{$imageBox->description}}</td>
                               <td>
                                 <a href="{{asset('storage').'/'.$imageBox->image}}" target="_blank">
-                                  <img src="{{asset('storage').'/'.$imageBox->image}}" width="200px" alt="">
+                                  <img loading="lazy" src="{{asset('storage').'/'.$imageBox->image}}" width="200px" alt="">
                               </a>
                               </td>
                               <td>

@@ -51,7 +51,7 @@
 
 <body class="app sidebar-mini ltr light-mode">
     <!-- GLOBAL-LOADER -->
-    <div id="global-loader"> <img src="{{ asset('admin') }}/images/loader.svg" class="loader-img" alt="Loader"> </div>
+    <div id="global-loader"> <img loading="lazy" src="{{ asset('admin') }}/images/loader.svg" class="loader-img" alt="Loader"> </div>
     <!-- /GLOBAL-LOADER -->
     <!-- PAGE -->
     <div class="page">
@@ -137,9 +137,9 @@
                                 src="{{ asset('client') }}/image/logo-short-dark.png"
                                 width="50" height="50" class="header-brand-img toggle-logo" alt="logo">
 
-                            <img src="{{ asset('client') }}/image/logo-short.png"
+                            <img loading="lazy" src="{{ asset('client') }}/image/logo-short.png"
                                 width="50" height="50" class="header-brand-img light-logo" alt="logo">
-                            <img src="{{ asset('client') }}/image/logo.svg" width="50"
+                            <img loading="lazy" src="{{ asset('client') }}/image/logo.svg" width="50"
                                 height="50" class="header-brand-img light-logo1" alt="logo"> </a>
                         <!-- LOGO -->
                     </div>

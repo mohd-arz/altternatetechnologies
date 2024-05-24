@@ -27,7 +27,7 @@
                       <div class="blog-post">
                           <div class="blog-image">
                             @if(isset($news->img))
-                              <img src="{{ asset('storage').'/'.$news->img }}" alt="blog-image" class="img-fluid">
+                              <img loading="lazy" src="{{ asset('storage').'/'.$news->img }}" alt="blog-image" class="img-fluid">
                             @endif
                           </div>
                           <div class="blog-content">

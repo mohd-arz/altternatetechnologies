@@ -36,7 +36,7 @@
                                   <div class="row" id="tab-1-row">
                                       @foreach ($clients as $client)
                                         <div class="col-md-2 mb-3">
-                                            <img src="{{asset('storage').'/'.$client->img}}" alt="clients" class="clients_bg">
+                                            <img loading="lazy" src="{{asset('storage').'/'.$client->img}}" alt="clients" class="clients_bg">
                                         </div>
                                         @endforeach
                                   </div>
@@ -71,7 +71,7 @@
             let html = ``;
             response.clients.forEach(client => {
                 html += `<div class="col-md-2 mb-3">
-                            <img src="${assetUrl}/${client.img}" alt="clients" class="clients_bg">
+                            <img loading="lazy" src="${assetUrl}/${client.img}" alt="clients" class="clients_bg">
                         </div>`;
 
             });

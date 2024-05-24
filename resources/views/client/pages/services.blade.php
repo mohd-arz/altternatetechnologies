@@ -16,13 +16,13 @@
   <div class="container">
       <div class="row align-items-center">
           <div class="col-md-4">
-              <img src="{{asset('storage').'/'.$service->img1 ?? ''}}" style="aspect-ratio:406/593;object-fit:cover" alt="services">
+              <img loading="lazy" src="{{asset('storage').'/'.$service->img1 ?? ''}}" style="aspect-ratio:406/593;object-fit:cover" alt="services">
           </div>
           <div class="col-md-4">
-              <img src="{{asset('storage').'/'.$service->img2 ?? ''}}" style="aspect-ratio:406/593;object-fit:cover" alt="services">
+              <img loading="lazy" src="{{asset('storage').'/'.$service->img2 ?? ''}}" style="aspect-ratio:406/593;object-fit:cover" alt="services">
           </div>
           <div class="col-md-4">
-              <img src="{{asset('storage').'/'.$service->img3 ?? ''}}" style="aspect-ratio:406/593;object-fit:cover" alt="services">
+              <img loading="lazy" src="{{asset('storage').'/'.$service->img3 ?? ''}}" style="aspect-ratio:406/593;object-fit:cover" alt="services">
           </div>
       </div>
   </div>  
@@ -37,7 +37,7 @@
             {!!$sub->description!!}
             @foreach ($sub->getProducts as $product)
                 <div class="col-md-4 mt-4">
-                    <img src="{{asset('storage').'/'.$product->img}}" style="aspect-ratio:203/150;object-fit:cover" class="mb-3">
+                    <img loading="lazy" src="{{asset('storage').'/'.$product->img}}" style="aspect-ratio:203/150;object-fit:cover" class="mb-3">
                     {!!$product->img_desc!!}
                 </div>
             @endforeach

@@ -13,7 +13,7 @@
                             @if($product && $product->img1)
                               <a href="" class="long-img">
                                   <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img1 ?? ''}})">
-                                      <img src="{{asset('storage').'/'.$product->img1 ?? ''}}" class="img-fluid" style="aspect-ratio:17/22;object-fit:cover" alt="image">
+                                      <img loading="lazy" src="{{asset('storage').'/'.$product->img1 ?? ''}}" class="img-fluid" style="aspect-ratio:17/22;object-fit:cover" alt="image">
                                   </figure>
                               </a>
                               @endif
@@ -22,7 +22,7 @@
                             @if($product && $product->img2)
                               <a href="" class="long-img">
                                   <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img2 ?? ''}})">
-                                      <img src="{{asset('storage').'/'.$product->img2 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image">
+                                      <img loading="lazy" src="{{asset('storage').'/'.$product->img2 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image">
                                   </figure>
                               </a>
                               @endif
@@ -31,7 +31,7 @@
                             @if($product && $product->img3)
                               <a href="" class="long-img">
                                   <figure class="zoom" onmousemove="zoom(event)" style="background-image: url({{asset('storage').'/'.$product->img3 ?? ''}})">
-                                      <img src="{{asset('storage').'/'.$product->img3 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image">
+                                      <img loading="lazy" src="{{asset('storage').'/'.$product->img3 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image">
                                   </figure>
                               </a>
                               @endif
@@ -40,17 +40,17 @@
                       <ul class="nav nav-tabs pro-page-slider owl-carousel owl-theme">
                           <li class="nav-item items">
                             @if($product && $product->img1)
-                              <a class="nav-link active" data-bs-toggle="tab" href="#image-11"><img src="{{asset('storage').'/'.$product->img1 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image"></a>
+                              <a class="nav-link active" data-bs-toggle="tab" href="#image-11"><img loading="lazy" src="{{asset('storage').'/'.$product->img1 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="image"></a>
                             @endif
                             </li>
                           <li class="nav-item items">
                             @if($product && $product->img2)
-                              <a class="nav-link" data-bs-toggle="tab" href="#image-22"><img src="{{asset('storage').'/'.$product->img2 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="iamge"></a>
+                              <a class="nav-link" data-bs-toggle="tab" href="#image-22"><img loading="lazy" src="{{asset('storage').'/'.$product->img2 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="iamge"></a>
                             @endif
                             </li>
                           <li class="nav-item items">
                             @if($product && $product->img3)
-                              <a class="nav-link" data-bs-toggle="tab" href="#image-33"><img src="{{asset('storage').'/'.$product->img3 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="iamge"></a>
+                              <a class="nav-link" data-bs-toggle="tab" href="#image-33"><img loading="lazy" src="{{asset('storage').'/'.$product->img3 ?? ''}}" style="aspect-ratio:17/22;object-fit:cover" class="img-fluid" alt="iamge"></a>
                             @endif
                             </li>
                       </ul>
@@ -125,7 +125,7 @@
               <div class="tred-pro">
                   <div class="tr-pro-img">
                       <a href="{{route('product-details.view',$product->id)}}">
-                          <img src="{{asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" alt="blog-image" class="img-fluid">
+                          <img loading="lazy" src="{{asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" alt="blog-image" class="img-fluid">
                       </a>
                   </div>
               </div>

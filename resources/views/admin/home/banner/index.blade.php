@@ -83,7 +83,7 @@
                                 </td>
                                 <td>
                                     <a href="{{asset('storage').'/'.$banner->banner_img}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$banner->banner_img}}" width="200px" alt="">
+                                        <img loading="lazy" src="{{asset('storage').'/'.$banner->banner_img}}" width="200px" alt="">
                                     </a>
                                 </td>
                                 <td>

@@ -46,7 +46,7 @@
                                 <!-- logo start -->
                                 <div class="col header-element logo">
                                     <a href="{{route('home.view')}}">
-                                        <img src="{{ asset('client') }}/image/logo.svg" alt="logo-image" class="logo_m img-fluid">
+                                        <img loading="lazy" src="{{ asset('client') }}/image/logo.svg" alt="logo-image" class="logo_m img-fluid">
                                     </a>
                                 </div>
                                 <!-- logo end -->
@@ -258,7 +258,7 @@
                             <div class="footer-link">
                                 <div class="f-info footer-logo">
                                     <!-- <h2 class="h-footer">Altternate Technologies</h2> -->
-                                    <a href="{{route('home.view')}}"><img src="{{ asset('client') }}/image/logo.svg"></a>
+                                    <a href="{{route('home.view')}}"><img loading="lazy" src="{{ asset('client') }}/image/logo.svg"></a>
                                     @if($address)
                                     <ul class="footer-first">
                                         <li class="logo-content footer-details">
@@ -343,7 +343,7 @@
                     <div class="col">
                         <div class="f-bottom">
                             <p>Copyright <i class="fa fa-copyright"></i> {{now()->format('Y')}} Altternate Technologies</p>
-                            <!-- <img src="{{ asset('client') }}/image/payment.png" class="img-fluid" alt="p-image"> -->
+                            <!-- <img loading="lazy" src="{{ asset('client') }}/image/payment.png" class="img-fluid" alt="p-image"> -->
                         </div>
                     </div>
                 </div>

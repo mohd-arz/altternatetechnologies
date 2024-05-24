@@ -26,7 +26,7 @@
                 <div class="tred-pro">
                     <div class="tr-pro-img">
                         <a href="{{route('product-details.view',$product->id)}}">
-                            <img src="{{ asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" alt="blog-image" class="img-fluid">
+                            <img loading="lazy" src="{{ asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" alt="blog-image" class="img-fluid">
                         </a>
                     </div>
                 </div>

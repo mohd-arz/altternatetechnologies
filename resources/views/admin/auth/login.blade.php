@@ -49,7 +49,7 @@
 
         <!-- GLOABAL LOADER -->
         <div id="global-loader">
-            <img src="{{ asset('admin') }}/images/loader.svg" class="loader-img" alt="Loader">
+            <img loading="lazy" src="{{ asset('admin') }}/images/loader.svg" class="loader-img" alt="Loader">
         </div>
         <!-- /GLOABAL LOADER -->
 
@@ -61,7 +61,7 @@
                 <!-- CONTAINER OPEN -->
                 <div class="col col-login mx-auto mt-7">
                     <div class="text-center">
-                        <a href="index.html"><img src="{{ asset('client') }}/image/logo.svg"
+                        <a href="index.html"><img loading="lazy" src="{{ asset('client') }}/image/logo.svg"
                                 height="70" width="70" class="header-brand-img" alt=""></a>
                     </div>
                 </div>

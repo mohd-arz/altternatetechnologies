@@ -65,7 +65,7 @@
       <div class="row altternate_section">
           <div class="col-md-3 col-lg-4 mb-4">
             @if(isset($about->home_img))
-              <img src="{{ asset('storage').'/'.$about->home_img }}" class="home_img">
+              <img loading="lazy" src="{{ asset('storage').'/'.$about->home_img }}" class="home_img">
             @else
                 Image Placeholder
             @endif
@@ -142,7 +142,7 @@
             <div class="tred-pro">
                 <div class="tr-pro-img">
                     <a href="{{route('product-details.view',$product->id)}}">
-                        <img src="{{ asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" alt="blog-image" class="img-fluid">
+                        <img loading="lazy" src="{{ asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" alt="blog-image" class="img-fluid">
                     </a>
                 </div>
             </div>
@@ -213,7 +213,7 @@
       <div class="home4-brand owl-carousel owl-theme d-flex justify-content-center">
         @foreach ($certificates as $certificate)
             <div class="items">
-                <img src="{{ asset('storage').'/'.$certificate->img }}" style="aspect-ratio:1/1;object-fit:cover;" class="img-fluid brand-3" alt="brand-image">
+                <img loading="lazy" src="{{ asset('storage').'/'.$certificate->img }}" style="aspect-ratio:1/1;object-fit:cover;" class="img-fluid brand-3" alt="brand-image">
             </div>
         @endforeach
       </div>
@@ -235,7 +235,7 @@
     @foreach ($galleries as $gallery)
         <div class="col-md-3 col-lg-4 gallery_slider">
             <a href="{{ asset('storage').'/'.$gallery->file}}">
-                <img src="{{ asset('storage').'/'.$gallery->file}}" alt="" style="aspect-ratio:4/3;object-fit:cover;" title="Advanced Anaerobic Bioreactors For Residue-Free Biodegradable Waste Treatment"/>
+                <img loading="lazy" src="{{ asset('storage').'/'.$gallery->file}}" alt="" style="aspect-ratio:4/3;object-fit:cover;" title="Advanced Anaerobic Bioreactors For Residue-Free Biodegradable Waste Treatment"/>
             </a>
         </div> 
     @endforeach
@@ -264,7 +264,7 @@
       <div class="home4-brand owl-carousel owl-theme d-flex justify-content-center">
           @foreach ($clients as $client)
             <div class="items px-2">
-                <img src="{{ asset('storage').'/'.$client->img}}" style="aspect-ratio:3/2;object-fit:cover;" class="img-fluid brand-4" alt="clients-image">
+                <img loading="lazy" src="{{ asset('storage').'/'.$client->img}}" style="aspect-ratio:3/2;object-fit:cover;" class="img-fluid brand-4" alt="clients-image">
             </div>
           @endforeach
       </div>
@@ -317,7 +317,7 @@
         <a href="{{route('news.view',$news->id)}}">
             <div class="items">
                 <div class="testimonial-content">
-                    <img src="{{ asset('storage').'/'.$news->img}}" style="object-fit: cover;aspect-ratio:389/211" class="img-responsive">
+                    <img loading="lazy" src="{{ asset('storage').'/'.$news->img}}" style="object-fit: cover;aspect-ratio:389/211" class="img-responsive">
                     <div class="testimonial-area">
                         <div class="testi-name" style="max-height: 150px; overflow: hidden; text-overflow: ellipsis;">
                             {!! $news->description !!}

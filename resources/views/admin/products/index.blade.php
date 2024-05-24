@@ -47,21 +47,21 @@
                                 <td>{{$product->description}}</td>
                                 <td>
                                     <a href="{{asset('storage').'/'.$product->img1}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$product->img1}}" width="200px" alt="">
+                                        <img loading="lazy" src="{{asset('storage').'/'.$product->img1}}" width="200px" alt="">
                                     </a>
                                 </td>
                                 <td>
                                     <a href="{{asset('storage').'/'.$product->img2}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$product->img2}}" width="200px" alt="">
+                                        <img loading="lazy" src="{{asset('storage').'/'.$product->img2}}" width="200px" alt="">
                                     </a>
                                   {{-- <div style="display: flex;flex-direction:column">
-                                      <img src="{{asset('storage').'/'.$product->img2}}" width="200px" alt="">
+                                      <img loading="lazy" src="{{asset('storage').'/'.$product->img2}}" width="200px" alt="">
                                       <a href="{{asset('storage').'/'.$product->img2}}" target="_blank">Full View</a>
                                   </div> --}}
                               </td>
                                 <td>
                                     <a href="{{asset('storage').'/'.$product->img3}}" target="_blank">
-                                        <img src="{{asset('storage').'/'.$product->img3}}" width="200px" alt="">
+                                        <img loading="lazy" src="{{asset('storage').'/'.$product->img3}}" width="200px" alt="">
                                     </a>
                               </td>
                               <td>{{$product->is_home==1 ? 'True':'False'}}</td>

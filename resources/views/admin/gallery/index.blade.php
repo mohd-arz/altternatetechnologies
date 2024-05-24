@@ -65,7 +65,7 @@
                                             </div>
                                         @else
                                             <a href="{{asset('storage').'/'.$gallery->file}}" target="_blank">
-                                                <img src="{{asset('storage').'/'.$gallery->file}}" width="200px" alt="">
+                                                <img loading="lazy" src="{{asset('storage').'/'.$gallery->file}}" width="200px" alt="">
                                             </a>
                                         @endif
                                     </div>
