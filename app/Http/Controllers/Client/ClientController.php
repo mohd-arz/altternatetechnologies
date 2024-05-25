@@ -11,6 +11,7 @@ use App\Models\Brochure;
 use App\Models\Certificate;
 use App\Models\Clients;
 use App\Models\ClientType;
+use App\Models\ContactUs;
 use App\Models\Faq;
 use App\Models\Gallery;
 use App\Models\HomeBanner;
@@ -24,6 +25,7 @@ use App\Models\SocialMedia;
 use App\Models\Video;
 use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Throwable;
 
@@ -144,15 +146,23 @@ class ClientController extends Controller
         ]);
 
         try{
-            Mail::to('mohammedarsh75@gmail.com')->send(new ContactMail([
+            DB::beginTransaction();
+            Mail::to(ENV('MAIL_TO'))->send(new ContactMail([
                 'name' => $request->name,
                 'email' => $request->email,
                 'message' => $request->message,
             ]));
+            $contact = new ContactUs();
+            $contact->name = $request->name;
+            $contact->email = $request->email;
+            $contact->message = $request->message;
+            $contact->save();
+            DB::commit();
             return response()->json(['status'=>true,'message'=>'Message send successfully']);
 
         }catch(Throwable $th){
             info($th);
+            DB::rollBack();
             return response()->json(['status'=>false,'message'=>'Failed to send message']);
         }
     }

@@ -4,6 +4,7 @@ use App\Http\Controllers\About\AboutController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client\ClientController;
 use App\Http\Controllers\Clients\ClientsController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Faq\FaqController;
 use App\Http\Controllers\Gallery\GalleryController;
@@ -185,6 +186,12 @@ Route::middleware([Auth::class])->group(function(){
         Route::controller(PrivacyPolicyController::class)->group(function(){
             Route::get('/','privacyPolicy')->name('privacyPolicy_.view');
             Route::post('/','privacyPolicyStore')->name('privacyPolicy.store');
+        });
+    });
+    Route::prefix('contact-us')->group(function(){
+        Route::controller(ContactUsController::class)->group(function(){
+            Route::get('/','index')->name('contactUs_.view');
+            Route::delete('/delete/{contact}','delete')->name('contactUs.delete');
         });
     });
     Route::prefix('settings')->group(function(){

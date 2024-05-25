@@ -260,6 +260,14 @@
                                         class="side-menu__label">Privacy Policy</span></a> 
                                 </li>
 
+                                {{-- Contact Us --}}
+                                <li class="slide"> <a
+                                    class="side-menu__item has-link {{ Request::is('dashboard/contact-us*') ? 'active' : '' }}"
+                                    data-bs-toggle="slide" href="{{ route('contactUs_.view') }}"><i
+                                        class="side-menu__icon fe fe-lock"></i><span
+                                        class="side-menu__label">Contact Us</span></a> 
+                                </li>
+
                                 {{-- Settings  --}}
                                 <li class="slide {{ Request::is('dashboard/settings/*') ? 'is-expanded' : '' }}">
                                     <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)"><i

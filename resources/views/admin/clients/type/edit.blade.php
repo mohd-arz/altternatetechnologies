@@ -1,5 +1,5 @@
 @extends('admin.layout.app') 
-@section('title', 'Edit Type') 
+@section('title', 'Edit Clients Types') 
 @section('css')
 @endsection 
 @section('content')
