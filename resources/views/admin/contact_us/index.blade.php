@@ -43,7 +43,7 @@
                                 <td>{{$contact->name}}</td>
                                 <td>{{$contact->email}}</td>
                                 <td>{{$contact->message}}</td>
-                                <td>{{$contact->created_at}}</td>
+                                <td>{{ \Carbon\Carbon::parse($contact->created_at)->format('d-m-Y') }}</td>
                                 <td>
                                     <div style="display: flex;gap:.5rem;">
                                         <form action="{{ route('contactUs.delete', $contact->id) }}" method='POST' class='delete_form'>
