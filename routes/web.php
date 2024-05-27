@@ -122,6 +122,7 @@ Route::middleware([Auth::class])->group(function(){
             Route::get('/edit/{product}','productEdit')->name('product.edit');
             Route::put('/update/{product}','productUpdate')->name('product.update');
             Route::delete('/delete/{product}','productDelete')->name('product.delete');
+            Route::get('/productIsActive','productActive')->name('product.productActive');
         });
     });
     Route::prefix('gallery')->group(function(){

@@ -35,7 +35,7 @@ class ClientController extends Controller
         $banners = HomeBanner::orderBy('id','desc')->get();
         $brochure = Brochure::first();
         $about = About::first();
-        $products = Product::where('is_home','1')->get();
+        $products = Product::where('is_home','1')->where('status','1')->get();
         $galleries = Gallery::where(['is_home'=>'1','type'=>'img'])->get();
         $clients = Clients::get();
         $certificates = Certificate::get();
@@ -64,7 +64,7 @@ class ClientController extends Controller
         ]);
     }
     public function products(){
-        $products = Product::get();
+        $products = Product::where('status','1')->get();
         $bannerImg = BannerImage::first();
         return view('client.pages.products',[
             'products' => $products,

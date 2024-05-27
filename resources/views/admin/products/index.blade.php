@@ -36,6 +36,7 @@
                             <th>Img 1</th>
                             <th>Img 2</th>
                             <th>Img 3</th>
+                            <th>Active</th>
                             <th>Home</th>
                             <th>Action</th>
                         </thead>
@@ -63,6 +64,12 @@
                                     <a href="{{asset('storage').'/'.$product->img3}}" target="_blank">
                                         <img loading="lazy" src="{{asset('storage').'/'.$product->img3}}" width="200px" alt="">
                                     </a>
+                              </td>
+                              <td>
+                                  <label class="custom-switch form-switch mb-0">
+                                    <input type="checkbox" name="custom-switch-radio" data-id="{{$product->id}}" class="custom-switch-input" @if($product->status)checked @endif>
+                                    <span class="custom-switch-indicator custom-switch-indicator-md"></span>
+                                </label>
                               </td>
                               <td>{{$product->is_home==1 ? 'True':'False'}}</td>
                                 <td>
@@ -92,6 +99,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" integrity="sha512-JyCZjCOZoyeQZSd5+YEAcFgz2fowJ1F1hyJOXgtKu4llIa0KneLcidn5bwfutiehUTiOuK87A986BZJMko0eWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
     $(function() {
+        $('.custom-switch-input').on('change',function(){
+            let id = $(this).data('id');
+            let isChecked = $(this).prop('checked');
+            $.ajax({
+                url:"{{route('product.productActive')}}",
+                method:'GET',
+                dataType:'JSON',
+                data:{
+                    id:id,
+                    isChecked:isChecked,
+                },
+                success:function(response){
+                    console.log(response);
+                },
+                error:function(error){
+                    console.log(error);
+                }
+            })
+        })
+
         $('#table').on('submit', '.delete_form', function(e) {
             e.preventDefault();
             let form = $(this);
@@ -122,7 +149,7 @@
                                     swal("Deleted!", response.message, "success");
                                     setTimeout(() => {
                                         window.location.href =
-                                            "{{ route('products.view') }}";
+                                            "{{ route('product.view') }}";
                                     }, 1000)
                                 } else {
                                     swal("Cancelled!", response.message, "error");

@@ -50,5 +50,15 @@ class ProductsController extends Controller
         }
         return response()->json(['status' => false, 'error' => 'Failed to edit Product.']);
     }
+    public function productActive(Request $request){
+        $product = Product::find($request->id);
+        if($request->isChecked == "true"){
+            $product->status = 1;
+        }else{
+            $product->status = 0;
+        }
+        $product->save();
+        return response()->json(['status'=>true,'message'=>'Status is Active']);
+    }
 }
 

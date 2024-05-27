@@ -37,7 +37,7 @@ class GalleryController extends Controller
     }
     public function galleryIsHome(Request $request){
         $gallery = Gallery::find($request->id);
-        if($request->isChecked){
+        if($request->isChecked == "true"){
             $gallery->is_home = true;
         }else{
             $gallery->is_home = false;
