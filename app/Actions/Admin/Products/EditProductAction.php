@@ -16,6 +16,7 @@ class EditProductAction
         DB::beginTransaction();
         try {
             $product->title = $collection['title'];
+            $product->slug = Product::getSlug($product->title,$product->id);
             $product->description = $collection['description'];
             if(isset($collection['is_home'])){
               $product->is_home = true;

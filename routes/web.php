@@ -23,7 +23,7 @@ Route::controller(ClientController::class)->group(function(){
     Route::get('/','home')->name('home.view');
     Route::get('/services','services')->name('services.view');
     Route::get('/products','products')->name('products.view');
-    Route::get('/product-details/{product}','productDetails')->name('product-details.view');
+    Route::get('/product-details/{slug}','productDetails')->name('product-details.view');
     Route::get('/gallery','gallery')->name('gallery.view');
     Route::get('/about','about')->name('aboutUs.view');
     Route::get('/why-choose-us','whyChooseUs')->name('whyChooseUs.view');

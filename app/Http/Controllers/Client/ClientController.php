@@ -71,7 +71,8 @@ class ClientController extends Controller
             'bannerImg' => $bannerImg,
         ]);
     }
-    public function productDetails(Product $product){
+    public function productDetails($slug){
+        $product = Product::where('slug',$slug)->first();
         $products = Product::where('id','!=',$product->id)->get();
         return view('client.pages.product-details',[
             'products' => $products,

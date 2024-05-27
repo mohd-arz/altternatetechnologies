@@ -141,13 +141,13 @@
           <div class="h-t-pro" style="height:535px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
             <div class="tred-pro">
                 <div class="tr-pro-img">
-                    <a href="{{route('product-details.view',$product->id)}}">
+                    <a href="{{route('product-details.view',$product->slug)}}">
                         <img loading="lazy" src="{{ asset('storage').'/'.$product->img1}}" style="aspect-ratio:17/22;object-fit:cover" alt="blog-image" class="img-fluid">
                     </a>
                 </div>
             </div>
             <div class="caption" style="text-wrap:wrap;">
-                <h3><a href="{{route('product-details.view',$product->id)}}">{{$product->title}}</a></h3>
+                <h3><a href="{{route('product-details.view',$product->slug)}}">{{$product->title}}</a></h3>
                 <div class="pro-price">
                   @if($product && $product->getProductAttr->count() > 0)
                     @foreach ($product->getProductAttr as $item)
